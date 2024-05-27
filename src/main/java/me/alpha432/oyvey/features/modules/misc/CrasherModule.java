@@ -64,11 +64,8 @@ public class CrasherModule extends Module {
      *
      */
 
-    @EventListener
-    public void onTick(TickEvent event) {
-        if (event.getStage() != Stage.PRE) {
-            return;
-        }
+    @Override
+    public void onTick() {
         switch (modeConfig.getValue()) {
             case ARMOR -> {
                 for (int i = 0; i < 300; i++) {

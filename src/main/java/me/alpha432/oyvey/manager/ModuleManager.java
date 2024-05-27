@@ -8,6 +8,7 @@ import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.modules.client.ClickGui;
 import me.alpha432.oyvey.features.modules.client.HudModule;
+import me.alpha432.oyvey.features.modules.client.Welcomer;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
 import me.alpha432.oyvey.features.modules.oyveydotconfirm.AutoMeow;
 import me.alpha432.oyvey.features.modules.misc.CrasherModule;
@@ -34,6 +35,7 @@ public class ModuleManager implements Jsonable, Util {
     public List<String> sortedModulesABC = new ArrayList<>();
 
     public void init() {
+        modules.add(new Welcomer());
         modules.add(new HudModule());
         modules.add(new ClickGui());
         modules.add(new HitboxDesyncModule());

@@ -12,6 +12,7 @@ public class HudModule extends Module {
     }
     public Setting<String> watermark = this.register(new Setting<>("Watermark", "Oyvey"));
     public Setting<Boolean> coords = this.register(new Setting<>("Coords", false));
+    public Setting<Boolean> welcomer = this.register(new Setting<>("Welcomer", false));
 
     public Setting<Integer> red = this.register(new Setting<>("Red", 0, 0, 255));
     public Setting<Integer> green = this.register(new Setting<>("Green", 0, 0, 255));
@@ -28,5 +29,6 @@ public class HudModule extends Module {
                 this.watermark.getValue() + " " + OyVey.VERSION,
                 2, 2,
                   this.red.getPlannedValue() + this.green.getPlannedValue() + this.blue.getPlannedValue() + this.alpha.getPlannedValue());
+
         }
 }

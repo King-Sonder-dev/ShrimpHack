@@ -1,15 +1,7 @@
 package me.alpha432.oyvey.features.modules.oyveydotconfirm;
 
-import com.google.common.eventbus.Subscribe;
-import com.google.common.eventbus.Subscribe;
-import me.alpha432.oyvey.OyVey;
-import me.alpha432.oyvey.event.impl.ClientEvent;
-import me.alpha432.oyvey.features.commands.Command;
-import me.alpha432.oyvey.features.gui.OyVeyGui;
+import meteordevelopment.orbit.EventHandler;
 import me.alpha432.oyvey.features.modules.Module;
-import me.alpha432.oyvey.features.settings.Setting;
-import net.minecraft.util.Formatting;
-import org.lwjgl.glfw.GLFW;
 import me.alpha432.oyvey.event.impl.TickEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -27,8 +19,8 @@ public class HitboxDesyncModule extends Module {
     }
 
     //china code
-    @Subscribe
-    private void onTick(TickEvent event) {
+    @Override
+    public void onTick() {
         if (mc.world == null) return;
         Direction f = mc.player.getHorizontalFacing();
         Box bb = mc.player.getBoundingBox();
