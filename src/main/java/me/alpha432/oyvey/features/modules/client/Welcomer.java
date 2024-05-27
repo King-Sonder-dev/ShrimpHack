@@ -9,7 +9,7 @@ public class Welcomer extends Module {
     public Welcomer() {
         super("Welcomer", "hud", Module.Category.CLIENT, true, false, false);
     }
-    public Setting<String> welcome = this.register(new Setting<>("Text", "Oyvey"));
+    public Setting<String> watermark = this.register(new Setting<>("Watermark", "Oyvey"));
 
     public Setting<Integer> red = this.register(new Setting<>("Red", 0, 0, 255));
     public Setting<Integer> green = this.register(new Setting<>("Green", 0, 0, 255));
@@ -18,8 +18,8 @@ public class Welcomer extends Module {
     @Override public void onRender2D(Render2DEvent event) {
         event.getContext().drawTextWithShadow(
                 mc.textRenderer,
-                "Welcome to " + this.welcome.getValue() + " " + OyVey.VERSION,
-                350, 2,
+                "Welcome to " + this.watermark.getValue() + " " + mc.player.getName().getString(),
+                400, 2,
                 this.red.getPlannedValue() + this.green.getPlannedValue() + this.blue.getPlannedValue() + this.alpha.getPlannedValue());
 
     }
