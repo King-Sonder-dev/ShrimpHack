@@ -38,6 +38,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new ClickGui());
         modules.add(new MSChecker());
         modules.add(new coordshud());
+        modules.add(new TPSChecker());
         modules.add(new HitboxDesyncModule());
         modules.add(new Backup());
         modules.add(new AutoMeow());
