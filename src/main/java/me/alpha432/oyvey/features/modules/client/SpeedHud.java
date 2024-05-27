@@ -4,15 +4,13 @@ import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.settings.Setting;
-import me.alpha432.oyvey.manager.PositionManager;
 
-public class coordshud extends Module {
-    public coordshud() {
-        super("coords", "hud", Category.CLIENT, true, false, false);
+public class SpeedHud extends Module {
+    public SpeedHud() {
+        super("SpeedMeasure", "hud", Module.Category.CLIENT, true, false, false);
     }
-    public Setting<Integer> gety = this.register(new Setting<>("Y", 485, 0, 485));
+    public Setting<Integer> gety = this.register(new Setting<>("Y", 2, 0, 485));
     public Setting<Integer> getx = this.register(new Setting<>("X", 2, 0, 710));
-
 
     public Setting<Integer> red = this.register(new Setting<>("Red", 0, 0, 255));
     public Setting<Integer> green = this.register(new Setting<>("Green", 0, 0, 255));
@@ -26,9 +24,8 @@ public class coordshud extends Module {
     @Override public void onRender2D(Render2DEvent event) {
         event.getContext().drawTextWithShadow(
                 mc.textRenderer,
-                "X: " + mc.player.getX() + " " + "Y: " + mc.player.getY() + " " + "Z: " + mc.player.getZ(),
+              "Speed: " + OyVey.speedManager.getSpeedMpS(),
                 this.getx.getPlannedValue(), this.gety.getPlannedValue(),
                 this.red.getPlannedValue() + this.green.getPlannedValue() + this.blue.getPlannedValue() + this.alpha.getPlannedValue());
     }
-
 }
