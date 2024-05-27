@@ -29,6 +29,9 @@ public class HudModule extends Module {
                 this.watermark.getValue() + " " + OyVey.VERSION,
                 2, 2,
                   this.red.getPlannedValue() + this.green.getPlannedValue() + this.blue.getPlannedValue() + this.alpha.getPlannedValue());
-
         }
+    @Override
+    public void onLoad() {
+        OyVey.colorManager.setColor(this.red.getValue(), this.green.getValue(), this.blue.getValue(), this.hoverAlpha.getValue());
+    }
 }
