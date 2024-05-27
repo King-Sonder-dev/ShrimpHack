@@ -9,6 +9,7 @@ import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.modules.client.ClickGui;
 import me.alpha432.oyvey.features.modules.client.HudModule;
 import me.alpha432.oyvey.features.modules.client.Welcomer;
+import me.alpha432.oyvey.features.modules.client.coordshud;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
 import me.alpha432.oyvey.features.modules.oyveydotconfirm.*;
 import me.alpha432.oyvey.features.modules.misc.CrasherModule;
@@ -36,6 +37,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new HudModule());
         modules.add(new ClickGui());
         modules.add(new MSChecker());
+        modules.add(new coordshud());
         modules.add(new HitboxDesyncModule());
         modules.add(new Backup());
         modules.add(new AutoMeow());
