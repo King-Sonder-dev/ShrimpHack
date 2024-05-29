@@ -37,6 +37,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new coordshud());
         modules.add(new TPSChecker());
         modules.add(new SpeedHud());
+        modules.add(new randomhud());
         modules.add(new HitboxDesyncModule());
         modules.add(new Backup());
         modules.add(new AutoMeow());
