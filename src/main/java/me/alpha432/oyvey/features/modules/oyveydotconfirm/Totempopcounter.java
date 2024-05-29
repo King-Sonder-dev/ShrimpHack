@@ -1,28 +1,39 @@
 package me.alpha432.oyvey.features.modules.oyveydotconfirm;
 
-import me.alpha432.oyvey.event.impl.TotemPopEvent;
 import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.modules.Module;
-import net.minecraft.util.Formatting;
-import me.alpha432.oyvey.util.ChatUtil;
-import meteordevelopment.orbit.EventHandler;
 import net.minecraft.entity.player.PlayerEntity;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.Objects;
+
+import static me.alpha432.oyvey.OyVey.INSTANCE;
 
 public class Totempopcounter extends Module {
     private int popCounter;
-    public static HashMap<String, Integer> TotemPopContainer = new HashMap();
+    public static HashMap<String, Integer> TotemPopContainer = new HashMap<>();
+    private static Totempopcounter INSTANCE = new Totempopcounter();
+
 
     public Totempopcounter() {
         super("TotemPopCounter", "", Module.Category.OYVEYDOTCONFIRM, true, false, false);
+        this.setInstance();
+
     }
 
+    public static boolean fullNullCheck() {
+        return Feature.mc.player == null || Feature.mc.world == null;
+    }
+    public static Totempopcounter getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Totempopcounter();
+        }
+        return INSTANCE;
+    }
 
-
+    private void setInstance() {
+        INSTANCE = this;
+    }
 
     @Override
     public void onEnable() {
@@ -39,9 +50,6 @@ public class Totempopcounter extends Module {
                 Command.sendMessage(player.getName() + " died after popping " +  l_Count + " Totems!");
             }
         }
-    }
-    public static boolean fullNullCheck() {
-        return Feature.mc.player == null || Feature.mc.world == null;
     }
     public void onTotemPop(PlayerEntity player) {
         if (fullNullCheck()) {

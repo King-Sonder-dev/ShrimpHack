@@ -38,6 +38,8 @@ public class OyVey implements ModInitializer, ClientModInitializer {
         speedManager = new SpeedManager();
         holeManager = new HoleManager();
     }
+    public static OyVey INSTANCE;
+
 
 
     @Override public void onInitializeClient() {
