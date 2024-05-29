@@ -30,9 +30,9 @@ public class Totempopcounter extends Module {
     }
 
     public void onDeath(PlayerEntity player) {
-        if (TotemPopContainer.containsKey(player.getName())) {
-            int l_Count = TotemPopContainer.get(player.getName());
-            TotemPopContainer.remove(player.getName());
+        if (TotemPopContainer.containsKey(player.getName().getString())) {
+            int l_Count = TotemPopContainer.get(player.getName().getString());
+            TotemPopContainer.remove(player.getName().getString());
             if (l_Count == 1) {
                 Command.sendMessage(player.getName() + " died after popping " +  l_Count + " Totem!");
             } else {
@@ -51,8 +51,8 @@ public class Totempopcounter extends Module {
             return;
         }
         int l_Count = 1;
-        if (TotemPopContainer.containsKey(player.getName())) {
-            l_Count = TotemPopContainer.get(player.getName());
+        if (TotemPopContainer.containsKey(player.getName().getString())) {
+            l_Count = TotemPopContainer.get(player.getName().getString());
             TotemPopContainer.put(String.valueOf(player.getName()), ++l_Count);
         } else {
             TotemPopContainer.put(String.valueOf(player.getName()), l_Count);
