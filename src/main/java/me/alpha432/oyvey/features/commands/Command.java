@@ -26,6 +26,11 @@ public abstract class Command
     public static void sendMessage(String message) {
         Command.sendSilentMessage(OyVey.commandManager.getClientMessage() + " " + Formatting.GRAY + message);
     }
+    public static void serverSendMessage(String message) {
+        if (mc.player != null) {
+            mc.player.networkHandler.sendChatMessage(message);
+        }
+    }
 
     public static void sendSilentMessage(String message) {
         if (Command.nullCheck()) {
