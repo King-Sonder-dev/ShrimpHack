@@ -2,6 +2,7 @@ package me.alpha432.oyvey.event.impl;
 
 import me.alpha432.oyvey.event.Event;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.util.math.MatrixStack;
 
 public class Render2DEvent extends Event {
     private final DrawContext context;
@@ -18,5 +19,9 @@ public class Render2DEvent extends Event {
 
     public float getDelta() {
         return delta;
+    }
+
+    public MatrixStack getMatrixStack() {
+        return context.getMatrices();
     }
 }

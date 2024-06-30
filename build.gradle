@@ -7,12 +7,13 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+    mavenCentral()
+    jcenter()
     maven {
         name = "meteor-maven"
         url = "https://maven.meteordev.org/releases"
-        name = "meteor-maven"
-        url = "https://maven.meteordev.org/releases"
     }
+
 }
 
 loom {
@@ -31,7 +32,9 @@ dependencies {
     //other things
     implementation "meteordevelopment:orbit:0.2.3"
     implementation "meteordevelopment:starscript:0.2.2"
-
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation "meteordevelopment:discord-ipc:1.0"
+    implementation "com.google.code.gson:gson:2.8.9" // GSON is not included but required
 }
 
 processResources {

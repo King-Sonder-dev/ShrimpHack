@@ -2,18 +2,14 @@
   "schemaVersion": 1,
   "id": "oyvey",
   "version": "${version}",
-  "name": "oyvey-ported",
+  "name": "oyvey",
   "description": "free and opensource client base",
   "authors": [
-    "3arthqu4ke",
-    "alpha432",
-    "cattyn"
+    "1nject"
   ],
-  "contact": {
-    "repo": "https://github.com/cattyngmd/oyvey-portedvey-ported"
-  },
   "license": "MIT",
   "environment": "client",
+  "icon": "assets/icon.png",
   "accessWidener": "oyvey.accesswidener",
   "entrypoints": {
     "client": [

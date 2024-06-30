@@ -4,7 +4,6 @@ import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.settings.Setting;
-import me.alpha432.oyvey.util.ChatUtil;
 
 public class MSChecker extends Module {
 

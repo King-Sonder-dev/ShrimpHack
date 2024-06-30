@@ -8,8 +8,8 @@ import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.modules.client.*;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
+import me.alpha432.oyvey.features.modules.misc.ChatPrefix;
 import me.alpha432.oyvey.features.modules.oyveydotconfirm.*;
-import me.alpha432.oyvey.features.modules.misc.CrasherModule;
 import me.alpha432.oyvey.features.modules.misc.MCF;
 import me.alpha432.oyvey.features.modules.movement.ReverseStep;
 import me.alpha432.oyvey.features.modules.movement.Step;
@@ -29,6 +29,7 @@ public class ModuleManager implements Jsonable, Util {
     public List<Module> sortedModules = new ArrayList<>();
     public List<String> sortedModulesABC = new ArrayList<>();
 
+
     public void init() {
         modules.add(new Welcomer());
         modules.add(new HudModule());
@@ -36,14 +37,16 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new MSChecker());
         modules.add(new coordshud());
         modules.add(new TPSChecker());
+        modules.add(new TextRadar());
+        modules.add(new ChatPrefix());
         modules.add(new SpeedHud());
         modules.add(new randomhud());
         modules.add(new TotemPopCounter());
         modules.add(new HitboxDesyncModule());
         modules.add(new Backup());
         modules.add(new AutoMeow());
-        modules.add(new VisualrangeRewrite());
-        modules.add(new CrasherModule());
+        modules.add(new SpeedMine());
+        modules.add(new VisualRange());
         modules.add(new Criticals());
         modules.add(new MCF());
         modules.add(new Step());
@@ -67,6 +70,7 @@ public class ModuleManager implements Jsonable, Util {
         }
         return null;
     }
+
 
     public void enableModule(Class<Module> clazz) {
         Module module = this.getModuleByClass(clazz);
