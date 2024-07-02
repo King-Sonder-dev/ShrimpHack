@@ -57,11 +57,9 @@ public class SpeedMine extends Module {
     }
 
     private void silentlySwapTool(BlockState targetBlockState) {
-        // Find the appropriate tool in the player's inventory
         for (int i = 0; i < MiningUtil.getInventorySize(); i++) {
             ItemStack itemStack = mc.player.getInventory().getStack(i);
             if (itemStack.isSuitableFor(targetBlockState)) {
-                // Simulate the tool swap using packets
                 mc.player.networkHandler.sendPacket(new PlayerInteractBlockC2SPacket(Hand.MAIN_HAND, new BlockHitResult(Vec3d.ZERO, Direction.UP, BlockPos.ORIGIN, false), 0));
                 return;
             }
@@ -71,23 +69,19 @@ public class SpeedMine extends Module {
     private void handleRotation(BlockPos targetBlockPos, BlockState targetBlockState) {
         switch (rotate.getValue()) {
             case NONE:
-                // No rotation
                 break;
             case SEMI:
-                // Rotate quickly when the block is about to break
                 if (targetBlockState.getHardness(mc.world, targetBlockPos) < 0.5f) {
                     rotateToBlock(targetBlockPos);
                 }
                 break;
             case FULL:
-                // Rotate at the block being mined
                 rotateToBlock(targetBlockPos);
                 break;
         }
     }
 
     private void rotateToBlock(BlockPos targetBlockPos) {
-        // Calculate the rotation needed to face the block
         Vec3d blockCenter = Vec3d.ofCenter(targetBlockPos);
         double diffX = blockCenter.x - mc.player.getX();
         double diffY = blockCenter.y - mc.player.getY();
@@ -97,14 +91,13 @@ public class SpeedMine extends Module {
         float yaw = (float) Math.toDegrees(Math.atan2(diffZ, diffX)) - 90F;
         float pitch = (float) -Math.toDegrees(Math.atan2(diffY, diffXZ));
 
-        // Set the player's rotation
         mc.player.setYaw(yaw);
         mc.player.setPitch(pitch);
     }
 
     private void updateMiningProgress(BlockPos targetBlockPos, BlockState targetBlockState) {
         float hardness = targetBlockState.getHardness(mc.world, targetBlockPos);
-        float progress = miningProgress.getOrDefault(targetBlockPos, 0f) + 0.1f; // Adjust the increment as needed
+        float progress = miningProgress.getOrDefault(targetBlockPos, 0f) + 0.1f;
 
         if (progress >= hardness) {
             sendBlockBreakPacket(targetBlockPos);
@@ -116,7 +109,7 @@ public class SpeedMine extends Module {
 
     private void sendBlockBreakPacket(BlockPos blockPos) {
         PlayerActionC2SPacket.Action action = PlayerActionC2SPacket.Action.START_DESTROY_BLOCK;
-        Direction direction = Direction.UP; // You might need to calculate the correct direction based on player's facing
+        Direction direction = Direction.UP;
 
         PlayerActionC2SPacket packet = new PlayerActionC2SPacket(action, blockPos, direction);
         mc.player.networkHandler.sendPacket(packet);
