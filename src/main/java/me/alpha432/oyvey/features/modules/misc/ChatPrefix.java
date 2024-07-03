@@ -1,11 +1,9 @@
 package me.alpha432.oyvey.features.modules.misc;
 
-import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.modules.Module;
+import me.alpha432.oyvey.features.commands.Command;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 
 public class ChatPrefix extends Module {
     public ChatPrefix() {
@@ -24,11 +22,8 @@ public class ChatPrefix extends Module {
 
     public void onSendMessage(String message) {
         if (isEnabled()) {
-            ClientPlayerEntity player = MinecraftClient.getInstance().player;
-            if (player != null) {
-                String newMessage = message + " | oyvey";
-                Command.serverSendMessage(newMessage);
-            }
+            String newMessage = message + " | oyvey";
+            Command.serverSendMessage(newMessage);
         }
     }
 }
