@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.oyveydotconfirm;
+package me.alpha432.oyvey.features.modules.misc;
 
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.gui.OyVeyGui;
@@ -8,7 +8,7 @@ import static me.alpha432.oyvey.util.traits.Util.mc;
 
 public class AutoMeow extends Module {
 
-    public AutoMeow() {super("AutoMeow", "", Module.Category.OYVEYDOTCONFIRM, true, false, false);
+    public AutoMeow() {super("AutoMeow", "", Category.MISC, true, false, false);
     }
 
     @Override

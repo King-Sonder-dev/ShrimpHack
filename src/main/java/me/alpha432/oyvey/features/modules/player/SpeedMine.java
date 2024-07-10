@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.oyveydotconfirm;
+package me.alpha432.oyvey.features.modules.player;
 
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.settings.Setting;
@@ -37,7 +37,7 @@ public class SpeedMine extends Module {
     private final Map<BlockPos, Float> miningProgress = new HashMap<>();
 
     public SpeedMine() {
-        super("SpeedMine", "Allows you to mine blocks silently using packets and swap tools silently.", Category.OYVEYDOTCONFIRM, true, false, false);
+        super("SpeedMine", "Allows you to mine blocks silently using packets and swap tools silently.", Category.PLAYER, true, false, false);
     }
 
     @Override

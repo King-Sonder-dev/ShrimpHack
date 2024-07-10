@@ -8,13 +8,13 @@ import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.modules.client.*;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
-import me.alpha432.oyvey.features.modules.misc.ChatPrefix;
-import me.alpha432.oyvey.features.modules.oyveydotconfirm.*;
-import me.alpha432.oyvey.features.modules.misc.MCF;
-import me.alpha432.oyvey.features.modules.movement.ReverseStep;
-import me.alpha432.oyvey.features.modules.movement.Step;
+import me.alpha432.oyvey.features.modules.misc.*;
+import me.alpha432.oyvey.features.modules.movement.*;
 import me.alpha432.oyvey.features.modules.player.FastPlace;
+import me.alpha432.oyvey.features.modules.player.SpeedMine;
 import me.alpha432.oyvey.features.modules.player.Velocity;
+import me.alpha432.oyvey.features.modules.render.NoInterpolation;
+import me.alpha432.oyvey.features.modules.render.Wireframe;
 import me.alpha432.oyvey.util.traits.Jsonable;
 import me.alpha432.oyvey.util.traits.Util;
 
@@ -25,24 +25,31 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ModuleManager implements Jsonable, Util {
+
     public List<Module> modules = new ArrayList<>();
     public List<Module> sortedModules = new ArrayList<>();
     public List<String> sortedModulesABC = new ArrayList<>();
 
 
+
     public void init() {
-        modules.add(new Welcomer());
         modules.add(new HudModule());
         modules.add(new ClickGui());
         modules.add(new BurrowNotifier());
+        modules.add(new PvpInfoModule());
+        modules.add(new GhastSpawnNotifier());
         modules.add(new MSChecker());
-        modules.add(new coordshud());
+        modules.add(new FastLatency());
+        modules.add(new NoFall());
+        modules.add(new OnGroundSpeed());
+        modules.add(new InstantSpeedPlus());
         modules.add(new TPSChecker());
         modules.add(new TextRadar());
+        modules.add(new NoInterpolation());
+        modules.add(new Wireframe());
         modules.add(new ChatPrefix());
-        modules.add(new SpeedHud());
         modules.add(new randomhud());
-        modules.add(new TotemPopCounter());
+        modules.add(new PopCounter());
         modules.add(new HitboxDesyncModule());
         modules.add(new Backup());
         modules.add(new AutoMeow());
@@ -203,7 +210,8 @@ public class ModuleManager implements Jsonable, Util {
         });
     }
 
-    @Override public JsonElement toJson() {
+    @Override
+    public JsonElement toJson() {
         JsonObject object = new JsonObject();
         for (Module module : modules) {
             object.add(module.getName(), module.toJson());
@@ -211,13 +219,15 @@ public class ModuleManager implements Jsonable, Util {
         return object;
     }
 
-    @Override public void fromJson(JsonElement element) {
+    @Override
+    public void fromJson(JsonElement element) {
         for (Module module : modules) {
             module.fromJson(element.getAsJsonObject().get(module.getName()));
         }
     }
 
-    @Override public String getFileName() {
+    @Override
+    public String getFileName() {
         return "modules.json";
     }
 }

@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.oyveydotconfirm;
+package me.alpha432.oyvey.features.modules.misc;
 
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.modules.Module;
@@ -7,7 +7,7 @@ import me.alpha432.oyvey.manager.PositionManager;
 public class Backup extends Module{
 
     public Backup() {
-        super("Backupcaller", "", Module.Category.OYVEYDOTCONFIRM, true, false, false);
+        super("Backupcaller", "", Category.MISC, true, false, false);
     }
 
     @Override

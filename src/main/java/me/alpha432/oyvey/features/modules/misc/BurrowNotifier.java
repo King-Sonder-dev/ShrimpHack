@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.oyveydotconfirm;
+package me.alpha432.oyvey.features.modules.misc;
 
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.modules.Module;
@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 public class BurrowNotifier extends Module {
 
     public BurrowNotifier() {
-        super("BurrowNotifier", "Notifies when a player is burrowed.", Category.OYVEYDOTCONFIRM, true, false, false);
+        super("BurrowNotifier", "Notifies when a player is burrowed.", Category.MISC, true, false, false);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.oyveydotconfirm;
+package me.alpha432.oyvey.features.modules.movement;
 
 import meteordevelopment.orbit.EventHandler;
 import me.alpha432.oyvey.features.modules.Module;
@@ -15,7 +15,7 @@ public class HitboxDesyncModule extends Module {
     private static final double MAGIC_OFFSET = .200009968835369999878673424677777777777761;
 
     public HitboxDesyncModule() {
-        super("HitboxDesync", "Crashes chinese crystal auras.", Category.OYVEYDOTCONFIRM, true, false, false);
+        super("HitboxDesync", "Crashes chinese crystal auras.", Category.MOVEMENT, true, false, false);
     }
 
     //china code

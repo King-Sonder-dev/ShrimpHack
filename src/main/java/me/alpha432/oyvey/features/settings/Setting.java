@@ -182,9 +182,12 @@ public class Setting<T> {
     }
 
     public String currentEnumName() {
-        return EnumConverter.getProperName((Enum) this.value);
+        if (this.value instanceof Enum<?>) {
+            return EnumConverter.getProperName((Enum<?>) this.value);
+        } else {
+            throw new IllegalStateException("Setting value is not an Enum: " + this.value.getClass());
+        }
     }
-
     public int currentEnum() {
         return EnumConverter.currentEnum((Enum) this.value);
     }

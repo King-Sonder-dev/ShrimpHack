@@ -1,5 +1,6 @@
 package me.alpha432.oyvey;
 
+import me.alpha432.oyvey.features.modules.client.ClickGui;
 import me.alpha432.oyvey.manager.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
@@ -13,6 +14,7 @@ public class OyVey implements ModInitializer, ClientModInitializer {
     public static float TIMER = 1f;
 
     public static final Logger LOGGER = LogManager.getLogger("OyVey++");
+    public static final ModuleManager MODULE_MANAGER = new ModuleManager();
     public static ServerManager serverManager;
     public static ColorManager colorManager;
     public static RotationManager rotationManager;
@@ -39,6 +41,7 @@ public class OyVey implements ModInitializer, ClientModInitializer {
         holeManager = new HoleManager();
     }
     public static OyVey INSTANCE;
+
 
 
 

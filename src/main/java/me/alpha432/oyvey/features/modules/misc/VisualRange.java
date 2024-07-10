@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.oyveydotconfirm;
+package me.alpha432.oyvey.features.modules.misc;
 
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.commands.Command;
@@ -13,7 +13,7 @@ public class VisualRange extends Module {
     private Set<String> playersInRange;
 
     public VisualRange() {
-        super("VisualRange", "Notifies when players enter or leave your visual range", Category.OYVEYDOTCONFIRM, true, false, false);
+        super("VisualRange", "Notifies when players enter or leave your visual range", Category.MISC, true, false, false);
         this.playersInRange = new HashSet<>();
     }
 

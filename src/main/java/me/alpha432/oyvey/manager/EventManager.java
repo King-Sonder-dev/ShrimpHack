@@ -1,5 +1,6 @@
 package me.alpha432.oyvey.manager;
 
+import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.event.Stage;
@@ -13,6 +14,7 @@ import net.minecraft.util.Formatting;
 
 public class EventManager extends Feature {
     private final Timer logoutTimer = new Timer();
+
 
     public void init() {
         EVENT_BUS.register(this);
