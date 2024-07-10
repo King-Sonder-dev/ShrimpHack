@@ -16,7 +16,6 @@ public class HudModule extends Module {
 
     public final Setting<Boolean> arraylist = this.register(new Setting<>("arraylist", true));
     public Setting<Integer> getya = this.register(new Setting<>("Ya", 2, 0, 485));
-    public Setting<Integer> getxa = this.register(new Setting<>("Xa", 2, 0, 710));
     public Setting<String> watermark = this.register(new Setting<>("Watermark", "Oyvey++"));
     public Setting<Integer> gety = this.register(new Setting<>("Y", 2, 0, 485));
     public Setting<Integer> getx = this.register(new Setting<>("X", 2, 0, 710));

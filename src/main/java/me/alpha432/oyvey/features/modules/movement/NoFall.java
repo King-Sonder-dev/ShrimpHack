@@ -1,6 +1,7 @@
 package me.alpha432.oyvey.features.modules.movement;
 
 import me.alpha432.oyvey.features.modules.Module;
+import me.alpha432.oyvey.features.settings.Bind;
 import me.alpha432.oyvey.features.settings.Setting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -9,6 +10,7 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 public class NoFall extends Module {
 
     private final Setting<Integer> fallDistance = register(new Setting<>("FallDistance", 3, 1, 10));
+
 
     public NoFall() {
         super("NoFall", "Prevents fall damage.", Category.MOVEMENT, true, false, false);

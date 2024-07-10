@@ -50,10 +50,10 @@ public class PvpInfoModule extends Module {
             y += mc.textRenderer.fontHeight;
         }
 
-        // Render the rest of the items
         if (showPLR.getValue()) {
-            String plrText = "PLR" + getPLRStatus();
-            event.getContext().drawTextWithShadow(mc.textRenderer, plrText, x, y, getPLRColor());
+            String plrText = "PLR";
+            int plrColor = getPLRColor();
+            event.getContext().drawTextWithShadow(mc.textRenderer, plrText, x, y, plrColor);
             y += mc.textRenderer.fontHeight;
         }
 
@@ -98,11 +98,6 @@ public class PvpInfoModule extends Module {
         return 0;
     }
 
-    private String getPLRStatus() {
-        // Always return an empty string since we only care about the color
-        return "";
-    }
-
     private int getPLRColor() {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player != null) {
@@ -111,12 +106,14 @@ public class PvpInfoModule extends Module {
             if (nearbyPlayers.isEmpty()) {
                 return 0xFF0000; // Red if there are no nearby players
             } else {
+                boolean allFriends = true;
                 for (PlayerEntity nearbyPlayer : nearbyPlayers) {
                     if (!OyVey.friendManager.isFriend(nearbyPlayer)) {
-                        return 0xFF0000; // Red if there's a nearby player who is not a friend
+                        allFriends = false;
+                        break;
                     }
                 }
-                return 0x00FF00; // Green if all nearby players are friends
+                return allFriends ? 0xFF0000 : 0x00FF00; // Red if all nearby players are friends, green if there's at least one who is not a friend
             }
         }
         return 0xFF0000; // Default to Red if player is null
@@ -129,10 +126,15 @@ public class PvpInfoModule extends Module {
         PlayerEntity player = MinecraftClient.getInstance().player;
         if (player != null) {
             int count = 0;
+            // Check the main inventory
             for (ItemStack stack : player.getInventory().main) {
                 if (stack.getItem() == Items.TOTEM_OF_UNDYING) {
                     count += stack.getCount();
                 }
+            }
+            ItemStack offhandStack = player.getOffHandStack();
+            if (offhandStack.getItem() == Items.TOTEM_OF_UNDYING) {
+                count += offhandStack.getCount();
             }
             return count;
         }

@@ -10,6 +10,7 @@ import me.alpha432.oyvey.features.modules.client.*;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
 import me.alpha432.oyvey.features.modules.misc.*;
 import me.alpha432.oyvey.features.modules.movement.*;
+import me.alpha432.oyvey.features.modules.player.AutoPhase;
 import me.alpha432.oyvey.features.modules.player.FastPlace;
 import me.alpha432.oyvey.features.modules.player.SpeedMine;
 import me.alpha432.oyvey.features.modules.player.Velocity;
@@ -38,6 +39,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new BurrowNotifier());
         modules.add(new PvpInfoModule());
         modules.add(new GhastSpawnNotifier());
+        modules.add(new AutoPhase());
         modules.add(new MSChecker());
         modules.add(new FastLatency());
         modules.add(new NoFall());
