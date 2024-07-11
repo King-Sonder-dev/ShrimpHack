@@ -6,7 +6,7 @@ import me.alpha432.oyvey.features.settings.Setting;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
-import me.alpha432.oyvey.event.impl.TotemPopEvent;
+import me.alpha432.oyvey.event.impl.Combineddeathevent.TotemPopEvent;
 import meteordevelopment.orbit.EventHandler;
 
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class PopCounter extends Module {
         TotemPopContainer.put(playerName, pops);
 
         if (player == mc.player) {
-            String message = getSelfPopMessage(pops);
+            String message = getSelfPopMessage(playerName, pops);
             Command.sendMessage(message);
         } else {
             String message = getPopMessage(playerName, pops);
@@ -56,6 +56,7 @@ public class PopCounter extends Module {
 
     @Override
     public void onUpdate() {
+        assert mc.world != null;
         for (PlayerEntity player : mc.world.getPlayers()) {
             if (player.getHealth() > 0 || !TotemPopContainer.containsKey(player.getName().getString()))
                 continue;
@@ -64,7 +65,7 @@ public class PopCounter extends Module {
             int pops = TotemPopContainer.get(playerName);
 
             if (player == mc.player) {
-                String message = getSelfDeathMessage(pops);
+                String message = getSelfDeathMessage(playerName, pops);
                 Command.sendMessage(message);
             } else {
                 String message = getDeathMessage(playerName, pops);
@@ -102,12 +103,32 @@ public class PopCounter extends Module {
         }
     }
 
-    private String getSelfPopMessage(int pops) {
-        return Formatting.AQUA + "You popped " + Formatting.GREEN + pops + Formatting.AQUA + " totem" + (pops > 1 ? "s" : "") + "!";
+    private String getSelfPopMessage(String playerName, int pops) {
+        switch (this.popNotifier.getValue()) {
+            case FUTURE:
+                return Formatting.RED + "[Future] " + Formatting.GREEN + playerName + Formatting.GRAY + " just popped " + Formatting.GREEN + pops + Formatting.GRAY + " totem.";
+            case PHOBOS:
+                return " " + Formatting.GOLD + playerName + Formatting.RED + " popped " + Formatting.GOLD + pops + Formatting.RED + " totem.";
+            case DOTGOD:
+                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + pops + Formatting.LIGHT_PURPLE + " time in total!";
+            case NONE:
+            default:
+                return Formatting.AQUA + "You popped " + Formatting.GREEN + pops + Formatting.AQUA + " totem" + (pops > 1 ? "s" : "") + "!";
+        }
     }
 
-    private String getSelfDeathMessage(int pops) {
-        return Formatting.AQUA + "You died after popping " + Formatting.GREEN + pops + Formatting.AQUA + " totem" + (pops > 1 ? "s" : "") + "!";
+    private String getSelfDeathMessage(String playerName, int pops) {
+        switch (this.popNotifier.getValue()) {
+            case FUTURE:
+                return Formatting.RED + "[Future] " + Formatting.GREEN + playerName + Formatting.GRAY + " died after popping " + Formatting.GREEN + pops + Formatting.GRAY + " totems.";
+            case PHOBOS:
+                return " " + Formatting.GOLD + playerName + Formatting.RED + " died after popping " + Formatting.GOLD + pops + Formatting.RED + " totems.";
+            case DOTGOD:
+                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.LIGHT_PURPLE + " times!";
+            case NONE:
+            default:
+                return Formatting.AQUA + "You died after popping " + Formatting.GREEN + pops + Formatting.AQUA + " totem" + (pops > 1 ? "s" : "") + "!";
+        }
     }
 
     public static enum PopNotifier {

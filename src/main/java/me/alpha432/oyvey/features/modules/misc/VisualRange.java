@@ -2,6 +2,7 @@ package me.alpha432.oyvey.features.modules.misc;
 
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.commands.Command;
+import me.alpha432.oyvey.features.settings.Setting;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Formatting;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 public class VisualRange extends Module {
 
     private Set<String> playersInRange;
+    public Setting<EnterMessage> enterMessage = this.register(new Setting<>("Message", EnterMessage.NONE));
 
     public VisualRange() {
         super("VisualRange", "Notifies when players enter or leave your visual range", Category.MISC, true, false, false);
@@ -34,16 +36,56 @@ public class VisualRange extends Module {
             currentPlayers.add(playerName);
 
             if (!playersInRange.contains(playerName)) {
-                Command.sendMessage(playerName + Formatting.GREEN + " entered " + "your visual range");
+                // Handle message formatting based on selected option
+                String message = "";
+                switch (this.enterMessage.getValue()) {
+                    case FUTURE:
+                        message = Formatting.RED + "[Future] " + Formatting.GRAY + playerName + Formatting.GREEN + " entered "+ Formatting.GRAY + "your visual range";
+                        break;
+                    case PHOBOS:
+                        message = " " + Formatting.GOLD + playerName + Formatting.RED + " entered your visual range";
+                        break;
+                    case DOTGOD:
+                        message = Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + Formatting.GREEN + " entered "+ Formatting.LIGHT_PURPLE +  "your visual range";
+                        break;
+                    case NONE:
+                    default:
+                        message = Formatting.AQUA + playerName + Formatting.GREEN + " entered " + Formatting.GRAY + "your visual range";
+                        break;
+                }
+                Command.sendSilentMessage(message);
             }
         }
 
         for (String playerName : playersInRange) {
             if (!currentPlayers.contains(playerName)) {
-                Command.sendMessage(playerName + " " + Formatting.RED + "left" + " your visual range");
+                String message = "";
+                switch (this.enterMessage.getValue()) {
+                    case FUTURE:
+                        message = Formatting.RED + "[Future] " + Formatting.GRAY + playerName + Formatting.RED + " left "+ Formatting.GRAY + "your visual range";
+                        break;
+                    case PHOBOS:
+                        message = " " + Formatting.GOLD + playerName + Formatting.RED + " left your visual range";
+                        break;
+                    case DOTGOD:
+                        message = Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + Formatting.RED + " left "+ Formatting.LIGHT_PURPLE +  "your visual range";
+                        break;
+                    case NONE:
+                    default:
+                        message = Formatting.AQUA + playerName + Formatting.RED + " left " + Formatting.GRAY + "your visual range";
+                        break;
+                }
+                Command.sendSilentMessage(message);
             }
         }
 
         playersInRange = currentPlayers;
+    }
+
+    public static enum EnterMessage {
+        NONE,
+        PHOBOS,
+        FUTURE,
+        DOTGOD;
     }
 }
