@@ -8,12 +8,16 @@ import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
 import me.alpha432.oyvey.event.impl.Combineddeathevent.TotemPopEvent;
 import meteordevelopment.orbit.EventHandler;
+import meteordevelopment.orbit.EventBus;
+import meteordevelopment.orbit.IEventBus;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PopCounter extends Module {
 
-    public static HashMap<String, Integer> TotemPopContainer = new HashMap<>();
+    public static Map<String, Integer> TotemPopContainer = new ConcurrentHashMap<>();
     private static PopCounter INSTANCE = new PopCounter();
     public Setting<PopNotifier> popNotifier = this.register(new Setting<>("PopNotifier", PopNotifier.NONE));
     public Setting<Boolean> bold = this.register(new Setting<>("Boldsn0w", true));
@@ -21,6 +25,7 @@ public class PopCounter extends Module {
     public PopCounter() {
         super("PopCounter", "Counts other players totem pops.", Category.MISC, true, false, false);
         this.setInstance();
+
     }
 
     public static PopCounter getInstance() {
@@ -87,7 +92,7 @@ public class PopCounter extends Module {
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + " has" + Formatting.RESET + " popped " + pops + (pops == 1 ? " totem" : " totems") + "!";
             case TROLLGOD:
-                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + playerName + " popped thier " + pops + " totems";
+                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + playerName + " popped their " + pops + " totems";
             case NONE:
             default:
                 return " " + Formatting.WHITE + playerName + " popped " + Formatting.GREEN + pops + Formatting.WHITE + " Totems.";
@@ -103,7 +108,7 @@ public class PopCounter extends Module {
             case DOTGOD:
                 return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.LIGHT_PURPLE + " times!";
             case SN0W:
-                return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + Formatting.AQUA + " died after popping" + (pops == 0 ? "." : " their " + Formatting.BLUE + pops + " totem") + Formatting.AQUA + ".";
+                return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + " died after popping " + pops + (pops == 1 ? " totem" : " totems") + "!";
             case TROLLGOD:
                 return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + playerName + " died after popping their " + pops + " totems";
             case NONE:
