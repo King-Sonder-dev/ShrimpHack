@@ -7,6 +7,7 @@ import me.alpha432.oyvey.event.Stage;
 import me.alpha432.oyvey.event.impl.*;
 import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.commands.Command;
+import me.alpha432.oyvey.features.modules.client.PopCounterRewrite;
 import me.alpha432.oyvey.util.models.Timer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
@@ -48,7 +49,7 @@ public class EventManager extends Feature {
             if (player == null || player.getHealth() > 0.0F)
                 continue;
             EVENT_BUS.post(new DeathEvent(player));
-           //Totempopcounter.getInstance().onDeath(player);
+            PopCounterRewrite.getInstance().onDeath(player);
         }
     }
 
@@ -72,7 +73,7 @@ public class EventManager extends Feature {
         OyVey.serverManager.onPacketReceived();
         if (event.getPacket() instanceof WorldTimeUpdateS2CPacket)
             OyVey.serverManager.update();
-        //Totempopcounter.getInstance().onTotemPop(mc.player);
+        PopCounterRewrite.getInstance().onTotemPop(mc.player);
 
     }
 

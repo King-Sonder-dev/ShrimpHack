@@ -8,10 +8,7 @@ import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
 import me.alpha432.oyvey.event.impl.Combineddeathevent.TotemPopEvent;
 import meteordevelopment.orbit.EventHandler;
-import meteordevelopment.orbit.EventBus;
-import meteordevelopment.orbit.IEventBus;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -52,13 +49,14 @@ public class PopCounter extends Module {
         TotemPopContainer.put(playerName, pops);
 
         if (player == mc.player) {
-            String message = getSelfPopMessage(playerName, pops);
+            String message = getSelfPopMessage(pops);
             Command.sendSilentMessage(message);
         } else {
             String message = getPopMessage(playerName, pops);
             Command.sendSilentMessage(message);
         }
     }
+
 
     @Override
     public void onUpdate() {
@@ -91,8 +89,8 @@ public class PopCounter extends Module {
                 return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + pops + Formatting.LIGHT_PURPLE + " time in total!";
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + " has" + Formatting.RESET + " popped " + pops + (pops == 1 ? " totem" : " totems") + "!";
-            case TROLLGOD:
-                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + playerName + " popped their " + pops + " totems";
+            case SNOW:
+                return Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "Popcounter" + "]" + playerName + " popped " + pops + " totems!";
             case NONE:
             default:
                 return " " + Formatting.WHITE + playerName + " popped " + Formatting.GREEN + pops + Formatting.WHITE + " Totems.";
@@ -109,15 +107,15 @@ public class PopCounter extends Module {
                 return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.LIGHT_PURPLE + " times!";
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + " died after popping " + pops + (pops == 1 ? " totem" : " totems") + "!";
-            case TROLLGOD:
-                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + playerName + " died after popping their " + pops + " totems";
+            case SNOW:
+                return Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "Popcounter" + "]" + Formatting.RED + playerName + " popped " + Formatting.GREEN + pops + Formatting.RED + " totems!";
             case NONE:
             default:
                 return " " + Formatting.WHITE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.WHITE + " Totems!";
         }
     }
 
-    private String getSelfPopMessage(String playerName, int pops) {
+    private String getSelfPopMessage(int pops) {
         switch (this.popNotifier.getValue()) {
             case FUTURE:
                 return Formatting.RED + "[Future] " + Formatting.GREEN + "You" + Formatting.GRAY + " just popped " + Formatting.GREEN + pops + Formatting.GRAY + " totem.";
@@ -127,9 +125,8 @@ public class PopCounter extends Module {
                 return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "You" + " popped " + Formatting.RED + pops + Formatting.LIGHT_PURPLE + " time in total!";
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + "You have" + Formatting.RESET + " popped " + pops + (pops == 1 ? " totem" : " totems") + "!";
-            case TROLLGOD:
-                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + "you" + " popped " + pops + " totems";
-
+            case SNOW:
+                return Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "Popcounter" + "]" + "You" + " popped " + pops + " totems!";
             case NONE:
             default:
                 return Formatting.AQUA + "You popped " + Formatting.GREEN + pops + Formatting.AQUA + " totem" + (pops > 1 ? "s" : "") + "!";
@@ -146,8 +143,8 @@ public class PopCounter extends Module {
                 return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "you" + " died after popping " + Formatting.GREEN + pops + Formatting.LIGHT_PURPLE + " times!";
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + "you" + Formatting.RESET + " died after popping " + pops + (pops == 1 ? " totem" : " totems") + "!";
-            case TROLLGOD:
-                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + "you" + " died after popping " + pops + " totems";
+            case SNOW:
+                return Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "Popcounter" + "]" + Formatting.RED + "You" + " popped " + Formatting.GREEN + pops + Formatting.RED + " totems!";
             case NONE:
             default:
                 return Formatting.AQUA + "You died after popping " + Formatting.GREEN + pops + Formatting.AQUA + " totem" + (pops > 1 ? "s" : "") + "!";
@@ -157,7 +154,7 @@ public class PopCounter extends Module {
     public static enum PopNotifier {
         NONE,
         SN0W,
-        TROLLGOD,
+        SNOW,
         PHOBOS,
         FUTURE,
         DOTGOD;

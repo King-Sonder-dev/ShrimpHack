@@ -2,6 +2,8 @@ package me.alpha432.oyvey.util;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import me.alpha432.oyvey.util.traits.Util;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
@@ -12,6 +14,8 @@ import net.minecraft.util.math.Vec3d;
 import java.awt.*;
 
 public class RenderUtil implements Util {
+    private final TextRenderer textRenderer = mc.textRenderer;
+
 
     public static void rect(MatrixStack stack, float x1, float y1, float x2, float y2, int color) {
         rectFilled(stack, x1, y1, x2, y2, color);
@@ -24,6 +28,108 @@ public class RenderUtil implements Util {
         drawVerticalLine(stack, x1, y1, y2, color, width);
     }
 
+    public static void drawBoxESP(BlockPos blockPos, Color color, float v, boolean b, boolean b1, Integer value) {
+    }
+
+    public void drawText(final BlockPos pos, final String text, final Color color) {
+        if (pos == null || text == null) {
+            return;
+        }
+
+        MatrixStack matrixStack = new MatrixStack();
+        VertexConsumerProvider.Immediate immediate = mc.getBufferBuilders().getEntityVertexConsumers();
+
+        matrixStack.push();
+        matrixStack.translate(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+        matrixStack.scale(-0.025F, -0.025F, 0.025F);
+
+        RenderSystem.disableDepthTest();
+        matrixStack.translate(-(textRenderer.getWidth(text) / 2.0), 0.0, 0.0);
+        immediate.draw();
+        RenderSystem.enableDepthTest();
+
+        matrixStack.pop();
+    }
+    public static void drawBoxESP(final BlockPos pos, final Color color, final boolean secondC, final Color secondColor, final float lineWidth, final boolean outline, final boolean box, final int boxAlpha, final boolean air) {
+        if (box) {
+            drawBox(pos, new Color(color.getRed(), color.getGreen(), color.getBlue(), boxAlpha));
+        }
+        if (outline) {
+            drawBlockOutline(pos, secondC ? secondColor : color, lineWidth, air);
+        }
+    }
+
+    public static void drawBoxESP(final BlockPos pos, final Color color, final boolean secondC, final Color secondColor, final float lineWidth, final boolean outline, final boolean box, final int boxAlpha, final boolean air, final double height, final boolean gradientBox, final boolean gradientOutline, final boolean invertGradientBox, final boolean invertGradientOutline, final int gradientAlpha) {
+        if (box) {
+            drawBox(pos, new Color(color.getRed(), color.getGreen(), color.getBlue(), boxAlpha), height, gradientBox, invertGradientBox, gradientAlpha);
+        }
+        if (outline) {
+            drawBlockOutline(pos, secondC ? secondColor : color, lineWidth, air, height, gradientOutline, invertGradientOutline, gradientAlpha);
+        }
+    }
+    private static void drawBox(final BlockPos pos, final Color color) {
+        MatrixStack matrixStack = new MatrixStack();
+        VertexConsumerProvider.Immediate immediate = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+
+        Vec3d cameraPos = mc.gameRenderer.getCamera().getPos();
+        matrixStack.push();
+        matrixStack.translate(pos.getX() - cameraPos.x, pos.getY() - cameraPos.y, pos.getZ() - cameraPos.z);
+
+        RenderSystem.disableDepthTest();
+        // Draw box using VertexConsumerProvider.Immediate
+        // Example: immediate.getBuffer(RenderLayer.getSolid())
+        RenderSystem.enableDepthTest();
+
+        matrixStack.pop();
+    }
+
+    private static void drawBlockOutline(final BlockPos pos, final Color color, final float lineWidth, final boolean air) {
+        MatrixStack matrixStack = new MatrixStack();
+        VertexConsumerProvider.Immediate immediate = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+
+        Vec3d cameraPos = mc.gameRenderer.getCamera().getPos();
+        matrixStack.push();
+        matrixStack.translate(pos.getX() - cameraPos.x, pos.getY() - cameraPos.y, pos.getZ() - cameraPos.z);
+
+        RenderSystem.disableDepthTest();
+        // Draw block outline using VertexConsumerProvider.Immediate
+        // Example: immediate.getBuffer(RenderLayer.getLines())
+        RenderSystem.enableDepthTest();
+
+        matrixStack.pop();
+    }
+
+    private static void drawBox(final BlockPos pos, final Color color, final double height, final boolean gradientBox, final boolean invertGradientBox, final int gradientAlpha) {
+        MatrixStack matrixStack = new MatrixStack();
+        VertexConsumerProvider.Immediate immediate = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+
+        Vec3d cameraPos = mc.gameRenderer.getCamera().getPos();
+        matrixStack.push();
+        matrixStack.translate(pos.getX() - cameraPos.x, pos.getY() - cameraPos.y, pos.getZ() - cameraPos.z);
+
+        RenderSystem.disableDepthTest();
+        // Draw gradient box using VertexConsumerProvider.Immediate
+        // Example: immediate.getBuffer(RenderLayer.getSolid())
+        RenderSystem.enableDepthTest();
+
+        matrixStack.pop();
+    }
+
+    private static void drawBlockOutline(final BlockPos pos, final Color color, final float lineWidth, final boolean air, final double height, final boolean gradientOutline, final boolean invertGradientOutline, final int gradientAlpha) {
+        MatrixStack matrixStack = new MatrixStack();
+        VertexConsumerProvider.Immediate immediate = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+
+        Vec3d cameraPos = mc.gameRenderer.getCamera().getPos();
+        matrixStack.push();
+        matrixStack.translate(pos.getX() - cameraPos.x, pos.getY() - cameraPos.y, pos.getZ() - cameraPos.z);
+
+        RenderSystem.disableDepthTest();
+        // Draw gradient outline using VertexConsumerProvider.Immediate
+        // Example: immediate.getBuffer(RenderLayer.getLines())
+        RenderSystem.enableDepthTest();
+
+        matrixStack.pop();
+    }
     protected static void drawHorizontalLine(MatrixStack matrices, float x1, float x2, float y, int color) {
         if (x2 < x1) {
             float i = x1;

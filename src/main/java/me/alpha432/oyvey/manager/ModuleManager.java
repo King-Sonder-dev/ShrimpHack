@@ -14,6 +14,7 @@ import me.alpha432.oyvey.features.modules.player.AutoPhase;
 import me.alpha432.oyvey.features.modules.player.FastPlace;
 import me.alpha432.oyvey.features.modules.player.SpeedMine;
 import me.alpha432.oyvey.features.modules.player.Velocity;
+import me.alpha432.oyvey.features.modules.render.BurrowESP;
 import me.alpha432.oyvey.features.modules.render.NoInterpolation;
 import me.alpha432.oyvey.features.modules.render.Wireframe;
 import me.alpha432.oyvey.util.traits.Jsonable;
@@ -49,12 +50,14 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new TextRadar());
         modules.add(new NoInterpolation());
         modules.add(new Wireframe());
+        modules.add(new PearlNotify());
         modules.add(new ChatPrefix());
         modules.add(new randomhud());
         modules.add(new PopCounter());
         modules.add(new HitboxDesyncModule());
         modules.add(new Backup());
         modules.add(new AutoMeow());
+        modules.add(new BurrowESP());
         modules.add(new SpeedMine());
         modules.add(new VisualRange());
         modules.add(new Criticals());
@@ -63,6 +66,9 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new ReverseStep());
         modules.add(new FastPlace());
         modules.add(new Velocity());
+        modules.add(new PopCounterRewrite());
+        modules.add(new NotificationModule());
+        modules.add(new ModuleTools());
     }
 
     public Module getModuleByName(String name) {

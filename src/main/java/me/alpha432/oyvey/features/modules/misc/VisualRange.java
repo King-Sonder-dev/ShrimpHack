@@ -69,7 +69,7 @@ public class VisualRange extends Module {
                 String message = "";
                 switch (this.enterMessage.getValue()) {
                     case FUTURE:
-                        message = Formatting.RED + "[Future] " + Formatting.GRAY + playerName + Formatting.RED + " left " + Formatting.GRAY + "your visual range";
+                        message = Formatting.RED + "[Future] " + Formatting.RESET + playerName + Formatting.RED + " left " + Formatting.RESET + "your visual range";
                         break;
                     case PHOBOS:
                         message = " " + Formatting.GOLD + playerName + Formatting.RED + " left your visual range";

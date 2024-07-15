@@ -1,29 +1,38 @@
 package me.alpha432.oyvey.features.modules.misc;
 
 import me.alpha432.oyvey.features.modules.Module;
-import me.alpha432.oyvey.features.commands.Command;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
+import net.minecraft.util.Identifier;
 
 public class ChatPrefix extends Module {
+
+    private static final Identifier CHAT_PACKET_ID = new Identifier("minecraft", "chat");
+
     public ChatPrefix() {
         super("ChatPrefix", "Appends | oyvey to every chat message", Category.MISC, true, false, false);
     }
 
     @Override
     public void onEnable() {
-        // No specific initialization needed for this module
+        ClientPlayNetworking.registerGlobalReceiver(CHAT_PACKET_ID, this::onChatMessageSend);
     }
 
     @Override
     public void onDisable() {
-        // No specific cleanup needed for this module
+        ClientPlayNetworking.unregisterGlobalReceiver(CHAT_PACKET_ID);
     }
 
-    public void onSendMessage(String message) {
-        if (isEnabled()) {
-            String newMessage = message + " | oyvey";
-            Command.serverSendMessage(newMessage);
+    private void onChatMessageSend(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
+        ChatMessageC2SPacket packet = new ChatMessageC2SPacket(buf);
+        String originalMessage = packet.chatMessage();
+        if (!originalMessage.endsWith(" | oyvey")) {
+            String newMessage = originalMessage + " | oyvey";
+            buf.writeString(newMessage);
         }
     }
 }
