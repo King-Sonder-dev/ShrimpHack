@@ -1,12 +1,11 @@
 package me.alpha432.oyvey.features.modules.render;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import me.alpha432.oyvey.features.modules.Module;
-import me.alpha432.oyvey.util.RenderUtil;
 import me.alpha432.oyvey.event.impl.Render3DEvent;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.modules.client.ClickGui;
 import me.alpha432.oyvey.features.settings.Setting;
+import me.alpha432.oyvey.util.BlockUtil;
 import me.alpha432.oyvey.util.ColorUtil;
 import me.alpha432.oyvey.util.RenderUtil;
 import net.minecraft.block.Blocks;
@@ -15,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 
 import java.awt.Color;
-/*
+
 public class HoleESP extends Module {
     private final Setting<Boolean> renderOwn = register(new Setting<>("RenderOwn", true));
     private final Setting<Boolean> fov = register(new Setting<>("InFov", true));
@@ -73,8 +72,8 @@ public class HoleESP extends Module {
     @Override
     public void onRender3D(Render3DEvent event) {
         MinecraftClient mc = MinecraftClient.getInstance();
-        assert mc.renderViewEntity != null;
-        Vec3i playerPos = new Vec3i((int) mc.renderViewEntity.getX(), (int) mc.renderViewEntity.getY(), (int) mc.renderViewEntity.getZ());
+        assert mc.cameraEntity != null;
+        Vec3i playerPos = new Vec3i((int) mc.cameraEntity.getX(), (int) mc.cameraEntity.getY(), (int) mc.cameraEntity.getZ());
 
         for (int x = playerPos.getX() - range.getValue(); x < playerPos.getX() + range.getValue(); x++) {
             for (int z = playerPos.getZ() - range.getValue(); z < playerPos.getZ() + range.getValue(); z++) {
@@ -83,7 +82,7 @@ public class HoleESP extends Module {
                     if (mc.world.getBlockState(pos).getBlock().equals(Blocks.AIR)
                             && mc.world.getBlockState(pos.add(0, 1, 0)).getBlock().equals(Blocks.AIR)
                             && mc.world.getBlockState(pos.add(0, 2, 0)).getBlock().equals(Blocks.AIR)
-                            && (!pos.equals(new BlockPos(mc.player.getX(), mc.player.getY(), mc.player.getZ())) || renderOwn.getValue())) {
+                            && (!pos.equals(new BlockPos((int) mc.player.getX(), (int) mc.player.getY(), (int) mc.player.getZ())) || renderOwn.getValue())) {
                         if (BlockUtil.isPosInFov(pos) || !fov.getValue()) {
                             if (mc.world.getBlockState(pos.north()).getBlock() == Blocks.BEDROCK
                                     && mc.world.getBlockState(pos.east()).getBlock() == Blocks.BEDROCK
@@ -136,6 +135,3 @@ public class HoleESP extends Module {
         }
     }
 }
-/*
-/*
- */

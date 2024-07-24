@@ -12,11 +12,11 @@ import me.alpha432.oyvey.features.modules.misc.*;
 import me.alpha432.oyvey.features.modules.movement.*;
 import me.alpha432.oyvey.features.modules.player.AutoPhase;
 import me.alpha432.oyvey.features.modules.player.FastPlace;
-import me.alpha432.oyvey.features.modules.player.SpeedMine;
 import me.alpha432.oyvey.features.modules.player.Velocity;
+import me.alpha432.oyvey.features.modules.player.speedmine.MiningTS;
 import me.alpha432.oyvey.features.modules.render.BurrowESP;
+import me.alpha432.oyvey.features.modules.render.HoleESP;
 import me.alpha432.oyvey.features.modules.render.NoInterpolation;
-import me.alpha432.oyvey.features.modules.render.Wireframe;
 import me.alpha432.oyvey.util.traits.Jsonable;
 import me.alpha432.oyvey.util.traits.Util;
 
@@ -35,12 +35,18 @@ public class ModuleManager implements Jsonable, Util {
 
 
     public void init() {
+        modules.add(new DiscordRPC());
         modules.add(new HudModule());
         modules.add(new ClickGui());
+        modules.add(new Stairs());
+        modules.add(new HoleESP());
+        modules.add(new HudModuleRewrite());
         modules.add(new BurrowNotifier());
+        modules.add(new LongJump());
         modules.add(new PvpInfoModule());
         modules.add(new GhastSpawnNotifier());
         modules.add(new AutoPhase());
+        modules.add(new WordGuard());
         modules.add(new MSChecker());
         modules.add(new FastLatency());
         modules.add(new NoFall());
@@ -49,7 +55,6 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new TPSChecker());
         modules.add(new TextRadar());
         modules.add(new NoInterpolation());
-        modules.add(new Wireframe());
         modules.add(new PearlNotify());
         modules.add(new ChatPrefix());
         modules.add(new randomhud());
@@ -58,7 +63,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new Backup());
         modules.add(new AutoMeow());
         modules.add(new BurrowESP());
-        modules.add(new SpeedMine());
+        modules.add(new MiningTS());
         modules.add(new VisualRange());
         modules.add(new Criticals());
         modules.add(new MCF());

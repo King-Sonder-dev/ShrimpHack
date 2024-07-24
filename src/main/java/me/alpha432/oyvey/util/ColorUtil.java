@@ -8,6 +8,14 @@ public class ColorUtil {
     public static int toARGB(int r, int g, int b, int a) {
         return new Color(r, g, b, a).getRGB();
     }
+    private static int red;
+    private static int green;
+    private static int blue;
+
+    public static int getRGBA(){
+        return new Color(red, green, blue, 255).getRGB();
+    }
+
 
     public static int toRGBA(int r, int g, int b) {
         return ColorUtil.toRGBA(r, g, b, 255);

@@ -1,5 +1,6 @@
 plugins {
     id 'fabric-loom' version '1.2-SNAPSHOT'
+    id "io.freefair.lombok" version "8.0.1"
     id 'maven-publish'
 }
 
@@ -9,6 +10,7 @@ group = project.maven_group
 repositories {
     mavenCentral()
     jcenter()
+    maven { url = 'https://jitpack.io/' }
     maven {
         name = "meteor-maven"
         url = "https://maven.meteordev.org/releases"
@@ -34,6 +36,9 @@ dependencies {
     implementation "meteordevelopment:starscript:0.2.2"
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation "com.google.code.gson:gson:2.8.9" // GSON is not included but required
+    include (implementation 'club.minnced:discord-rpc-release:v3.4.0')
+    include (implementation 'com.github.MinnDevelopment:java-discord-rpc:v2.0.2')
+
 }
 
 processResources {

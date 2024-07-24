@@ -13,6 +13,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import static me.alpha432.oyvey.util.traits.Util.mc;
+
 public class OyVeyGui extends Screen {
     private static OyVeyGui oyveyGui;
     private static OyVeyGui INSTANCE;

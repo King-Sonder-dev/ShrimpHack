@@ -3,6 +3,7 @@ package me.alpha432.oyvey.features.modules.client;
 import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.features.modules.Module;
+import me.alpha432.oyvey.features.modules.movement.InstantSpeedPlus;
 import me.alpha432.oyvey.features.settings.Setting;
 
 import java.util.Collections;
@@ -15,19 +16,19 @@ public class HudModule extends Module {
     }
 
     public final Setting<Boolean> arraylist = this.register(new Setting<>("arraylist", true));
-    public Setting<Integer> getya = this.register(new Setting<>("Ya", 2, 0, 485));
+    public Setting<Integer> getya = this.register(new Setting<>("Ya", 2, 0, 485, v -> arraylist.getValue()));
     public Setting<String> watermark = this.register(new Setting<>("Watermark", "Oyvey++"));
-    public Setting<Integer> gety = this.register(new Setting<>("Y", 2, 0, 485));
-    public Setting<Integer> getx = this.register(new Setting<>("X", 2, 0, 710));
+    public Setting<Integer> gety = this.register(new Setting<>("Y", 2, 0, 485, v -> watermark.getValue() == watermark.getValue()));
+    public Setting<Integer> getx = this.register(new Setting<>("X", 2, 0, 710, v -> watermark.getValue() == watermark.getValue()));
     private final Setting<Boolean> greeter = register(new Setting<>("Welcomer", true));
-    public Setting<Integer> getygreeter = this.register(new Setting<>("Ywelcomer", 2, 0, 485));
-    public Setting<Integer> getxgreeter = this.register(new Setting<>("Xwelcomer", 2, 0, 710));
+    public Setting<Integer> getygreeter = this.register(new Setting<>("Ywelcomer", 2, 0, 485, v -> greeter.getValue()));
+    public Setting<Integer> getxgreeter = this.register(new Setting<>("Xwelcomer", 2, 0, 710, v -> greeter.getValue()));
     private final Setting<Boolean> coords = this.register(new Setting<>("Coords", true));
-    public Setting<Integer> getycoords = this.register(new Setting<>("Ycoords", 2, 0, 485));
-    public Setting<Integer> getxcoords = this.register(new Setting<>("Xcoords", 2, 0, 710));
+    public Setting<Integer> getycoords = this.register(new Setting<>("Ycoords", 2, 0, 485, v -> coords.getValue()));
+    public Setting<Integer> getxcoords = this.register(new Setting<>("Xcoords", 2, 0, 710, v -> coords.getValue()));
     private final Setting<Boolean> speed = this.register(new Setting<>("speed", true));
-    public Setting<Integer> getys = this.register(new Setting<>("Ycoords", 2, 0, 485));
-    public Setting<Integer> getxs = this.register(new Setting<>("Xcoords", 2, 0, 710));
+    public Setting<Integer> getys = this.register(new Setting<>("Ycoords", 2, 0, 485, v -> speed.getValue()));
+    public Setting<Integer> getxs = this.register(new Setting<>("Xcoords", 2, 0, 710, v -> speed.getValue()));
 
     // New setting for sorting order
     private final Setting<SortOrder> sortOrder = this.register(new Setting<>("SortOrder", SortOrder.SIZE_TOP));
@@ -100,5 +101,9 @@ public class HudModule extends Module {
     public enum SortOrder {
         SIZE_TOP,
         SIZE_BOTTOM
+    }
+    public enum watermarkmode {
+        NONE,
+        TYPING
     }
 }

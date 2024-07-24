@@ -48,6 +48,7 @@ public class ColorManager {
         return ColorUtil.toRGBA(this.color);
     }
 
+
     /**
      * Returns the current color with full alpha as an integer RGBA value.
      *
