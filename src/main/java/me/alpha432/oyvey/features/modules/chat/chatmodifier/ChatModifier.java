@@ -147,6 +147,30 @@ public class ChatModifier extends Module {
                 }
             }
             switch (this.suffix.getValue()) {
+                case OCTOHACKPLUS: {
+                    SUFFIX = " \u23d0 " + this.convertToUnicode("✳ΞＯᴄᴛ๏ɦΛᴄᏦ ₱ⱠᑘֆΞ✳");
+                    break;
+                }
+            }
+            switch (this.suffix.getValue()) {
+                case NEPTUNE: {
+                    SUFFIX = " \u23d0 " + this.convertToUnicode(" ̷Ｎєρｔυｎᴇ̷");
+                    break;
+                }
+            }
+            switch (this.suffix.getValue()) {
+                case VONWARE: {
+                    SUFFIX = " \u23d0 " + this.convertToUnicode("✴Ｖ♡ｎｗᗩⱤε.ᴅᴇᴠ✴");
+                    break;
+                }
+            }
+            switch (this.suffix.getValue()) {
+                case VONWARE: {
+                    SUFFIX = " \u23d0 " + this.convertToUnicode("✳ΞＶｏｎｗａｒｅ.вｅƬȺΞ✳");
+                    break;
+                }
+            }
+            switch (this.suffix.getValue()) {
                 case HEPHAESTUS: {
                     SUFFIX = " \u23d0 " + this.convertToUnicode("НεᎮнᗩεѕƭυѕ");
                     break;
@@ -661,6 +685,10 @@ public class ChatModifier extends Module {
         OYVEY,
         SNOW,
         OCTOHACK,
+        OCTOHACKPLUS,
+        NEPTUNE,
+        VONWARE,
+        VONWAREBETA,
         HEPHAESTUS,
         TROLL,
         CUSTOM;
