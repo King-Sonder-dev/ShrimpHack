@@ -79,6 +79,7 @@ public class Popcounterplus extends Module {
                     break;
             }
         }
+
     }
     public static enum PopNotifier {
         NONE,
