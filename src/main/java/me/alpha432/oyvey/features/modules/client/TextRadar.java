@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TextRadar extends Module {
-    private final Setting<Integer> x = register(new Setting<>("X", 2, 0, 1000));
+    private final Setting<Integer> x = register(new Setting<>("X", 12, 0, 1000));
     private final Setting<Integer> y = register(new Setting<>("Y", 2, 0, 1000));
     private final Setting<Boolean> shadow = register(new Setting<>("Shadow", true));
 

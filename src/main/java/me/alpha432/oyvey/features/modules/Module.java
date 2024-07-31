@@ -8,11 +8,17 @@ import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.event.impl.Render3DEvent;
 import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.commands.Command;
+import me.alpha432.oyvey.features.modules.combat.autototem.AutoTotem;
 import me.alpha432.oyvey.features.settings.Bind;
 import me.alpha432.oyvey.features.settings.Setting;
 import me.alpha432.oyvey.manager.ConfigManager;
 import me.alpha432.oyvey.util.traits.Jsonable;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.screen.slot.SlotActionType;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+
+import static me.alpha432.oyvey.features.commands.Command.sendMessage;
 
 public class Module extends Feature implements Jsonable {
     private final String description;
@@ -116,11 +122,11 @@ public class Module extends Feature implements Jsonable {
         Module module = OyVey.moduleManager.getModuleByDisplayName(name);
         Module originalModule = OyVey.moduleManager.getModuleByName(name);
         if (module == null && originalModule == null) {
-            Command.sendMessage(this.getDisplayName() + ", name: " + this.getName() + ", has been renamed to: " + name);
+            sendMessage(this.getDisplayName() + ", name: " + this.getName() + ", has been renamed to: " + name);
             this.displayName.setValue(name);
             return;
         }
-        Command.sendMessage(Formatting.RED + "A module of this name already exists.");
+        sendMessage(Formatting.RED + "A module of this name already exists.");
     }
 
     @Override public boolean isEnabled() {
@@ -191,6 +197,7 @@ public class Module extends Feature implements Jsonable {
     }
 
     public enum Category {
+        CHAT("Chat"),
         COMBAT("Combat"),
         MISC("Misc"),
         RENDER("Render"),
@@ -208,5 +215,27 @@ public class Module extends Feature implements Jsonable {
         public String getName() {
             return this.name;
         }
+    }
+    protected void sendPacket(Packet<?> packet) {
+        if (mc.getNetworkHandler() == null) return;
+
+        mc.getNetworkHandler().sendPacket(packet);
+    }
+    public void disable(String reason) {
+        sendMessage(reason);
+        disable();
+    }
+    public static void clickSlot(int id) {
+        if (id == -1 || mc.interactionManager == null || mc.player == null) return;
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, id, 0, SlotActionType.PICKUP, mc.player);
+    }
+
+    public static void clickSlot(int id, SlotActionType type) {
+        if (id == -1 || mc.interactionManager == null || mc.player == null) return;
+        mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, id, 0, type, mc.player);
+    }
+    public void debug(String message) {
+        if (fullNullCheck() || !AutoTotem.getInstance().debug.getValue()) return;
+        mc.player.sendMessage(Text.of(message), false);
     }
 }

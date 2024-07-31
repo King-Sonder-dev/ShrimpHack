@@ -23,6 +23,7 @@ public abstract class Command
         this.commands = commands;
     }
 
+
     public static void sendMessage(String message) {
         Command.sendSilentMessage(OyVey.commandManager.getClientMessage() + " " + Formatting.GRAY + message);
     }

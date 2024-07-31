@@ -12,7 +12,7 @@ import static me.alpha432.oyvey.util.traits.Util.mc;
 
 public class ArrayListFeature {
     public final Setting<Boolean> arraylist = new Setting<>("arraylist", false);
-    public final Setting<Integer> getya = new Setting<>("Ya", 2, 0, 485, v -> arraylist.getValue());
+    public final Setting<Integer> getya = new Setting<>("Ya", 485, 0, 485, v -> arraylist.getValue());
     public final Setting<SortOrder> sortOrder = new Setting<>("SortOrder", SortOrder.SIZE_TOP,v -> arraylist.getValue());
 
     public void render(int color, Render2DEvent event) {

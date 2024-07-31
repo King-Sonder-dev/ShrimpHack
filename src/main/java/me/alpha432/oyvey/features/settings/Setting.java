@@ -18,6 +18,7 @@ public class Setting<T> {
     private Predicate<T> visibility;
     private String description;
     private Feature feature;
+    public Setting<?> parent = null;//Posible error parent
 
     public Setting(String name, T defaultValue) {
         this.name = name;
@@ -182,12 +183,9 @@ public class Setting<T> {
     }
 
     public String currentEnumName() {
-        if (this.value instanceof Enum<?>) {
-            return EnumConverter.getProperName((Enum<?>) this.value);
-        } else {
-            throw new IllegalStateException("Setting value is not an Enum: " + this.value.getClass());
-        }
+        return EnumConverter.getProperName((Enum) this.value);
     }
+
     public int currentEnum() {
         return EnumConverter.currentEnum((Enum) this.value);
     }
@@ -258,5 +256,22 @@ public class Setting<T> {
             return true;
         }
         return this.visibility.test(this.getValue());
+    }
+
+    //TNT settings
+    public float getPow2Value() {
+        if (value instanceof Float) {
+            return (float) value * (float) value;
+        }
+        if (value instanceof Integer) {
+            return (int) value * (int) value;
+        }
+        return 0;
+    }
+
+    //Autototem AutoCrystal
+    public Setting<T> withParent(Setting<?> parent) {
+        this.parent = parent;
+        return this;
     }
 }

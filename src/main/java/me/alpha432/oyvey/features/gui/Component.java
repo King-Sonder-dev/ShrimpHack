@@ -1,6 +1,5 @@
 package me.alpha432.oyvey.features.gui;
 
-import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.gui.items.Item;
 import me.alpha432.oyvey.features.gui.items.buttons.Button;
@@ -34,7 +33,7 @@ public class Component
         super(name);
         this.x = x;
         this.y = y;
-        this.width = 88;
+        this.width = 93;//test deafult 88
         this.height = 18;
         this.open = open;
         this.setupItems();
@@ -56,11 +55,29 @@ public class Component
         this.drag(mouseX, mouseY);
         counter1 = new int[]{1};
         float totalItemHeight = this.open ? this.getTotalItemHeight() - 2.0f : 0.0f;
-        int color = ColorUtil.toARGB(ClickGui.getInstance().topRed.getValue(), ClickGui.getInstance().topGreen.getValue(), ClickGui.getInstance().topBlue.getValue(), 255);
-        context.fill(this.x, this.y - 1, this.x + this.width, this.y + this.height - 6, ClickGui.getInstance().rainbow.getValue() ? ColorUtil.rainbow(ClickGui.getInstance().rainbowHue.getValue()).getRGB() : color);
-        if (this.open) {
+        int color = ColorUtil.toARGB(ClickGui.getInstance().red.getValue(), ClickGui.getInstance().green.getValue(), ClickGui.getInstance().blue.getValue(), ClickGui.getInstance().hoverAlpha.getValue());
+        int colorback = ColorUtil.toARGB(ClickGui.getInstance().frameBackgroundRed.getValue(), ClickGui.getInstance().frameBackgroundGreen.getValue(), ClickGui.getInstance().frameBackgroundBlue.getValue(), ClickGui.getInstance().frameBackgroundAlpha.getValue());
+
+        //context.fill(this.x, this.y - 1, this.x + this.width, this.y + this.height - 6, ClickGui.getInstance().rainbow.getValue() ? ColorUtil.rainbow(ClickGui.getInstance().rainbowHue.getValue()).getRGB() : color);
+
+
+        /*if (this.open) {
             RenderUtil.rect(context.getMatrices(), this.x, (float) this.y + 12.5f, this.x + this.width, (float) (this.y + this.height) + totalItemHeight, 0x77000000);
+        }*/
+
+        RenderUtil.rect(context.getMatrices(),this.x, this.y - 1.5F, (this.x + this.width), (this.y + this.height - 6), color);
+        if (this.open)
+        {
+            RenderUtil.rect(context.getMatrices(),this.x, this.y + 12.5F, (this.x + this.width), (this.y + this.height) + totalItemHeight, colorback );
         }
+        if (this.open) {
+            RenderUtil.rect(context.getMatrices(), this.x, (float) this.y + 12.5f, this.x + this.width, (float) (this.y + this.height) + totalItemHeight, colorback );
+        }
+
+        /* if (this.open) {
+            RenderUtil.rect(this.x, this.y + 12.5F, (this.x + this.width), (this.y + this.height) + totalItemHeight, 0);
+        }*/
+
         drawString(this.getName(), (float) this.x + 3.0f, (float) this.y - 4.0f - (float) OyVeyGui.getClickGui().getTextOffset(), -1);
         if (this.open) {
             float y = (float) (this.getY() + this.getHeight()) - 3.0f;

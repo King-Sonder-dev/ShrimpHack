@@ -8,7 +8,7 @@ import static me.alpha432.oyvey.util.traits.Util.mc;
 public class greeter {
     public final Setting<Boolean> greeter = new Setting<>("Welcomer", false);
     public final Setting<Integer> getygreeter = new Setting<>("Ywelcomer", 2, 0, 485, v -> greeter.getValue());
-    public final Setting<Integer> getxgreeter = new Setting<>("Xwelcomer", 2, 0, 710, v -> greeter.getValue());
+    public final Setting<Integer> getxgreeter = new Setting<>("Xwelcomer", 387, 0, 710, v -> greeter.getValue());
 
     private final Watermark watermark;
 

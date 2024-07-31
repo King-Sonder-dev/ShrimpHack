@@ -15,8 +15,8 @@ import java.util.List;
 
 public class PvpInfoModule extends Module {
     // Settings for PvpInfo
-    public Setting<Integer> gety = this.register(new Setting<>("Y", 2, 0, 485));
-    public Setting<Integer> getx = this.register(new Setting<>("X", 2, 0, 710));
+    public Setting<Integer> gety = this.register(new Setting<>("Y", 205, 0, 485));
+    public Setting<Integer> getx = this.register(new Setting<>("X", 0, 0, 710));
     private final Setting<Boolean> showExp = this.register(new Setting<>("ShowExp", true));
     private final Setting<Boolean> showCrystals = this.register(new Setting<>("ShowCrystals", true));
     private final Setting<Boolean> showPLR = this.register(new Setting<>("ShowPLR", true));

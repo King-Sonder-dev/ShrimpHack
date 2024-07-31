@@ -3,15 +3,15 @@ package me.alpha432.oyvey.features.gui.items.buttons;
 import me.alpha432.oyvey.features.gui.Component;
 import me.alpha432.oyvey.features.gui.items.Item;
 import me.alpha432.oyvey.features.modules.Module;
+import me.alpha432.oyvey.features.modules.client.ClickGui;
 import me.alpha432.oyvey.features.settings.Bind;
 import me.alpha432.oyvey.features.settings.Setting;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
-import org.lwjgl.opengl.GL11;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.*;
 
 public class ModuleButton
         extends Button {
@@ -53,6 +53,9 @@ public class ModuleButton
     @Override
     public void drawScreen(DrawContext context, int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(context, mouseX, mouseY, partialTicks);
+        if (ClickGui.getInstance().plusColor.getValue()) {
+            drawString(!this.subOpen ? "+" : "-", this.x - 1.0f + (float) this.width - 8.0f, this.y + 4.0f, new Color(ClickGui.getInstance().plusRed.getValue(), ClickGui.getInstance().plusGreen.getValue(), ClickGui.getInstance().plusBlue.getValue(), ClickGui.getInstance().plusAlpha.getValue()));//(!this.subOpen ? "+" : "-", this.x - 1.0f + (float) this.width - 8.0f, this.y + 4.0f, -1, false);
+        }
         if (!this.items.isEmpty()) {
             if (this.subOpen) {
                 float height = 1.0f;
@@ -69,6 +72,7 @@ public class ModuleButton
             }
         }
     }
+
 
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {

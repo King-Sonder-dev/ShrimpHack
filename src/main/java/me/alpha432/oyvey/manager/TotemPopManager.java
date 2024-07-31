@@ -1,6 +1,5 @@
 package me.alpha432.oyvey.manager;
 
-import me.alpha432.oyvey.features.modules.misc.PopCounter;
 import me.alpha432.oyvey.features.Feature;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;

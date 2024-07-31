@@ -2,9 +2,7 @@ package me.alpha432.oyvey.event.impl;
 
 import me.alpha432.oyvey.event.impl.Combineddeathevent.DeathEvent;
 import me.alpha432.oyvey.event.impl.Combineddeathevent.TotemPopEvent;
-import me.alpha432.oyvey.event.impl.PacketEvent;
-import me.alpha432.oyvey.features.modules.Module;
-import me.alpha432.oyvey.features.modules.misc.PopCounter;
+import me.alpha432.oyvey.features.modules.chat.PopCounter;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
