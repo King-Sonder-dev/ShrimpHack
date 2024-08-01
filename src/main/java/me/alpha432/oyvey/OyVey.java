@@ -30,6 +30,7 @@ public class OyVey implements ModInitializer, ClientModInitializer {
     public static AsyncManager asyncManager;
     public static TntCManager tntCManager;
     public static CombatManager combatManager;
+    public static HudManager hudManager;
 
 
 

@@ -11,10 +11,11 @@ public class Watermark {
 
     public final Setting<Boolean> watermarkbutton = new Setting<>("Watermark", false);
     public final Setting<String> watermark = new Setting<>("Watermark", "Oyvey++", v -> watermarkbutton.getValue());
-    public final Setting<Integer> gety = new Setting<>("Y", 2, 0, 485, v -> watermarkbutton.getValue() == watermarkbutton.getValue());
-    public final Setting<Integer> getx = new Setting<>("X", 2, 0, 710, v -> watermarkbutton.getValue() == watermarkbutton.getValue());
-    public final Setting<Watermarkmode> mode = new Setting<>("Mode", Watermarkmode.NONE, v -> watermarkbutton.getValue() == watermarkbutton.getValue());
-    public final Setting<Integer> typingSpeed = new Setting<>("Typing Speed", 5, 1, 20, v -> watermarkbutton.getValue() == watermarkbutton.getValue());
+    public final Setting<Integer> gety = new Setting<>("Y", 2, 0, 485, v -> watermarkbutton.getValue());
+    public final Setting<Integer> getx = new Setting<>("X", 2, 0, 710, v -> watermarkbutton.getValue());
+    public final Setting<Watermarkmode> mode = new Setting<>("Mode", Watermarkmode.NONE, v -> watermarkbutton.getValue());
+    public final Setting<Integer> typingSpeed = new Setting<>("Typing Speed", 5, 1, 20, v -> watermarkbutton.getValue());
+    public final Setting<TextMode> textMode = new Setting<>("TextMode", TextMode.OYVEY, v -> watermarkbutton.getValue());
 
     private final Timer timer = new Timer();
     private int typingIndex = 0;
@@ -22,12 +23,25 @@ public class Watermark {
     private String currentText = "";
 
     public String getWatermark() {
-        return watermark.getValue();
+        switch (textMode.getValue()) {
+            case FUTURE:
+                return "Future v2.13.5-extern+274.ba4c68c147";
+            case DOTGOD:
+                return "DotGod.CC";
+            case PHOBOS:
+                return "Phobos.eu";
+            case TROLLGOD:
+                return "Trollgod.cc 1.5.4";
+            case OYVEY:
+                return this.watermark.getValue() + " " + OyVey.VERSION;
+            default:
+                return watermark.getValue();
+        }
     }
 
     public void render(int color, Render2DEvent event) {
         if (watermarkbutton.getValue()) {
-            String displayText = this.watermark.getValue() + " " + OyVey.VERSION;
+            String displayText = getWatermark();
 
             switch (mode.getValue()) {
                 case TYPING:
@@ -74,9 +88,18 @@ public class Watermark {
                     color);
         }
     }
+
     public enum Watermarkmode {
         NONE,
         TYPING,
         TYPEDEL
+    }
+
+    public enum TextMode {
+        OYVEY,
+        TROLLGOD,
+        FUTURE,
+        DOTGOD,
+        PHOBOS
     }
 }

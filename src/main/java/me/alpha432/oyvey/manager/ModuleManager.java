@@ -49,12 +49,13 @@ public class ModuleManager implements Jsonable, Util {
 
 
     public void init() {
+        modules.add(new HUD());
         modules.add(new DiscordRPC());
         modules.add(new HudModule());
         modules.add(new ClickGui());
         modules.add(new Stairs());
         modules.add(new HoleESP());
-        modules.add(new HudModuleRewrite());
+        modules.add(new HudModule());
         modules.add(new BurrowNotifier());
         modules.add(new LongJump());
         modules.add(new PvpInfoModule());

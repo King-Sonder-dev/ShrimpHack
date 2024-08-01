@@ -2,10 +2,10 @@ package me.alpha432.oyvey.features.modules.chat;
 
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.modules.Module;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.entity.Entity;
+
+import static me.alpha432.oyvey.features.modules.combat.autocrystal.AutoCrystal.target;
+import static me.alpha432.oyvey.util.Jewedutil.isBurrowed;
 
 public class BurrowNotifier extends Module {
 
@@ -20,19 +20,10 @@ public class BurrowNotifier extends Module {
     }
 
     private void checkBurrow() {
-        MinecraftClient mc = MinecraftClient.getInstance();
-        World world = mc.world;
-        if (world == null) return;
 
-        for (PlayerEntity player : world.getPlayers()) {
-            if (player == mc.player) continue; // Skip the local player
 
-            BlockPos playerPos = player.getBlockPos();
-
-            // Check if the player is burrowed (e.g., if the player's position is blocked by a solid block)
-            if (world.getBlockState(playerPos).isSolidBlock(world, playerPos)) {
-                Command.serverSendMessage(player.getName().getString() + " is burrowed!");
+        if (isBurrowed(target)) {
+                Command.serverSendMessage(mc.player.getName().getString() + " is burrowed!");
             }
         }
     }
-}
