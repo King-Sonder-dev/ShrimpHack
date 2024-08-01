@@ -12,7 +12,7 @@ import java.util.List;
 
 public class HudModuleOld extends Module {
     public HudModuleOld() {
-        super("Hud", "hud", Category.OYVEYDOTCONFIRM, true, false, false);
+        super("HudOld", "hud", Category.OYVEYDOTCONFIRM, true, false, false);
     }
 
     public final Setting<Boolean> arraylist = this.register(new Setting<>("arraylist", true));
