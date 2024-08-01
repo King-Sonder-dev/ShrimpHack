@@ -31,7 +31,7 @@ public class ChatModifier extends Module {
     public Setting<Boolean> globalchat = this.register(new Setting<Boolean>("GlobalChat", true, "Global Chat Prefix"));
     public Setting<GlobalChat> globalmode = register(new Setting<GlobalChat>("GlobalChat", GlobalChat.NONE, v -> this.globalchat.getValue()));
     public Setting<Suffix> suffix = this.register(new Setting<Suffix>("Suffix", Suffix.NONE, "Your Suffix."));
-    public Setting<String> custom = this.register(new Setting("Custom", "cracked v2.0 plus ultra pro", v -> this.suffix.getValue() == Suffix.CUSTOM));
+    public Setting<String> custom = this.register(new Setting("Custom", "Oyvey++", v -> this.suffix.getValue() == Suffix.CUSTOM));
     public Setting<TextColor> textcolor = this.register(new Setting<TextColor>("TextColor", TextColor.NONE, "Your text color."));
     public Setting<StiTextColor> stiTextColor = this.register(new Setting<StiTextColor>("StiTextColor", StiTextColor.NONE, "Your sti text color."));
 	public Setting<Boolean> infiniteChatBox = this.register(new Setting<Boolean>("infiniteChatBox", false,"Makes your chat infinite."));
