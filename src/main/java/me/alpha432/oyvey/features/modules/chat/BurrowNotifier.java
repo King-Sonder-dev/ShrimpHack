@@ -16,7 +16,6 @@ public class BurrowNotifier extends Module {
     @Override
     public void onEnable() {
         checkBurrow();
-        this.disable();
     }
 
     private void checkBurrow() {

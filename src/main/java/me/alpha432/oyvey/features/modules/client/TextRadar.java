@@ -14,6 +14,7 @@ public class TextRadar extends Module {
     private final Setting<Integer> x = register(new Setting<>("X", 12, 0, 1000));
     private final Setting<Integer> y = register(new Setting<>("Y", 2, 0, 1000));
     private final Setting<Boolean> shadow = register(new Setting<>("Shadow", true));
+    private final Setting<Boolean> brackets = register(new Setting<>("Brackets", false)); // New setting for brackets mode
 
     public TextRadar() {
         super("TextRadar", "Displays nearby players with health, name, and distance", Category.CLIENT, true, false, false);
@@ -28,20 +29,28 @@ public class TextRadar extends Module {
                 .collect(Collectors.toList());
 
         int nameColor = OyVey.colorManager.getColorAsInt();
+        int deadColor = 0xFFFF0000; // Red color for dead players
 
         for (PlayerEntity player : nearbyPlayers) {
             int healthColor = getHealthColor(player.getHealth(), player.getMaxHealth());
             int distanceColor = getDistanceColor(player.distanceTo(MinecraftClient.getInstance().player));
 
             String playerName = player.getName().getString();
-            String playerHealth = String.format("%.1f", player.getHealth());
+            String playerHealth = player.getHealth() > 0 ? String.format("%.1f", player.getHealth()) : "DEAD";
+            int playerHealthColor = player.getHealth() > 0 ? healthColor : deadColor;
             String playerDistance = String.format("%.1f", player.distanceTo(MinecraftClient.getInstance().player));
+
+            // Apply brackets if the setting is enabled
+            if (brackets.getValue()) {
+                playerDistance = "[" + playerDistance + "]";
+                playerHealth = "[" + playerHealth + "]";
+            }
 
             // Draw distance, name, and health with respective colors
             if (shadow.getValue()) {
                 event.getContext().drawTextWithShadow(MinecraftClient.getInstance().textRenderer, playerDistance, x.getValue(), y.getValue() + yOffset, distanceColor);
                 event.getContext().drawTextWithShadow(MinecraftClient.getInstance().textRenderer, playerName, x.getValue() + MinecraftClient.getInstance().textRenderer.getWidth(playerDistance) + 2, y.getValue() + yOffset, nameColor);
-                event.getContext().drawTextWithShadow(MinecraftClient.getInstance().textRenderer, playerHealth, x.getValue() + MinecraftClient.getInstance().textRenderer.getWidth(playerDistance) + MinecraftClient.getInstance().textRenderer.getWidth(playerName) + 4, y.getValue() + yOffset, healthColor);
+                event.getContext().drawTextWithShadow(MinecraftClient.getInstance().textRenderer, playerHealth, x.getValue() + MinecraftClient.getInstance().textRenderer.getWidth(playerDistance) + MinecraftClient.getInstance().textRenderer.getWidth(playerName) + 4, y.getValue() + yOffset, playerHealthColor);
             } else {
                 // You can remove this else block if drawText is not available.
                 // You may also choose to use drawTextWithShadow for all cases.

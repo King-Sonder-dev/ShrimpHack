@@ -27,6 +27,7 @@ import me.alpha432.oyvey.features.modules.player.fastuse.FastUse;
 import me.alpha432.oyvey.features.modules.player.hotbarreplenish.HotbarReplenish;
 import me.alpha432.oyvey.features.modules.player.middleclick.MiddleClick;
 import me.alpha432.oyvey.features.modules.player.speedmine.MiningTS;
+import me.alpha432.oyvey.features.modules.player.throwpearl.ThrowPearl;
 import me.alpha432.oyvey.features.modules.player.velocity.Velocity;
 import me.alpha432.oyvey.features.modules.render.*;
 import me.alpha432.oyvey.features.modules.render.cameraclip.NoCameraClip;
@@ -119,6 +120,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new ChatModifier());
         modules.add(new Popcounterplus());
         modules.add(new Poplag());
+        modules.add(new ThrowPearl());
     }
 
     public Module getModuleByName(String name) {

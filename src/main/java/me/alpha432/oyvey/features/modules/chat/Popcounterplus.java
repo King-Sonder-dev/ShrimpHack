@@ -53,7 +53,7 @@ public class Popcounterplus extends Module {
         synchronized (totemPopMap) {
             int pops = totemPopMap.getOrDefault(entity.getUuid(), 0);
             totemPopMap.put(entity.getUuid(), ++pops);
-            String popMessage = (pops > 1 ? pops + " totems" : "1 totem");
+            String popMessage = (pops > 1 ? pops + "" : "1");
             String playerName = entity.getName().getString();
             switch (this.popNotifier.getValue()) {
                 case FUTURE:
@@ -66,13 +66,14 @@ public class Popcounterplus extends Module {
                     Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + popMessage + Formatting.LIGHT_PURPLE + " time in total!");
                     break;
                 case SN0W:
-                    Command.sendSilentMessage(Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + " has" + Formatting.RESET + " popped " + popMessage + "!");
-                    break;
+                    Command.sendSilentMessage(Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + Formatting.AQUA + " has" + " popped their " + Formatting.BLUE + popMessage + Formatting.AQUA + " totem");
+                break;
                 case SNOW:
-                    Command.sendSilentMessage(Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "Popcounter" + "]" + playerName + " popped " + popMessage + " totems!");
+                    Command.sendSilentMessage(Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_AQUA + "Popcounter" + "] " + Formatting.RESET + playerName + " popped " + popMessage + " totems!");
                     break;
                 case TROLLGOD:
-                    Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + playerName + " popped their " + popMessage + " totems.");
+                    Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + popMessage + Formatting.LIGHT_PURPLE + " times in total!");
+                    break;
                 case NONE:
                 default:
                     Command.sendSilentMessage(" " + Formatting.WHITE + entity.getName().getString() + " popped " + Formatting.GREEN + popMessage + Formatting.WHITE + " Totems.");
@@ -91,3 +92,13 @@ public class Popcounterplus extends Module {
         TROLLGOD
     }
 }
+
+/*
+Notes
+  ChatUtils.sendMessage(new ChatMessage((this.boldName.getValue() != false ? ChatFormatting.BOLD : "") + (isSelf ? "You" : name) + ChatFormatting.RESET + ChatFormatting.AQUA + (isSelf ? " have" : " has") + " popped" + (pops == 0 ? "." : (isSelf ? " your " : " their ") + ChatFormatting.BLUE + pops + this.appendSuffix(pops) + ChatFormatting.AQUA + " totem"), true, -entity.func_145782_y()))
+                    You have popped your pops totem
+
+  ChatUtils.sendMessage(new ChatMessage((this.boldName.getValue() != false ? ChatFormatting.BOLD : "") + playername + ChatFormatting.RESET + ChatFormatting.AQUA + " died after popping" + (pops == 0 ? "." : " their " + ChatFormatting.BLUE + pops + this.appendSuffix(pops) + ChatFormatting.AQUA + " totem"), true, -player.func_145782_y()));
+                  return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + "You died after popping " + pops + (pops == 1 ? " totem" : " totems") + "!";
+
+ */

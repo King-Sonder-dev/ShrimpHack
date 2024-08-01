@@ -34,6 +34,14 @@ public class Watermark {
                 return "Trollgod.cc 1.5.4";
             case OYVEY:
                 return this.watermark.getValue() + " " + OyVey.VERSION;
+            case MIO:
+                return "Mio v2.0.2";
+            case MIONIGHTLY:
+                return "Mio v2.0.2-nightly";
+            case MIODOTME:
+                return "Mioclient.me";
+            case SNOWBETA:
+                return "Snow 4.4-beta";
             default:
                 return watermark.getValue();
         }
@@ -100,6 +108,10 @@ public class Watermark {
         TROLLGOD,
         FUTURE,
         DOTGOD,
-        PHOBOS
+        PHOBOS,
+        MIO,
+        MIONIGHTLY,
+        MIODOTME,
+        SNOWBETA
     }
 }

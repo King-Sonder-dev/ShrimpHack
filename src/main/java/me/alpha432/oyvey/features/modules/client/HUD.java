@@ -62,11 +62,6 @@ public class HUD extends Module {
 
         color = ColorUtil.toARGB(this.red.getValue(), this.green.getValue(), this.blue.getValue(), this.alpha.getValue());
 
-        event.getContext().drawTextWithShadow( mc.textRenderer, OyVey.NAME + " " + OyVey.VERSION, 2,/* x */ 2/* y */, ColorUtil.toARGB(red.getValue(), green.getValue(), blue.getValue(), alpha.getValue()) );
-        event.getContext().drawTextWithShadow( mc.textRenderer, mc.player.getDisplayName().getString() , 2, 12, ColorUtil.toARGB(red.getValue(), green.getValue(), blue.getValue(), alpha.getValue()) );
-        event.getContext().drawTextWithShadow( mc.textRenderer, GV , 2, 22, ColorUtil.toARGB(red.getValue(), green.getValue(), blue.getValue(), alpha.getValue()) );
-        
-
         //Modules Enable Disable ArrayList Active Modules
         int j = (mc.currentScreen instanceof ChatScreen && !renderingUp.getValue()) ? 14 : 0;
         if (arrayList.getValue())
