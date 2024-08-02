@@ -17,6 +17,7 @@ import me.alpha432.oyvey.features.modules.combat.autototem.AutoTotem;
 import me.alpha432.oyvey.features.modules.combat.burrow.Burrow;
 import me.alpha432.oyvey.features.modules.combat.tntaura.TNTAura;
 import me.alpha432.oyvey.features.modules.exploit.HitboxDesyncModule;
+import me.alpha432.oyvey.features.modules.exploit.PingSpoof;
 import me.alpha432.oyvey.features.modules.misc.*;
 import me.alpha432.oyvey.features.modules.misc.Fakeplayer.FakePlayer;
 import me.alpha432.oyvey.features.modules.misc.autoauth.AutoAuth;
@@ -62,6 +63,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new LongJump());
         modules.add(new PvpInfoModule());
         modules.add(new GhastSpawnNotifier());
+        modules.add(new PingSpoof());
         modules.add(new AutoPhase());
         modules.add(new WordGuard());
         modules.add(new MSChecker());

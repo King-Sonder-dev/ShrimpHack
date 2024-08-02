@@ -81,7 +81,7 @@ public class NotificationModule extends Module {
         String futureaction = enabled ? Formatting.GREEN + "on" : Formatting.RED + "off";
         switch (this.notificationStyle.getValue()) {
             case FUTURE:
-                return Formatting.RED + "[Future] " + Formatting.RESET + moduleName + " toggled " + futureaction + ".";
+                return Formatting.RED + "[Future] " + Formatting.RESET + moduleName + " toggled " + futureaction + Formatting.RESET + ".";
             case PHOBOS:
                 return " " + Formatting.GOLD + moduleName + Formatting.RED + " has been " + action + ".";
             case DOTGOD:
@@ -96,7 +96,7 @@ public class NotificationModule extends Module {
                 return Formatting.BOLD + moduleName + Formatting.RESET + " " + action;
             case NONE:
             default:
-                return " " + Formatting.WHITE + moduleName + " has been " + Formatting.GREEN + action + Formatting.WHITE + ".";
+                return  Formatting.DARK_AQUA + moduleName + Formatting.RESET + " has been " + Formatting.BOLD + action;
         }
     }
 

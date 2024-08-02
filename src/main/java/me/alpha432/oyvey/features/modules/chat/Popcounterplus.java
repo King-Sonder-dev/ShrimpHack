@@ -2,6 +2,7 @@ package me.alpha432.oyvey.features.modules.chat;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import me.alpha432.oyvey.event.impl.DeathEvent;
 import me.alpha432.oyvey.features.modules.chat.PopCounter;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.entity.Entity;
@@ -32,7 +33,6 @@ public class Popcounterplus extends Module {
     public Popcounterplus() {
         super("Popcounterplus", "ezzzz kits noobs", Module.Category.CHAT, true, false, false);
     }
-
     @Subscribe
     public void onReceivePacket(PacketEvent.Receive event) {
         ChatHud chatHud = mc.inGameHud.getChatHud();
