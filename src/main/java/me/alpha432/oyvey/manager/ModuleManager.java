@@ -63,6 +63,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new LongJump());
         modules.add(new PvpInfoModule());
         modules.add(new GhastSpawnNotifier());
+        modules.add(new ForceSneak());
         modules.add(new PingSpoof());
         modules.add(new AutoPhase());
         modules.add(new WordGuard());
