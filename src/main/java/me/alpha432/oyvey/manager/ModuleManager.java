@@ -16,12 +16,14 @@ import me.alpha432.oyvey.features.modules.combat.autocrystal.AutoCrystal;
 import me.alpha432.oyvey.features.modules.combat.autototem.AutoTotem;
 import me.alpha432.oyvey.features.modules.combat.burrow.Burrow;
 import me.alpha432.oyvey.features.modules.combat.tntaura.TNTAura;
+import me.alpha432.oyvey.features.modules.exploit.HitboxDesyncModule;
 import me.alpha432.oyvey.features.modules.misc.*;
 import me.alpha432.oyvey.features.modules.misc.Fakeplayer.FakePlayer;
 import me.alpha432.oyvey.features.modules.misc.autoauth.AutoAuth;
 import me.alpha432.oyvey.features.modules.movement.*;
 import me.alpha432.oyvey.features.modules.movement.flight.Flight;
 import me.alpha432.oyvey.features.modules.movement.noslow.NoSlow;
+import me.alpha432.oyvey.features.modules.oyveydotconfirm.HudModuleOld;
 import me.alpha432.oyvey.features.modules.player.*;
 import me.alpha432.oyvey.features.modules.player.fastuse.FastUse;
 import me.alpha432.oyvey.features.modules.player.hotbarreplenish.HotbarReplenish;
@@ -56,7 +58,6 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new ClickGui());
         modules.add(new Stairs());
         modules.add(new HoleESP());
-        modules.add(new HudModule());
         modules.add(new BurrowNotifier());
         modules.add(new LongJump());
         modules.add(new PvpInfoModule());
@@ -121,6 +122,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new Popcounterplus());
         modules.add(new Poplag());
         modules.add(new ThrowPearl());
+        modules.add(new HudModuleOld());
     }
 
     public Module getModuleByName(String name) {

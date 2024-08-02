@@ -3,6 +3,7 @@ package me.alpha432.oyvey.features.modules.client;
 import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.features.modules.Module;
+import me.alpha432.oyvey.features.modules.movement.InstantSpeedPlus;
 import me.alpha432.oyvey.features.settings.Setting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -15,7 +16,8 @@ import java.util.List;
 
 public class PvpInfoModule extends Module {
     // Settings for PvpInfo
-    public final Setting<TextMode> textMode = new Setting<>("TextMode", TextMode.OYVEY);
+    private final Setting<TextMode> textMode = this.register(new Setting<>("TextMode", TextMode.OYVEY));
+
     public final Setting<String> custom = new Setting<>("Custom", "Oyvey.pub");
 
     public final Setting<Integer> gety = this.register(new Setting<>("Y", 205, 0, 485));
@@ -33,15 +35,19 @@ public class PvpInfoModule extends Module {
     public String getWatermark() {
         switch (textMode.getValue()) {
             case FUTURE:
+                return "Future v2.13.5";
+            case FUTUREBETA:
                 return "Future v2.13.5-extern+274.ba4c68c147";
             case DOTGOD:
                 return "DotGod.CC";
             case PHOBOS:
                 return "Phobos.eu";
             case TROLLGOD:
-                return "Trollgod.cc 1.5.4";
+                return "Trollgod.CC";
             case OYVEY:
                 return OyVey.NAME + " " + OyVey.VERSION;
+            case OYVEYDOTPUB:
+                return "Oyvey.pub";
             case MIO:
                 return "Mio v2.0.2";
             case MIONIGHTLY:
@@ -50,6 +56,40 @@ public class PvpInfoModule extends Module {
                 return "Mioclient.me";
             case SNOWBETA:
                 return "Snow 4.4-beta";
+            case NUTGOD:
+                return "Nutgod.cc";
+            case GONDAL:
+                return "Gondal.club";
+            case MCDONALDS:
+                return "McDonal Client";
+            case RATWARE:
+                return "Ratware";
+            case EARTHHACK:
+                return  "3arthh4ck";
+            case AUTOWINCC:
+                return "Autowin.cc";
+            case SN0W:
+                return "Sn0w";
+            case ONEHACK:
+                return "1hack.org";
+            case SKULLHACK:
+                return "Skullhack";
+            case PUTAHACKNN:
+                return "Putahack.nn";
+            case FLORADOTNET:
+                return "Flora.net";
+            case FLORADOTNETDEV:
+                return "FLora.net v2.0.0-DEV";
+            case CLOWNGOD:
+                return "Clowngod.cc";
+            case TATERGOD:
+                return "TaterGOD.cc";
+            case ZIPCLUB:
+                return "Zip.club";
+            case BUTTERFLY:
+                return "butterfly v2.3.3";
+            case PASTBETA:
+                return "Past v3.11-beta+2.5fda9d5127+";
             default:
                 return custom.getValue();
         }
@@ -187,8 +227,27 @@ public class PvpInfoModule extends Module {
 
     public enum TextMode {
         OYVEY,
+        OYVEYDOTPUB,
+        BUTTERFLY,
+        PASTBETA,
+        ZIPCLUB,
+        TATERGOD,
+        CLOWNGOD,
+        FLORADOTNET,
+        FLORADOTNETDEV,
+        PUTAHACKNN,
+        SKULLHACK,
+        ONEHACK,
+        SN0W,
+        AUTOWINCC,
+        EARTHHACK,
+        RATWARE,
+        MCDONALDS,
+        GONDAL,
+        NUTGOD,
         TROLLGOD,
         FUTURE,
+        FUTUREBETA,
         DOTGOD,
         PHOBOS,
         MIO,

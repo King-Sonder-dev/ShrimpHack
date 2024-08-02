@@ -11,10 +11,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerListEntry.class)
 public abstract class PlayerListEntryMixin {
-    private static final Identifier Future = new Identifier("assets/capes/future.png");
-    private static final Identifier Rusherhack = new Identifier("assets/capes/rusherhack.png");
-    private static final Identifier Hyper = new Identifier("assets/capes/hyper.png");
-
+    private static final Identifier Future = new Identifier("minecraft", "textures/capes/future.png");
+    private static final Identifier Rusherhack = new Identifier("minecraft", "textures/capes/rusherhack.png");
+    private static final Identifier Hyper = new Identifier("minecraft", "textures/capes/hyper.png");
     @Inject(method = "getSkinTextures", at = @At("TAIL"), cancellable = true)
     private void getSkinTextures(CallbackInfoReturnable<SkinTextures> cir) {
         if (!Cape.getInstance().isOn()) return;

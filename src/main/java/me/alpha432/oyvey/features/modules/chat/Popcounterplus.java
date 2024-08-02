@@ -53,30 +53,35 @@ public class Popcounterplus extends Module {
         synchronized (totemPopMap) {
             int pops = totemPopMap.getOrDefault(entity.getUuid(), 0);
             totemPopMap.put(entity.getUuid(), ++pops);
-            String popMessage = (pops > 1 ? pops + "" : "1");
+            String popMessage = (pops > 1 ? pops + " totems" : "1 totem");
+            String sn0wMessage = (pops > 1 ? pops + "" : "1");
+            String sn0wtwoMessage = (pops > 1 ? "s" : "");
+            String timeMessage = (pops > 1 ? pops + " times" : "1 time");
+            String dotgotMessage = (pops > 1 ? pops + "" : "1");
+            String dotgodtwoMessage = (pops > 1 ? " times" : "time");
             String playerName = entity.getName().getString();
             switch (this.popNotifier.getValue()) {
                 case FUTURE:
-                    Command.sendSilentMessage(Formatting.RED + "[Future] " + Formatting.GREEN + playerName + Formatting.GRAY + " just popped " + Formatting.GREEN + popMessage + Formatting.GRAY + " totems.");
+                    Command.sendSilentMessage(Formatting.RED + "[Future] " + Formatting.GREEN + playerName + Formatting.RESET + " just popped " + Formatting.GREEN + sn0wMessage + Formatting.RESET + " totem" + sn0wtwoMessage + ".");
                     break;
                 case PHOBOS:
-                    Command.sendSilentMessage(" " + Formatting.GOLD + playerName + Formatting.RED + " popped " + Formatting.GOLD + popMessage + Formatting.RED + " totems.");
+                    Command.sendSilentMessage(" " + Formatting.GOLD + playerName + Formatting.RED + " popped " + Formatting.GOLD + popMessage + Formatting.RED + ".");
                     break;
                 case DOTGOD:
-                    Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + popMessage + Formatting.LIGHT_PURPLE + " time in total!");
+                    Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + dotgotMessage + Formatting.LIGHT_PURPLE  + dotgodtwoMessage + " in total!");
                     break;
                 case SN0W:
-                    Command.sendSilentMessage(Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + Formatting.AQUA + " has" + " popped their " + Formatting.BLUE + popMessage + Formatting.AQUA + " totem");
+                    Command.sendSilentMessage(Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + Formatting.AQUA + " has" + " popped their " + Formatting.BLUE + sn0wMessage + Formatting.AQUA + " totem" + sn0wtwoMessage);
                 break;
                 case SNOW:
-                    Command.sendSilentMessage(Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_AQUA + "Popcounter" + "] " + Formatting.RESET + playerName + " popped " + popMessage + " totems!");
-                    break;
+                    Command.sendSilentMessage(Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] "+ Formatting.GRAY +  "["  + Formatting.DARK_AQUA + "Popcounter" +  Formatting.GRAY + "] " + Formatting.RESET + playerName + " popped " + popMessage + "!");
+                break;
                 case TROLLGOD:
-                    Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + popMessage + Formatting.LIGHT_PURPLE + " times in total!");
+                    Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + dotgotMessage + Formatting.LIGHT_PURPLE  + dotgodtwoMessage + " in total!");
                     break;
                 case NONE:
                 default:
-                    Command.sendSilentMessage(" " + Formatting.WHITE + entity.getName().getString() + " popped " + Formatting.GREEN + popMessage + Formatting.WHITE + " Totems.");
+                    Command.sendSilentMessage(" " + Formatting.WHITE + entity.getName().getString() + " popped " + Formatting.GREEN + sn0wMessage + Formatting.WHITE + " totem" + sn0wtwoMessage + ".");
                     break;
             }
         }
