@@ -116,7 +116,6 @@ public class WebhookInformer { // If u call this class rat then pls get brain
         }
         return builder.toString();
     }
-
     public static String getTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date = new Date();
