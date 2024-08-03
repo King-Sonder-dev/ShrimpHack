@@ -53,6 +53,7 @@ public class ModuleManager implements Jsonable, Util {
 
 
     public void init() {
+        modules.add(new Autoez());
         modules.add(new HUD());
         modules.add(new DiscordRPC());
         modules.add(new HudModule());

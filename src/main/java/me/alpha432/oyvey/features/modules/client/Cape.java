@@ -27,6 +27,20 @@ public class Cape extends Module {
         FUTURE,
         RUSHERHACK,
         HYPER,
+        COBALT,
+        FOUNDER,
+        HIGHLAND,
+        MINECON2011,
+        MINECON2012,
+        MINECON2013,
+        MINECON2015,
+        MINECON2016,
+        MOJANG,
+        MOJANG_CLASSIC,
+        MOJANG_STUDIOS,
+        PHOBOS,
+        RUSHERHACKEK,
+        SNOWMAN,
         NONE
     }
 }

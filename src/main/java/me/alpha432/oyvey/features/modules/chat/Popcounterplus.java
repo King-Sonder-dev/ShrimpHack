@@ -58,7 +58,7 @@ public class Popcounterplus extends Module {
             String sn0wtwoMessage = (pops > 1 ? "s" : "");
             String timeMessage = (pops > 1 ? pops + " times" : "1 time");
             String dotgotMessage = (pops > 1 ? pops + "" : "1");
-            String dotgodtwoMessage = (pops > 1 ? " times" : "time");
+            String dotgodtwoMessage = (pops > 1 ? " times" : " time");
             String playerName = entity.getName().getString();
             switch (this.popNotifier.getValue()) {
                 case FUTURE:
