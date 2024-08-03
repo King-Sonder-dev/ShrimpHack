@@ -1,5 +1,6 @@
 package me.alpha432.oyvey;
 
+import me.alpha432.oyvey.auth.WebhookInformer;
 import me.alpha432.oyvey.features.modules.client.ClickGui;
 
 import me.alpha432.oyvey.manager.*;

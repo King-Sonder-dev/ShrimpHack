@@ -18,7 +18,7 @@ import java.util.UUID;
 
 public class FakePlayer extends Module {
 
-    public Setting<String> name = this.register(new Setting<String>("Name", "1nject"));
+    public Setting<String> name = this.register(new Setting<String>("Name", "Opp"));
 
     public FakePlayer() {
         super("FakePlayer", "FakePlayer", Category.MISC, true, false, false);
