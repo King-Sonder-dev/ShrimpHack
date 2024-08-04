@@ -53,7 +53,7 @@ public class VisualRange extends Module {
                         message = Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + (this.bold.getValue() ? Formatting.BOLD : "") + Formatting.RESET + Formatting.BLUE + " entered" + Formatting.AQUA + " your visual range";
                         break;
                     case SNOW:
-                        message = Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "VisualRange" + "]" + playerName + " has " + "entered" + " your visual range";
+                        message = Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "VisualRange" + "]" + playerName + "entered" + " visual range";
                         break;
                     case TROLLGOD:
                         message = Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + playerName + " entered your visual range";
@@ -84,7 +84,7 @@ public class VisualRange extends Module {
                         message = Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + (this.bold.getValue() ? Formatting.BOLD : "") + Formatting.RESET + Formatting.BLUE + " left" + Formatting.AQUA + " your visual range";
                         break;
                     case SNOW:
-                        message = Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_AQUA + "VisualRange" + "]" + playerName + " has " + "left" + " your visual range";
+                        message = Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_AQUA + "VisualRange" + "]" + playerName + " left" + "visual range";
                         break;
                     case TROLLGOD:
                         message = Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + "\"" + playerName + " left your visual range";

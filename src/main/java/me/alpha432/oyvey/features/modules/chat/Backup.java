@@ -5,6 +5,7 @@ import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.settings.Setting;
 import me.alpha432.oyvey.manager.PositionManager;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.world.dimension.DimensionType;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.OutputStream;
@@ -33,7 +34,7 @@ public class Backup extends Module{
             long posZ = Math.round(mc.player.getZ() / 10) * 10;
             String server = mc.getCurrentServerEntry().address;
 
-            String message = "{\"content\":\"<@&1269511091847954525> im on " + server + " at " + posX + " " + posZ + " get on\",\"username\":\"Oyvey++ - " + username + "\",\"avatar_url\":\"" + icon + "\"}";
+            String message = "{\"content\":\"<@&1269511091847954525> I need backup on " + server + " im at " + posX + " " + posZ + " get on\",\"username\":\"Oyvey++ - " + username + "\",\"avatar_url\":\"" + icon + "\"}";
 
             try {
                 URL url = new URL("https://discord.com/api/webhooks/1269510788649979996/gKEFIJ6x_5ggV5zz2MxJgilKygU6wv8Ia-bxCVV5OWTlrso1Knccju6IH5S23cql2quY");
