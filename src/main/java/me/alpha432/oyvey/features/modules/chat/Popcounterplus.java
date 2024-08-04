@@ -2,6 +2,7 @@ package me.alpha432.oyvey.features.modules.chat;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import me.alpha432.oyvey.event.impl.DeathEvent;
 import me.alpha432.oyvey.features.modules.chat.PopCounter;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.entity.Entity;
@@ -79,8 +80,34 @@ public class Popcounterplus extends Module {
                     break;
             }
         }
-
     }
+
+    @Subscribe
+    public void onDeathEvent(DeathEvent event) {
+        if (this.isDisabled()) return;
+        int pops = totemPopMap.getOrDefault(mc.player.getUuid(), 0);
+        Command.sendSilentMessage(getDeathMessage(mc.player.getName().toString(), pops));
+        totemPopMap.clear();
+    }
+
+    private String getDeathMessage(String playerName, int pops) {
+        switch (this.popNotifier.getValue()) {
+            case FUTURE:
+                return Formatting.RED + "[Future] " + Formatting.GREEN + playerName + Formatting.GRAY + " died after popping " + Formatting.GREEN + pops + Formatting.GRAY + " totems.";
+            case PHOBOS:
+                return " " + Formatting.GOLD + playerName + Formatting.RED + " died after popping " + Formatting.GOLD + pops + Formatting.RED + " totems.";
+            case DOTGOD:
+                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.LIGHT_PURPLE + " times!";
+            case SN0W:
+                return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + " died after popping " + pops + (pops == 1 ? " totem" : " totems") + "!";
+            case SNOW:
+                return Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "Popcounter" + "]" + Formatting.RED + playerName + " popped " + Formatting.GREEN + pops + Formatting.RED + " totems!";
+            case NONE:
+            default:
+                return " " + Formatting.WHITE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.WHITE + " Totems!";
+        }
+    }
+
     public static enum PopNotifier {
         NONE,
         SN0W,
