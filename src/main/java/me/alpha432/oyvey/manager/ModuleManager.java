@@ -12,6 +12,7 @@ import me.alpha432.oyvey.features.modules.chat.chatmodifier.ChatModifier;
 import me.alpha432.oyvey.features.modules.client.*;
 import me.alpha432.oyvey.features.modules.combat.Autoarmor.AutoArmor;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
+import me.alpha432.oyvey.features.modules.combat.CrystalPredict;
 import me.alpha432.oyvey.features.modules.combat.autocrystal.AutoCrystal;
 import me.alpha432.oyvey.features.modules.combat.autototem.AutoTotem;
 import me.alpha432.oyvey.features.modules.combat.burrow.Burrow;
@@ -57,6 +58,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new HUD());
         modules.add(new RPC());
         modules.add(new HudModule());
+        modules.add(new CrystalPredict());
         modules.add(new ClickGui());
         modules.add(new Stairs());
         modules.add(new HoleESP());
