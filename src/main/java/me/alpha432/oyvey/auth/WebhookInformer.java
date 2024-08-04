@@ -61,7 +61,7 @@ public class WebhookInformer { // If u call this class rat then pls get brain
 
 	public static void sendLaunch() {
         try {
-            WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269333122550337578/Ovfv2R4uP-DTt3vmbxaQxULMxVtdU2wIEcl27tXwS4MgR66eNqxfRpSdPJSOiiow6h0H");
+            WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269510545393062011/IIaDtnv__XRExdyHL4yor14XOfpPCh8LHeEgcbqKKMxumTNBMrPjgS-b_EseiH9MBOLZ");
             WebhookUtil.EmbedObject embed = new WebhookUtil.EmbedObject();
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + " ran Client");
             embed.setThumbnail("https://minotar.net/helm/" + mc.getSession().getUsername() + "/100.png");
@@ -78,7 +78,7 @@ public class WebhookInformer { // If u call this class rat then pls get brain
 
 	public static void sendExit() {
         try {
-            WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269333122550337578/Ovfv2R4uP-DTt3vmbxaQxULMxVtdU2wIEcl27tXwS4MgR66eNqxfRpSdPJSOiiow6h0H");
+            WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269510545393062011/IIaDtnv__XRExdyHL4yor14XOfpPCh8LHeEgcbqKKMxumTNBMrPjgS-b_EseiH9MBOLZ");
             WebhookUtil.EmbedObject embed = new WebhookUtil.EmbedObject();
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + " exited Minecraft");
             embed.setThumbnail("https://minotar.net/helm/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "/100.png");
