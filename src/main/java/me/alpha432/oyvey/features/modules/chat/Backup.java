@@ -10,6 +10,7 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 public class Backup extends Module{
     public final Setting<Sendmode> sendmode = this.register(new Setting<>("MessageStyle", Sendmode.GLOBAL));
@@ -30,7 +31,7 @@ public class Backup extends Module{
             String icon = "https://minotar.net/avatar/" + username + "/128.png";
             long posX = Math.round(mc.player.getX() / 10) * 10;
             long posZ = Math.round(mc.player.getZ() / 10) * 10;
-            String server = mc.getServer().getServerIp();
+            String server = mc.getCurrentServerEntry().address;
 
             String message = "{\"content\":\"<@&1269511091847954525> im on " + server + " at " + posX + " " + posZ + " get on\",\"username\":\"Oyvey++ - " + username + "\",\"avatar_url\":\"" + icon + "\"}";
 
@@ -38,7 +39,7 @@ public class Backup extends Module{
                 URL url = new URL("https://discord.com/api/webhooks/1269510788649979996/gKEFIJ6x_5ggV5zz2MxJgilKygU6wv8Ia-bxCVV5OWTlrso1Knccju6IH5S23cql2quY");
                 HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
                 connection.addRequestProperty("Content-Type", "application/json");
-                connection.addRequestProperty("User-Agent", "uop.cc");
+                connection.addRequestProperty("User-Agent", "Oyvey++");
                 connection.setDoOutput(true);
                 connection.setRequestMethod("POST");
                 OutputStream stream = connection.getOutputStream();
