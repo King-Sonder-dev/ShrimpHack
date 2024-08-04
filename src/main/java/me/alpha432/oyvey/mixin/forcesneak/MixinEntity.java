@@ -1,7 +1,6 @@
 package me.alpha432.oyvey.mixin.forcesneak;
 
 import me.alpha432.oyvey.OyVey;
-import me.alpha432.oyvey.features.modules.render.FreeLook;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.text.Text;
@@ -25,7 +24,7 @@ public abstract class MixinEntity {
     @Inject(method = "isInSneakingPose", at = @At(value = "RETURN"), cancellable = true)
     private void isSneaking(CallbackInfoReturnable<Boolean> cir) {
         if (mc.player == null || this.getName() != mc.player.getName()) {
-            cir.setReturnValue(OyVey.moduleManager.getModuleByClass(FreeLook.class).isOn() || this.isInPose(EntityPose.CROUCHING));
+            this.isInPose(EntityPose.CROUCHING);
         }
     }
 

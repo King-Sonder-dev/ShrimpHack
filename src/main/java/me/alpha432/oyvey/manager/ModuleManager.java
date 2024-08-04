@@ -111,7 +111,6 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new FastUse());
         modules.add(new Burrow());
         modules.add(new HandModifier());
-        modules.add(new FreeLook());
         modules.add(new AspectRatio());
         modules.add(new FOV());
         modules.add(new NoCameraClip());

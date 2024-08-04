@@ -3,7 +3,6 @@ package me.alpha432.oyvey.manager;
 import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.event.impl.Render3DEvent;
 import me.alpha432.oyvey.features.modules.exploit.PingSpoof;
-import me.alpha432.oyvey.features.modules.render.FreeLook;
 import meteordevelopment.orbit.EventHandler;
 import meteordevelopment.orbit.EventPriority;
 import net.minecraft.network.packet.Packet;
