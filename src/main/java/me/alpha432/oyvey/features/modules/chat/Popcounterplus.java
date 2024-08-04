@@ -108,7 +108,7 @@ public class Popcounterplus extends Module {
             case PHOBOS:
                 return " " + Formatting.GOLD + playerName + Formatting.RED + " died after popping " + Formatting.GOLD + pops + Formatting.RED + " totems.";
             case DOTGOD:
-                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.LIGHT_PURPLE + " times!";
+                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.LIGHT_PURPLE + " times in total!";
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + " died after popping " + pops + (pops == 1 ? " totem" : " totems") + "!";
             case SNOW:
