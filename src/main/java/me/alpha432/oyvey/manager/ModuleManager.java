@@ -129,6 +129,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new Poplag());
         modules.add(new ThrowPearl());
         modules.add(new HudModuleOld());
+        modules.add(new FullBright());
     }
 
     public Module getModuleByName(String name) {

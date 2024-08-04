@@ -30,6 +30,7 @@ public class Cape extends Module {
         COBALT,
         FOUNDER,
         HIGHLAND,
+        CAPY,
         MINECON2011,
         MINECON2012,
         MINECON2013,

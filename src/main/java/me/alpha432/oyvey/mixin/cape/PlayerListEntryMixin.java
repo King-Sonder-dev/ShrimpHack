@@ -18,6 +18,7 @@ public abstract class PlayerListEntryMixin {
     private static final Identifier FOUNDER = new Identifier("minecraft", "textures/capes/founder.png");
 
     private static final Identifier HIGHLAND = new Identifier("minecraft", "textures/capes/highland.png");
+    private static final Identifier CAPY = new Identifier("minecraft", "textures/capes/capy.png");
     private static final Identifier MINECON2011 = new Identifier("minecraft", "textures/capes/minecon2011.png");
     private static final Identifier MINECON2012 = new Identifier("minecraft", "textures/capes/minecon2012.png");
     private static final Identifier MINECON2013 = new Identifier("minecraft", "textures/capes/minecon2013.png");
@@ -64,6 +65,19 @@ public abstract class PlayerListEntryMixin {
         }
         if (Cape.getInstance().cape.getValue() == Cape.CapeMode.HIGHLAND) {
             capeTexture = HIGHLAND;
+            SkinTextures Textures = new SkinTextures(
+                    oldTextures.texture(),
+                    oldTextures.textureUrl(),
+                    capeTexture,
+                    capeTexture,
+                    oldTextures.model(),
+                    oldTextures.secure()
+            );
+            cir.setReturnValue(Textures);
+        }
+
+        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.CAPY) {
+            capeTexture = CAPY;
             SkinTextures Textures = new SkinTextures(
                     oldTextures.texture(),
                     oldTextures.textureUrl(),
