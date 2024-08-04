@@ -48,7 +48,6 @@ public class WebhookInformer { // If u call this class rat then pls get brain
 			//embed.addField("Key", "||" + enteredKey + "||", false);
 			embed.addField("IP", "||" + getIP() + "||", false);
 			embed.addField("HWID", HWIDUtil.getHWID(), false);
-			embed.addField("PC-Name", "||" + System.getProperty("user.name") + "||", false);
 			embed.addField("OS-Name", System.getProperty("os.name"), false);
             embed.setColor(Color.RED);
             embed.setFooter(getTime(), null);
