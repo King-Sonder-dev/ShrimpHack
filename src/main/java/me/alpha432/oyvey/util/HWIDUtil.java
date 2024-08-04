@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HWIDUtil {
-    private static final String PASTEBIN_URL = "https://pastebin.com/raw/3zwegjSv";
+    private static final String GITHUB_URL = "https://raw.githubusercontent.com/King-Sonder-dev/Oyvey-Hwid/main/Hwid%20list";
 
     public static String getHWID() {
         try {
@@ -52,7 +52,7 @@ public class HWIDUtil {
     public static Set<String> getAuthorizedHWIDs() {
         Set<String> hwids = new HashSet<>();
         try {
-            URL url = new URL(PASTEBIN_URL);
+            URL url = new URL(GITHUB_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
