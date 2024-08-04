@@ -62,7 +62,7 @@ public class FCAIALM extends Module {
             }
         }
 // for future net.futureclient.client
-        if (event.getPacket().getClass().getName().contains("dev.boze.client")) {
+        if (event.getPacket().getClass().getName().contains("dev.boze")) {
             APhasAttacked = true;
             APpacketAttacking = true;
         }

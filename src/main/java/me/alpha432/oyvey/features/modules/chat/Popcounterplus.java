@@ -90,10 +90,15 @@ public class Popcounterplus extends Module {
     @Subscribe
     public void onDeathEvent(DeathEvent event) {
         if (this.isDisabled()) return;
-        assert mc.player != null;
-        int pops = totemPopMap.getOrDefault(mc.player.getUuid(), 0);
-        Command.sendSilentMessage(getDeathMessage(mc.player.getName().toString(), pops));
-        totemPopMap.clear();
+        Entity entity = event.getEntity();
+        if (entity instanceof PlayerEntity) {
+            UUID playerUUID = entity.getUuid();
+            int pops = totemPopMap.getOrDefault(playerUUID, 0);
+            if (pops > 0) {
+                Command.sendSilentMessage(getDeathMessage(entity.getName().getString(), pops));
+                totemPopMap.removeInt(playerUUID);
+            }
+        }
     }
 
     private String getDeathMessage(String playerName, int pops) {
