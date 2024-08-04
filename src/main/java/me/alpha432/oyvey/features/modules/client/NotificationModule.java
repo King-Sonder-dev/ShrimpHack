@@ -81,7 +81,7 @@ public class NotificationModule extends Module {
         String futureaction = enabled ? Formatting.GREEN + "on" : Formatting.RED + "off";
         switch (this.notificationStyle.getValue()) {
             case FUTURE:
-                return Formatting.RED + "[Future] " + Formatting.RESET + moduleName + " toggled " + futureaction + ".";
+                return Formatting.RED + "[Future] " + Formatting.RESET + moduleName + " toggled " + futureaction + Formatting.RESET + ".";
             case PHOBOS:
                 return " " + Formatting.GOLD + moduleName + Formatting.RED + " has been " + action + ".";
             case DOTGOD:
@@ -89,10 +89,14 @@ public class NotificationModule extends Module {
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + moduleName + Formatting.RESET + " has been " + action + "!";
             case SNOW:
-                return "[" + Formatting.AQUA + "Snow" + Formatting.RESET + "]" + Formatting.RESET + " [" + Formatting.DARK_AQUA + moduleName  + Formatting.RESET+ "] " + action;
+                return Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "]" + Formatting.GRAY + " [" + Formatting.DARK_AQUA + moduleName  + Formatting.GRAY + "] " + action;
+            case TROLLGOD:
+                return Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + moduleName + Formatting.LIGHT_PURPLE + " was " + action;
+            case EARTH:
+                return Formatting.BOLD + moduleName + Formatting.RESET + " " + action;
             case NONE:
             default:
-                return " " + Formatting.WHITE + moduleName + " has been " + Formatting.GREEN + action + Formatting.WHITE + ".";
+                return  Formatting.DARK_AQUA + moduleName + Formatting.RESET + " has been " + Formatting.BOLD + action;
         }
     }
 
@@ -106,6 +110,8 @@ public class NotificationModule extends Module {
         PHOBOS,
         DOTGOD,
         SN0W,
-        SNOW
+        SNOW,
+        TROLLGOD,
+        EARTH
     }
 }

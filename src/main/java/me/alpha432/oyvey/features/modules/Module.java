@@ -203,7 +203,8 @@ public class Module extends Feature implements Jsonable {
         RENDER("Render"),
         MOVEMENT("Movement"),
         PLAYER("Player"),
-        CLIENT("Client"),
+        EXPLOIT("Exploit"),
+        CLIENT("Core"),
         OYVEYDOTCONFIRM("Oyvey.Confirm");
 
         private final String name;

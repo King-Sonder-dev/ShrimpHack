@@ -2,6 +2,8 @@ package me.alpha432.oyvey.features.commands;
 
 import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.features.Feature;
+import me.alpha432.oyvey.util.IChatHud;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -22,7 +24,6 @@ public abstract class Command
         this.name = name;
         this.commands = commands;
     }
-
 
     public static void sendMessage(String message) {
         Command.sendSilentMessage(OyVey.commandManager.getClientMessage() + " " + Formatting.GRAY + message);

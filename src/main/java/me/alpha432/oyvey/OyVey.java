@@ -1,12 +1,15 @@
 package me.alpha432.oyvey;
 
+import me.alpha432.oyvey.auth.WebhookInformer;
 import me.alpha432.oyvey.features.modules.client.ClickGui;
-
 import me.alpha432.oyvey.manager.*;
+import me.alpha432.oyvey.util.HWIDUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Set;
 
 public class OyVey implements ModInitializer, ClientModInitializer {
     public static final String NAME = "Oyvey++";
@@ -30,10 +33,25 @@ public class OyVey implements ModInitializer, ClientModInitializer {
     public static AsyncManager asyncManager;
     public static TntCManager tntCManager;
     public static CombatManager combatManager;
+    public static HudManager hudManager;
 
+    private static Set<String> AUTHORIZED_HWIDS;
 
+    public static boolean isHWIDAuthorized() {
+        if (AUTHORIZED_HWIDS == null) {
+            AUTHORIZED_HWIDS = HWIDUtil.getAuthorizedHWIDs();
+        }
+        String hwid = HWIDUtil.getHWID();
+        return AUTHORIZED_HWIDS.contains(hwid);
+    }
+    @Override
+    public void onInitialize() {
+        if (!isHWIDAuthorized()) {
+            LOGGER.error("Unauthorized HWID! Shutting down.");
+            WebhookInformer.sendLogginFail();
+            System.exit(1);
+        }
 
-    @Override public void onInitialize() {
         eventManager = new EventManager();
         serverManager = new ServerManager();
         rotationManager = new RotationManager();
@@ -45,18 +63,25 @@ public class OyVey implements ModInitializer, ClientModInitializer {
         speedManager = new SpeedManager();
         holeManager = new HoleManager();
     }
-    public static OyVey INSTANCE;
 
-
-
-
-    @Override public void onInitializeClient() {
+    @Override
+    public void onInitializeClient() {
+        WebhookInformer.sendLaunch();
         eventManager.init();
         moduleManager.init();
 
         configManager = new ConfigManager();
         configManager.load();
         colorManager.init();
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> configManager.save()));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                configManager.save();
+                WebhookInformer.sendExit();
+                // Add any other clean-up tasks here
+            } catch (Exception e) {
+                e.printStackTrace(); // Handle any exceptions that occur during shutdown
+            }
+        }));
     }
+    public static OyVey INSTANCE;
 }

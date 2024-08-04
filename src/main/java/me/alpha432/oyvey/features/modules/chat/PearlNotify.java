@@ -94,19 +94,19 @@ public class PearlNotify extends Module {
         String prefix = "";
         switch (this.messageStyle.getValue()) {
             case FUTURE:
-                prefix = Formatting.RED + "[Future] " + Formatting.RESET + playerName + "§8 has just thrown a pearl heading " + facing + ".";
+                prefix = Formatting.RED + "[Future] " + Formatting.RESET + playerName + " has just thrown a pearl heading " + facing + ".";
                 break;
             case PHOBOS:
-                prefix = " " + Formatting.GOLD + playerName + Formatting.RED + "§8 has just thrown a pearl heading " + facing + ".";
+                prefix = " " + Formatting.GOLD + playerName + Formatting.RED + " has just thrown a pearl heading " + facing + ".";
                 break;
             case DOTGOD:
-                prefix = Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.DARK_AQUA + playerName + Formatting.LIGHT_PURPLE + "§8 has just thrown a pearl heading " + facing;
+                prefix = Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "DotGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.DARK_AQUA + playerName + Formatting.LIGHT_PURPLE + " has just thrown a pearl heading " + facing;
                 break;
             case SN0W:
-                prefix = Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + "§8 has just thrown a pearl heading " + facing + "!";
+                prefix = Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + " has just thrown a pearl heading " + facing + "!";
                 break;
             case SNOW:
-                prefix = "[" + Formatting.AQUA + "Snow" + Formatting.RESET + "]" + Formatting.RESET + " [" + Formatting.DARK_AQUA + "PearlNotify" + Formatting.RESET + "] " + playerName + "§8 has just thrown a pearl heading " + facing;
+                prefix = Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.RESET + Formatting.GRAY + "]" + Formatting.RESET + Formatting.GRAY + " [" + Formatting.DARK_AQUA + "PearlNotify" + Formatting.RESET + Formatting.GRAY + "] " + Formatting.RESET + playerName + " has just thrown a pearl heading " + facing;
                 break;
             case NONE:
                 prefix = Formatting.WHITE + playerName + " has been " + Formatting.GREEN + facing + Formatting.WHITE + ".";

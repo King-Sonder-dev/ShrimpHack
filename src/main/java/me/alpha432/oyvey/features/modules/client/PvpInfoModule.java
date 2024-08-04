@@ -3,6 +3,7 @@ package me.alpha432.oyvey.features.modules.client;
 import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.features.modules.Module;
+import me.alpha432.oyvey.features.modules.movement.InstantSpeedPlus;
 import me.alpha432.oyvey.features.settings.Setting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -15,8 +16,12 @@ import java.util.List;
 
 public class PvpInfoModule extends Module {
     // Settings for PvpInfo
-    public Setting<Integer> gety = this.register(new Setting<>("Y", 205, 0, 485));
-    public Setting<Integer> getx = this.register(new Setting<>("X", 0, 0, 710));
+    private final Setting<TextMode> textMode = this.register(new Setting<>("TextMode", TextMode.OYVEY));
+
+    public final Setting<String> custom = new Setting<>("Custom", "Oyvey.pub");
+
+    public final Setting<Integer> gety = this.register(new Setting<>("Y", 205, 0, 485));
+    public final Setting<Integer> getx = this.register(new Setting<>("X", 0, 0, 710));
     private final Setting<Boolean> showExp = this.register(new Setting<>("ShowExp", true));
     private final Setting<Boolean> showCrystals = this.register(new Setting<>("ShowCrystals", true));
     private final Setting<Boolean> showPLR = this.register(new Setting<>("ShowPLR", true));
@@ -27,13 +32,77 @@ public class PvpInfoModule extends Module {
         super("PvpInfo", "Displays PvP related information", Category.CLIENT, true, false, false);
     }
 
+    public String getWatermark() {
+        switch (textMode.getValue()) {
+            case FUTURE:
+                return "Future v2.13.5";
+            case FUTUREBETA:
+                return "Future v2.13.5-extern+274.ba4c68c147";
+            case DOTGOD:
+                return "DotGod.CC";
+            case PHOBOS:
+                return "Phobos.eu";
+            case TROLLGOD:
+                return "Trollgod.CC";
+            case OYVEY:
+                return OyVey.NAME + " " + OyVey.VERSION;
+            case OYVEYDOTPUB:
+                return "Oyvey.pub";
+            case MIO:
+                return "Mio v2.0.2";
+            case MIONIGHTLY:
+                return "Mio v2.0.2-nightly";
+            case MIODOTME:
+                return "Mioclient.me";
+            case SNOWBETA:
+                return "Snow 4.4-beta";
+            case NUTGOD:
+                return "Nutgod.cc";
+            case GONDAL:
+                return "Gondal.club";
+            case MCDONALDS:
+                return "McDonal Client";
+            case RATWARE:
+                return "Ratware";
+            case EARTHHACK:
+                return  "3arthh4ck";
+            case AUTOWINCC:
+                return "Autowin.cc";
+            case SN0W:
+                return "Sn0w";
+            case ONEHACK:
+                return "1hack.org";
+            case SKULLHACK:
+                return "Skullhack";
+            case PUTAHACKNN:
+                return "Putahack.nn";
+            case FLORADOTNET:
+                return "Flora.net";
+            case FLORADOTNETDEV:
+                return "FLora.net v2.0.0-DEV";
+            case CLOWNGOD:
+                return "Clowngod.cc";
+            case TATERGOD:
+                return "TaterGOD.cc";
+            case ZIPCLUB:
+                return "Zip.club";
+            case BUTTERFLY:
+                return "butterfly v2.3.3";
+            case PASTBETA:
+                return "Past v3.11-beta+2.5fda9d5127+";
+            default:
+                return custom.getValue();
+        }
+    }
+
     @Override
     public void onRender2D(Render2DEvent event) {
         int x = this.getx.getPlannedValue();
         int y = this.gety.getPlannedValue();
         int color = OyVey.colorManager.getColorAsInt();
+        String displayText = getWatermark();
 
-        event.getContext().drawTextWithShadow(mc.textRenderer, "Oyvey.pub", x, y, color);
+        event.getContext().drawTextWithShadow(mc.textRenderer, displayText, x, y, color);
         y += mc.textRenderer.fontHeight;
 
         // Render "Exp" first
@@ -50,6 +119,7 @@ public class PvpInfoModule extends Module {
             y += mc.textRenderer.fontHeight;
         }
 
+        // Render "PLR"
         if (showPLR.getValue()) {
             String plrText = "PLR";
             int plrColor = getPLRColor();
@@ -57,12 +127,14 @@ public class PvpInfoModule extends Module {
             y += mc.textRenderer.fontHeight;
         }
 
+        // Render "Ping"
         if (showPing.getValue()) {
             String pingText = getPing() + " Ms";
             event.getContext().drawTextWithShadow(mc.textRenderer, pingText, x, y, getPingColor());
             y += mc.textRenderer.fontHeight;
         }
 
+        // Render "Totems"
         if (showTotems.getValue()) {
             String totemsText = "Totems: " + getTotemCount();
             event.getContext().drawTextWithShadow(mc.textRenderer, totemsText, x, y, color);
@@ -118,6 +190,7 @@ public class PvpInfoModule extends Module {
         }
         return 0xFF0000; // Default to Red if player is null
     }
+
     private int getPing() {
         return OyVey.serverManager.getPing();
     }
@@ -141,7 +214,6 @@ public class PvpInfoModule extends Module {
         return 0;
     }
 
-
     private int getPingColor() {
         int ping = getPing();
         if (ping <= 50) {
@@ -151,5 +223,36 @@ public class PvpInfoModule extends Module {
         } else {
             return 0xFF0000; // Red
         }
+    }
+
+    public enum TextMode {
+        OYVEY,
+        OYVEYDOTPUB,
+        BUTTERFLY,
+        PASTBETA,
+        ZIPCLUB,
+        TATERGOD,
+        CLOWNGOD,
+        FLORADOTNET,
+        FLORADOTNETDEV,
+        PUTAHACKNN,
+        SKULLHACK,
+        ONEHACK,
+        SN0W,
+        AUTOWINCC,
+        EARTHHACK,
+        RATWARE,
+        MCDONALDS,
+        GONDAL,
+        NUTGOD,
+        TROLLGOD,
+        FUTURE,
+        FUTUREBETA,
+        DOTGOD,
+        PHOBOS,
+        MIO,
+        MIONIGHTLY,
+        MIODOTME,
+        SNOWBETA
     }
 }

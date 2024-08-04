@@ -12,21 +12,26 @@ import me.alpha432.oyvey.features.modules.chat.chatmodifier.ChatModifier;
 import me.alpha432.oyvey.features.modules.client.*;
 import me.alpha432.oyvey.features.modules.combat.Autoarmor.AutoArmor;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
+import me.alpha432.oyvey.features.modules.combat.CrystalPredict;
 import me.alpha432.oyvey.features.modules.combat.autocrystal.AutoCrystal;
 import me.alpha432.oyvey.features.modules.combat.autototem.AutoTotem;
 import me.alpha432.oyvey.features.modules.combat.burrow.Burrow;
 import me.alpha432.oyvey.features.modules.combat.tntaura.TNTAura;
+import me.alpha432.oyvey.features.modules.exploit.HitboxDesyncModule;
+import me.alpha432.oyvey.features.modules.exploit.PingSpoof;
 import me.alpha432.oyvey.features.modules.misc.*;
 import me.alpha432.oyvey.features.modules.misc.Fakeplayer.FakePlayer;
 import me.alpha432.oyvey.features.modules.misc.autoauth.AutoAuth;
 import me.alpha432.oyvey.features.modules.movement.*;
 import me.alpha432.oyvey.features.modules.movement.flight.Flight;
 import me.alpha432.oyvey.features.modules.movement.noslow.NoSlow;
+import me.alpha432.oyvey.features.modules.oyveydotconfirm.HudModuleOld;
 import me.alpha432.oyvey.features.modules.player.*;
 import me.alpha432.oyvey.features.modules.player.fastuse.FastUse;
 import me.alpha432.oyvey.features.modules.player.hotbarreplenish.HotbarReplenish;
 import me.alpha432.oyvey.features.modules.player.middleclick.MiddleClick;
 import me.alpha432.oyvey.features.modules.player.speedmine.MiningTS;
+import me.alpha432.oyvey.features.modules.player.throwpearl.ThrowPearl;
 import me.alpha432.oyvey.features.modules.player.velocity.Velocity;
 import me.alpha432.oyvey.features.modules.render.*;
 import me.alpha432.oyvey.features.modules.render.cameraclip.NoCameraClip;
@@ -49,16 +54,20 @@ public class ModuleManager implements Jsonable, Util {
 
 
     public void init() {
-        modules.add(new DiscordRPC());
+        modules.add(new Autoez());
+        modules.add(new HUD());
+        modules.add(new RPC());
         modules.add(new HudModule());
+        modules.add(new CrystalPredict());
         modules.add(new ClickGui());
         modules.add(new Stairs());
         modules.add(new HoleESP());
-        modules.add(new HudModuleRewrite());
         modules.add(new BurrowNotifier());
         modules.add(new LongJump());
         modules.add(new PvpInfoModule());
         modules.add(new GhastSpawnNotifier());
+        modules.add(new ForceSneak());
+        modules.add(new PingSpoof());
         modules.add(new AutoPhase());
         modules.add(new WordGuard());
         modules.add(new MSChecker());
@@ -118,6 +127,8 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new ChatModifier());
         modules.add(new Popcounterplus());
         modules.add(new Poplag());
+        modules.add(new ThrowPearl());
+        modules.add(new HudModuleOld());
     }
 
     public Module getModuleByName(String name) {

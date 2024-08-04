@@ -65,7 +65,7 @@ public final class Burrow extends Module {
     private static Burrow instance;
 
     public Burrow() {
-        super("AutoBurrow", "Burrow", Module.Category.COMBAT, true, false, false);
+        super("OldBurrow", "Burrow", Module.Category.COMBAT, true, false, false);
         instance  = this;
     }
 

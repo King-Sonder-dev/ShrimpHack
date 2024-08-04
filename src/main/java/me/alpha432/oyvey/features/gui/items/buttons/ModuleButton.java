@@ -6,9 +6,12 @@ import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.modules.client.ClickGui;
 import me.alpha432.oyvey.features.settings.Bind;
 import me.alpha432.oyvey.features.settings.Setting;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
@@ -53,6 +56,10 @@ public class ModuleButton
     @Override
     public void drawScreen(DrawContext context, int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(context, mouseX, mouseY, partialTicks);
+        MinecraftClient client = MinecraftClient.getInstance();
+
+        client.getTextureManager().bindTexture(new Identifier("minecraft", "textures/gear.png")); // Update "modid" to your mod ID
+
         if (ClickGui.getInstance().plusColor.getValue()) {
             drawString(!this.subOpen ? "+" : "-", this.x - 1.0f + (float) this.width - 8.0f, this.y + 4.0f, new Color(ClickGui.getInstance().plusRed.getValue(), ClickGui.getInstance().plusGreen.getValue(), ClickGui.getInstance().plusBlue.getValue(), ClickGui.getInstance().plusAlpha.getValue()));//(!this.subOpen ? "+" : "-", this.x - 1.0f + (float) this.width - 8.0f, this.y + 4.0f, -1, false);
         }
