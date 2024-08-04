@@ -58,8 +58,13 @@ public class RenderUtil implements Util {
             drawBlockOutline(pos, secondC ? secondColor : color, lineWidth, air);
         }
     }
+    public static void drawTextTwo(final BlockPos pos, final String text, final Color color) {
+        if (pos == null || text == null) {
+            return;
+        }
+    }
 
-    public static void drawBoxESP(final BlockPos pos, final Color color, final boolean secondC, final Color secondColor, final float lineWidth, final boolean outline, final boolean box, final int boxAlpha, final boolean air, final double height, final boolean gradientBox, final boolean gradientOutline, final boolean invertGradientBox, final boolean invertGradientOutline, final int gradientAlpha) {
+        public static void drawBoxESP(final BlockPos pos, final Color color, final boolean secondC, final Color secondColor, final float lineWidth, final boolean outline, final boolean box, final int boxAlpha, final boolean air, final double height, final boolean gradientBox, final boolean gradientOutline, final boolean invertGradientBox, final boolean invertGradientOutline, final int gradientAlpha) {
         if (box) {
             drawBox(pos, new Color(color.getRed(), color.getGreen(), color.getBlue(), boxAlpha), height, gradientBox, invertGradientBox, gradientAlpha);
         }

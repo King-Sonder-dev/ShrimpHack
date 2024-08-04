@@ -36,9 +36,6 @@ dependencies {
     implementation "meteordevelopment:starscript:0.2.2"
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation "com.google.code.gson:gson:2.8.9" // GSON is not included but required
-    include (implementation 'club.minnced:discord-rpc-release:v3.4.0')
-    include (implementation 'com.github.MinnDevelopment:java-discord-rpc:v2.0.2')
-
 }
 
 processResources {

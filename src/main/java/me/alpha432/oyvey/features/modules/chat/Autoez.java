@@ -33,7 +33,7 @@ public class Autoez extends Module {
 
 
     public Autoez() {
-        super("CrackedPop", "ezzzz kits noobs", Module.Category.CHAT, true, false, false);
+        super("AutoEZ", "ezzzz kits noobs", Module.Category.CHAT, true, false, false);
     }
 
     @Subscribe//@EventHandler
