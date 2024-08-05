@@ -33,7 +33,13 @@ public class ColorUtil {
         double rainbowState = Math.ceil((double) (System.currentTimeMillis() + (long) delay) / 20.0);
         return Color.getHSBColor((float) ((rainbowState %= 360.0) / 360.0), ClickGui.getInstance().rainbowSaturation.getValue().floatValue() / 255.0f, ClickGui.getInstance().rainbowBrightness.getValue().floatValue() / 255.0f);
     }
+    public static int injectAlpha(int color, int alpha) {
+        return toRGBA(new Color(color).getRed(), new Color(color).getGreen(), new Color(color).getBlue(), alpha);
+    }
 
+    public static Color injectAlpha(Color color, int alpha) {
+        return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
+    }
     public static int toRGBA(float[] colors) {
         if (colors.length != 4) {
             throw new IllegalArgumentException("colors[] must have a length of 4!");

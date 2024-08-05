@@ -4,17 +4,25 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import me.alpha432.oyvey.util.traits.Util;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
 public class RenderUtil implements Util {
     private final TextRenderer textRenderer = mc.textRenderer;
+    public static final Matrix4f lastProjMat = new Matrix4f();
+    public static final Matrix4f lastModMat = new Matrix4f();
+    public static final Matrix4f lastWorldSpaceMatrix = new Matrix4f();
 
 
     public static void rect(MatrixStack stack, float x1, float y1, float x2, float y2, int color) {
@@ -30,7 +38,44 @@ public class RenderUtil implements Util {
 
     public static void drawBoxESP(BlockPos blockPos, Color color, float v, boolean b, boolean b1, Integer value) {
     }
+    public static Vec3d worldSpaceToScreenSpace(Vec3d pos) {
+        Camera camera = mc.getEntityRenderDispatcher().camera;
+        int displayHeight = mc.getWindow().getHeight();
+        int[] viewport = new int[4];
+        GL11.glGetIntegerv(GL11.GL_VIEWPORT, viewport);
+        Vector3f target = new Vector3f();
 
+        double deltaX = pos.x - camera.getPos().x;
+        double deltaY = pos.y - camera.getPos().y;
+        double deltaZ = pos.z - camera.getPos().z;
+
+        Vector4f transformedCoordinates = new Vector4f((float) deltaX, (float) deltaY, (float) deltaZ, 1.f).mul(lastWorldSpaceMatrix);
+        Matrix4f matrixProj = new Matrix4f(lastProjMat);
+        Matrix4f matrixModel = new Matrix4f(lastModMat);
+        matrixProj.mul(matrixModel).project(transformedCoordinates.x(), transformedCoordinates.y(), transformedCoordinates.z(), viewport, target);
+        return new Vec3d(target.x / mc.getWindow().getScaleFactor(), (displayHeight - target.y) / mc.getWindow().getScaleFactor(), target.z);
+    }
+    public static void drawText(DrawContext context, String text, Vec3d vector) {
+        drawText(context, text, vector, -1);
+    }
+
+    public static void drawText(DrawContext context, String text, Vec3d vector, int color) {
+        Vec3d preVec = vector;
+        vector = worldSpaceToScreenSpace(new Vec3d(vector.x, vector.y, vector.z));
+        if (vector.z > 0 && vector.z < 1) {
+            double posX = vector.x;
+            double posY = vector.y;
+            double endPosX = Math.max(vector.x, vector.z);
+            float scale = (float) Math.max(1 - EntityUtil.getEyesPos().distanceTo(preVec) * 0.025, 0);
+            float diff = (float) (endPosX - posX) / 2;
+            float textWidth = mc.textRenderer.getWidth(text) * scale;
+            float tagX = (float) ((posX + diff - textWidth / 2) * 1);
+            context.getMatrices().push();
+            context.getMatrices().scale(scale, scale, scale);
+            context.drawText(mc.textRenderer, text, (int) (tagX / scale), (int) ((posY - 11 + mc.textRenderer.fontHeight * 1.2) / scale), color, true);
+            context.getMatrices().pop();
+        }
+    }
     public void drawText(final BlockPos pos, final String text, final Color color) {
         if (pos == null || text == null) {
             return;
