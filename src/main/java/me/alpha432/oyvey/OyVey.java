@@ -34,6 +34,7 @@ public class OyVey implements ModInitializer, ClientModInitializer {
     public static TntCManager tntCManager;
     public static CombatManager combatManager;
     public static HudManager hudManager;
+    public static MineManager mineManager;
 
     private static Set<String> AUTHORIZED_HWIDS;
 
