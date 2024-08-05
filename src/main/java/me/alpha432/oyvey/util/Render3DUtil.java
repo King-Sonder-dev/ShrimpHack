@@ -101,11 +101,11 @@ public class Render3DUtil implements Util {
         RenderSystem.disableBlend();
     }
 
-    public static void drawFill(MatrixStack matrixStack, Box bb, Color color) {
-        draw3DBox(matrixStack, bb, color, false, true);
+    public static void drawFill(MatrixStack matrixStack, Box bb, Integer value, Integer value1, Integer value2, Integer value3) {
+        draw3DBox(matrixStack, bb,  value, value1, value2, value3, false, true);
     }
-    public static void drawBox(MatrixStack matrixStack, Box bb, Color color) {
-        draw3DBox(matrixStack, bb, color, true, false);
+    public static void drawBox(MatrixStack matrixStack, Box bb, Integer value, Integer value1, Integer value2, Integer value3) {
+        draw3DBox(matrixStack, bb, value, value1, value2, value3, true, false);
     }
     public static void drawLine(Box b, Color color, float lineWidth) {
         RenderSystem.enableBlend();
@@ -170,11 +170,10 @@ public class Render3DUtil implements Util {
     }
 
 
-    public static void draw3DBox(MatrixStack matrixStack, Box box, Color color) {
-        draw3DBox(matrixStack, box, color, true, true);
+    public static void draw3DBox(MatrixStack matrixStack, Box box,Integer value, Integer value1, Integer value2, Integer value3) {
+        draw3DBox(matrixStack, box, value, value1, value2, value3, true, true);
     }
-
-    public static void draw3DBox(MatrixStack matrixStack, Box box, Color color, boolean outline, boolean fill) {
+    public static void draw3DBox(MatrixStack matrixStack, Box box, Integer value, Integer value1, Integer value2, Integer value3, boolean outline, boolean fill) {
         box = box.offset(mc.gameRenderer.getCamera().getPos().negate());
         RenderSystem.enableBlend();
         GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -184,7 +183,7 @@ public class Render3DUtil implements Util {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
 
         if (outline) {
-            RenderSystem.setShaderColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, color.getAlpha() / 255f);
+            RenderSystem.setShaderColor(value, value1, value2, value3);
             RenderSystem.setShader(GameRenderer::getPositionProgram);
             bufferBuilder.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);
 
@@ -228,7 +227,7 @@ public class Render3DUtil implements Util {
         }
 
         if (fill) {
-            RenderSystem.setShaderColor(color.getRed() / 255f, color.getGreen() / 255f, color.getBlue() / 255f, color.getAlpha() / 255f);
+            RenderSystem.setShaderColor(value, value1, value2, value3);
             RenderSystem.setShader(GameRenderer::getPositionProgram);
 
             bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
@@ -388,4 +387,6 @@ public class Render3DUtil implements Util {
 
         return new Vector3f(xNormal / normalSqrt, yNormal / normalSqrt, zNormal / normalSqrt);
     }
+
+
 }
