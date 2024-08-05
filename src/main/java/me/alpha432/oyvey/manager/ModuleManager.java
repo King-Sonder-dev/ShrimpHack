@@ -58,7 +58,6 @@ public class ModuleManager implements Jsonable, Util {
     public void init() {
         modules.add(new RaytraceBypass());
         modules.add(new Autoez());
-        modules.add(new HitMarker());
         modules.add(new HUD());
         modules.add(new CAMessage());
         modules.add(new FCAIALM());
