@@ -1,7 +1,6 @@
 package me.alpha432.oyvey.features.modules.combat;
 
 import me.alpha432.oyvey.features.modules.Module;
-import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.settings.Setting;
 import net.minecraft.util.Formatting;

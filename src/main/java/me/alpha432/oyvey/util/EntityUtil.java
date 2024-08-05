@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 
 public class EntityUtil {
 
@@ -47,5 +48,8 @@ public class EntityUtil {
             entity.getItemUseTimeLeft();
             entity.swingHand(hand);
         }
+    }
+    public static BlockPos getPlayerPos() {
+        return new BlockPosX(mc.player.getPos());
     }
 }

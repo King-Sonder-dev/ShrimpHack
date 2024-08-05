@@ -1,12 +1,16 @@
 package me.alpha432.oyvey.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static me.alpha432.oyvey.util.traits.Util.mc;
 
 public class BlockUtil {
 
@@ -44,5 +48,30 @@ public class BlockUtil {
             default:
                 return false;
         }
+    }
+    public static boolean isHole(BlockPos pos) {
+        return isHole(pos, true, false, false);
+    }
+    public static boolean isHole(BlockPos pos, boolean canStand, boolean checkTrap, boolean anyBlock) {
+        int blockProgress = 0;
+        for (Direction i : Direction.values()) {
+            if (i == Direction.UP || i == Direction.DOWN) continue;
+            if (anyBlock && !mc.world.isAir(pos.offset(i)) || CombatUtil.isHard(pos.offset(i)))
+                blockProgress++;
+        }
+        return
+                (
+                        !checkTrap || (getBlock(pos) == Blocks.AIR
+                                && getBlock(pos.add(0, 1, 0)) == Blocks.AIR
+                                && getBlock(pos.add(0, 2, 0)) == Blocks.AIR)
+                )
+                        && blockProgress > 3
+                        && (!canStand || getState(pos.add(0, -1, 0)).blocksMovement());
+    }
+    public static BlockState getState(BlockPos pos) {
+        return mc.world.getBlockState(pos);
+    }
+    public static Block getBlock(BlockPos pos) {
+        return getState(pos).getBlock();
     }
 }

@@ -5,12 +5,15 @@ import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.features.modules.movement.InstantSpeedPlus;
 import me.alpha432.oyvey.features.settings.Setting;
+import me.alpha432.oyvey.util.BlockUtil;
+import me.alpha432.oyvey.util.EntityUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.List;
 
@@ -25,6 +28,8 @@ public class PvpInfoModule extends Module {
     private final Setting<Boolean> showExp = this.register(new Setting<>("ShowExp", true));
     private final Setting<Boolean> showCrystals = this.register(new Setting<>("ShowCrystals", true));
     private final Setting<Boolean> showPLR = this.register(new Setting<>("ShowPLR", true));
+    private final Setting<Boolean> showSafety = this.register(new Setting<>("ShowSafety", true));
+
     private final Setting<Boolean> showPing = this.register(new Setting<>("ShowPing", true));
     private final Setting<Boolean> showTotems = this.register(new Setting<>("ShowTotems", true));
 
@@ -127,6 +132,14 @@ public class PvpInfoModule extends Module {
             y += mc.textRenderer.fontHeight;
         }
 
+        // Render "Safety"
+        if (showSafety.getValue()) {
+            String safetyText = getSafetyText();
+            int safetyColor = getSafetyColor();
+            event.getContext().drawTextWithShadow(mc.textRenderer, safetyText, x, y, safetyColor);
+            y += mc.textRenderer.fontHeight;
+        }
+
         // Render "Ping"
         if (showPing.getValue()) {
             String pingText = getPing() + " Ms";
@@ -189,6 +202,14 @@ public class PvpInfoModule extends Module {
             }
         }
         return 0xFF0000; // Default to Red if player is null
+    }
+
+    private String getSafetyText() {
+        return BlockUtil.isHole(EntityUtil.getPlayerPos()) ? "SAFE" : "UNSAFE";
+    }
+
+    private int getSafetyColor() {
+        return BlockUtil.isHole(EntityUtil.getPlayerPos()) ? 0x00FF00 : 0xFF0000; // Green if in a hole, Red if not
     }
 
     private int getPing() {
