@@ -2,6 +2,7 @@ package me.alpha432.oyvey.manager;
 
 import me.alpha432.oyvey.event.impl.UpdateWalkingEvent;
 import me.alpha432.oyvey.util.MathUtil;
+import me.alpha432.oyvey.util.models.Timer;
 import me.alpha432.oyvey.util.traits.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -21,7 +22,8 @@ public class RotationManager implements Util {
     private int ticksExisted;
     public float lastYaw = 0;
     public float lastPitch = 0;
-
+    public static final Timer ROTATE_TIMER = new Timer();
+    public static Vec3d directionVec = null;
     public void updateRotations() {
         this.yaw = mc.player.getYaw();
         this.pitch = mc.player.getPitch();

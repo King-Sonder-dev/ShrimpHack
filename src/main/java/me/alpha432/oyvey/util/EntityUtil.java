@@ -1,15 +1,23 @@
 package me.alpha432.oyvey.util;
 
 import me.alpha432.oyvey.OyVey;
+import me.alpha432.oyvey.manager.RotationManager;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.c2s.play.CloseHandledScreenC2SPacket;
+import net.minecraft.network.packet.c2s.play.HandSwingC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.util.Hand;
+import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.RaycastContext;
+
+import static me.alpha432.oyvey.util.RotationUtil.getLegitRotations;
 
 public class EntityUtil {
 
@@ -69,5 +77,27 @@ public class EntityUtil {
 
     public static void syncInventory() {
          mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(mc.player.currentScreenHandler.syncId));
+    }
+    public static Vec3d getEyesPos() {
+        return mc.player.getEyePos();
+    }
+
+    public static boolean canSee(BlockPos pos, Direction side) {
+        Vec3d testVec = pos.toCenterPos().add(side.getVector().getX() * 0.5, side.getVector().getY() * 0.5, side.getVector().getZ() * 0.5);
+        HitResult result = mc.world.raycast(new RaycastContext(getEyesPos(), testVec, RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, mc.player));
+        return result == null || result.getType() == HitResult.Type.MISS;
+    }
+    public static void faceVector(Vec3d directionVec) {
+        RotationManager.ROTATE_TIMER.reset();
+        RotationManager.directionVec = directionVec;
+        float[] angle = getLegitRotations(directionVec);
+        if (angle[0] == OyVey.rotationManager.lastYaw && angle[1] == OyVey.rotationManager.lastPitch) return;
+        sendLook(new PlayerMoveC2SPacket.LookAndOnGround(angle[0], angle[1], mc.player.isOnGround()));
+    }
+
+    public static void faceVectorNoStay(Vec3d directionVec) {
+        float[] angle = getLegitRotations(directionVec);
+        if (angle[0] == OyVey.rotationManager.lastYaw && angle[1] == OyVey.rotationManager.lastPitch) return;
+        sendLook(new PlayerMoveC2SPacket.LookAndOnGround(angle[0], angle[1], mc.player.isOnGround()));
     }
 }
