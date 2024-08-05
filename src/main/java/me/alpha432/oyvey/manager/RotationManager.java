@@ -1,14 +1,26 @@
 package me.alpha432.oyvey.manager;
 
+import me.alpha432.oyvey.event.impl.UpdateWalkingEvent;
 import me.alpha432.oyvey.util.MathUtil;
 import me.alpha432.oyvey.util.traits.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.entity.Entity;
 
 public class RotationManager implements Util {
     private float yaw;
     private float pitch;
+    public static UpdateWalkingEvent lastEvent;
+    private static float renderPitch;
+    private static float renderYawOffset;
+    private static float prevPitch;
+    private static float prevRenderYawOffset;
+    private static float prevRotationYawHead;
+    private static float rotationYawHead;
+    private int ticksExisted;
+    public float lastYaw = 0;
+    public float lastPitch = 0;
 
     public void updateRotations() {
         this.yaw = mc.player.getYaw();
@@ -72,4 +84,82 @@ public class RotationManager implements Util {
         this.pitch = pitch;
     }
 
+    public void setRotation(float yaw, float pitch, boolean force) {
+        if (mc.player == null) return;
+        if (mc.player.age == ticksExisted && !force) {
+            return;
+        }
+
+        ticksExisted = mc.player.age;
+        prevPitch = renderPitch;
+
+        prevRenderYawOffset = renderYawOffset;
+        renderYawOffset = getRenderYawOffset(yaw, prevRenderYawOffset);
+
+        prevRotationYawHead = rotationYawHead;
+        rotationYawHead = yaw;
+
+        renderPitch = pitch;
+    }
+
+    public static float getRenderPitch() {
+        return renderPitch;
+    }
+
+    public static float getRotationYawHead() {
+        return rotationYawHead;
+    }
+
+    public static float getRenderYawOffset() {
+        return renderYawOffset;
+    }
+
+    public static float getPrevPitch() {
+        return prevPitch;
+    }
+
+    public static float getPrevRotationYawHead() {
+        return prevRotationYawHead;
+    }
+
+    public static float getPrevRenderYawOffset() {
+        return prevRenderYawOffset;
+    }
+
+    private float getRenderYawOffset(float yaw, float offsetIn) {
+        float result = offsetIn;
+        float offset;
+
+        double xDif = mc.player.getX() - mc.player.prevX;
+        double zDif = mc.player.getZ() - mc.player.prevZ;
+
+        if (xDif * xDif + zDif * zDif > 0.0025000002f) {
+            offset = (float) MathHelper.atan2(zDif, xDif) * 57.295776f - 90.0f;
+            float wrap = MathHelper.abs(MathHelper.wrapDegrees(yaw) - offset);
+            if (95.0F < wrap && wrap < 265.0F) {
+                result = offset - 180.0F;
+            } else {
+                result = offset;
+            }
+        }
+        if (mc.player.handSwingProgress > 0.0F) {
+            result = yaw;
+        }
+
+        result = offsetIn + MathHelper.wrapDegrees(result - offsetIn) * 0.3f;
+        offset = MathHelper.wrapDegrees(yaw - result);
+
+        if (offset < -75.0f) {
+            offset = -75.0f;
+        } else if (offset >= 75.0f) {
+            offset = 75.0f;
+        }
+
+        result = yaw - offset;
+        if (offset * offset > 2500.0f) {
+            result += offset * 0.2f;
+        }
+
+        return result;
+    }
 }

@@ -1,16 +1,21 @@
 package me.alpha432.oyvey.util;
 
+import me.alpha432.oyvey.OyVey;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.c2s.play.CloseHandledScreenC2SPacket;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 
 public class EntityUtil {
 
     private static final MinecraftClient mc = MinecraftClient.getInstance();
+    public static boolean rotating = false;
+
 
     public static double[] forward(double speed) {
         ClientPlayerEntity player = mc.player;
@@ -51,5 +56,18 @@ public class EntityUtil {
     }
     public static BlockPos getPlayerPos() {
         return new BlockPosX(mc.player.getPos());
+    }
+    public static void sendLook(PlayerMoveC2SPacket packet) {
+        if (!packet.changesLook() || packet.getYaw(114514) == OyVey.rotationManager.lastYaw && packet.getPitch(114514) == OyVey.rotationManager.lastPitch) {
+            return;
+        }
+        rotating = true;
+        OyVey.rotationManager.setRotation(packet.getYaw(0), packet.getPitch(0), true);
+        mc.player.networkHandler.sendPacket(packet);
+        rotating = false;
+    }
+
+    public static void syncInventory() {
+         mc.player.networkHandler.sendPacket(new CloseHandledScreenC2SPacket(mc.player.currentScreenHandler.syncId));
     }
 }

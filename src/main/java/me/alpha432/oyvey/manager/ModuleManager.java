@@ -10,6 +10,7 @@ import me.alpha432.oyvey.features.modules.chat.*;
 import me.alpha432.oyvey.features.modules.chat.AutoBait;
 import me.alpha432.oyvey.features.modules.chat.chatmodifier.ChatModifier;
 import me.alpha432.oyvey.features.modules.client.*;
+import me.alpha432.oyvey.features.modules.client.RPC.DiscordRPC;
 import me.alpha432.oyvey.features.modules.combat.Autoarmor.AutoArmor;
 import me.alpha432.oyvey.features.modules.combat.CAMessage;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
@@ -61,7 +62,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new HUD());
         modules.add(new CAMessage());
         modules.add(new FCAIALM());
-        modules.add(new RPC());
+        modules.add(new DiscordRPC());
         modules.add(new HudModule());
         modules.add(new CrystalPredict());
         modules.add(new ClickGui());
