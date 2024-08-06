@@ -21,7 +21,6 @@ import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 
 public class ChatModifier extends Module {
-    public static String SUFFIX = "";
     public static String COLORTEXT = "";
     public static String GLOBAL = "";
     public static String COLOR = "";
@@ -30,8 +29,6 @@ public class ChatModifier extends Module {
     private static ChatModifier INSTANCE = new ChatModifier();
     public Setting<Boolean> globalchat = this.register(new Setting<Boolean>("GlobalChat", true, "Global Chat Prefix"));
     public Setting<GlobalChat> globalmode = register(new Setting<GlobalChat>("GlobalChat", GlobalChat.NONE, v -> this.globalchat.getValue()));
-    public Setting<Suffix> suffix = this.register(new Setting<Suffix>("Suffix", Suffix.NONE, "Your Suffix."));
-    public Setting<String> custom = this.register(new Setting("Custom", "Oyvey++", v -> this.suffix.getValue() == Suffix.CUSTOM));
     public Setting<TextColor> textcolor = this.register(new Setting<TextColor>("TextColor", TextColor.NONE, "Your text color."));
     public Setting<StiTextColor> stiTextColor = this.register(new Setting<StiTextColor>("StiTextColor", StiTextColor.NONE, "Your sti text color."));
 	public Setting<Boolean> infiniteChatBox = this.register(new Setting<Boolean>("infiniteChatBox", false,"Makes your chat infinite."));
@@ -72,127 +69,6 @@ public class ChatModifier extends Module {
             }
             if (Objects.equals(packet.chatMessage(), string)) {
                 return;
-            }
-
-            switch (this.suffix.getValue()) {
-                case FUTURE: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("future v2.13.5");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case ABYSS: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("abyss v4.0");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case PYRO: {
-                    SUFFIX = this.convertToUnicode("» ҉ ᴘʏʀᴏ ᴄʟɪᴇɴᴛ ҉");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case RUSHERHACK: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("Rusherhack");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case PHOBOS: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("phobos.eu");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case EARTHACK: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("earthack v1.7 - 1.20.4");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case PUTAHACK: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("Putahack.nn");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case BOZE: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("boze.dev");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case LEUXBACKDOOR: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("leuxbackdoor v0.9.9 - 1.20.4");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case OYVEY: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("oyvey 0.8");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case SNOW: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode("snow v5.1.1");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case OCTOHACK: {
-                    SUFFIX = " \u23d0 " + this.convertToUnicode("ΞＯᴄᴛ๏ɦΛᴄᏦΞ");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case OCTOHACKPLUS: {
-                    SUFFIX = " \u23d0 " + this.convertToUnicode("✳ΞＯᴄᴛ๏ɦΛᴄᏦ ₱ⱠᑘֆΞ✳");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case NEPTUNE: {
-                    SUFFIX = " \u23d0 " + this.convertToUnicode(" ̷Ｎєρｔυｎᴇ̷");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case VONWARE: {
-                    SUFFIX = " \u23d0 " + this.convertToUnicode("✴Ｖ♡ｎｗᗩⱤε.ᴅᴇᴠ✴");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case VONWARE: {
-                    SUFFIX = " \u23d0 " + this.convertToUnicode("✳ΞＶｏｎｗａｒｅ.вｅƬȺΞ✳");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case HEPHAESTUS: {
-                    SUFFIX = " \u23d0 " + this.convertToUnicode("НεᎮнᗩεѕƭυѕ");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case TROLL: {
-                    SUFFIX = " \u23d0 " + this.convertToUnicode("eeᴇᴇʀʜᴇᴄᴋ ɪ.2.1 ⏐ ᴘᴇʀʏᨃs ᴘᴏʙᴏʙⅽ ⏐ ᴋᴀm1 ᴀⅰvⅽ55 ⏐ ᴘʜᴏʙᴇⅽ ⏐ mᴇɢʏn ɪⅽ ᴀⅰᴛ ⏐ 3vᴛ ⏐ ЕЕЕuropa ⏐ (っ•ω•)っ ♥ ⏐ SMP WITHOUT AUXOL! ♥ ⏐ Oguzmad.inc\n");
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case CUSTOM: {
-                    SUFFIX = " \u00bb " + this.convertToUnicode(this.custom.getValue());
-                    break;
-                }
-            }
-            switch (this.suffix.getValue()) {
-                case NONE: {
-                    SUFFIX = "";
-                    break;
-                }
             }
 
             switch (this.stiTextColor.getValue()) {
@@ -437,8 +313,8 @@ public class ChatModifier extends Module {
                     break;
                 }
             }
-            string = COLORTEXT + COLOR + packet.chatMessage() + SUFFIX;
-            mc.player.networkHandler.sendChatMessage(COLORTEXT + COLOR + packet.chatMessage() + SUFFIX);
+            string = COLORTEXT + COLOR + packet.chatMessage();
+            mc.player.networkHandler.sendChatMessage(COLORTEXT + COLOR + packet.chatMessage());
             event.setCancelled(true);
         }
     }
@@ -669,28 +545,5 @@ public class ChatModifier extends Module {
         RED,
         DARKRED,
         GRAY;
-    }
-
-    public enum Suffix {
-        NONE, 
-        FUTURE,
-        ABYSS,
-        PYRO,
-        RUSHERHACK,
-        PHOBOS,
-        EARTHACK,
-        PUTAHACK,
-        BOZE,
-        LEUXBACKDOOR,
-        OYVEY,
-        SNOW,
-        OCTOHACK,
-        OCTOHACKPLUS,
-        NEPTUNE,
-        VONWARE,
-        VONWAREBETA,
-        HEPHAESTUS,
-        TROLL,
-        CUSTOM;
     }
 }
