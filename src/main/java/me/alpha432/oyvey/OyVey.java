@@ -1,7 +1,6 @@
 package me.alpha432.oyvey;
 
 import me.alpha432.oyvey.auth.WebhookInformer;
-import me.alpha432.oyvey.features.modules.client.ClickGui;
 import me.alpha432.oyvey.manager.*;
 import me.alpha432.oyvey.util.HWIDUtil;
 import net.fabricmc.api.ClientModInitializer;
@@ -45,6 +44,7 @@ public class OyVey implements ModInitializer, ClientModInitializer {
         String hwid = HWIDUtil.getHWID();
         return AUTHORIZED_HWIDS.contains(hwid);
     }
+
     @Override
     public void onInitialize() {
         if (!isHWIDAuthorized()) {
