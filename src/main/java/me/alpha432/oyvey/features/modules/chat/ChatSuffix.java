@@ -15,7 +15,7 @@ public class ChatSuffix extends Module {
     private String string;
 
 
-    public ChatSuffix() {super("ChatSuffix", "append a string to your message", Category.CHAT, true, false, false); }
+    public ChatSuffix() {super("ChatSuffix", "append a string to your message", Category.CHAT, true, false, false);  this.setInstance(); }
 
     public Setting<Suffix> suffix = this.register(new Setting<Suffix>("Suffix", Suffix.NONE, "Your Suffix."));
     public Setting<String> custom = this.register(new Setting("Custom", "Oyvey++", v -> this.suffix.getValue() == Suffix.CUSTOM));
