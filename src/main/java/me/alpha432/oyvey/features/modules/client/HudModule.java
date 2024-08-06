@@ -22,6 +22,7 @@ public class HudModule extends Module {
         features.add(new greeter(watermark));
         features.add(new coords());
         features.add(new ArrayListFeature());
+        features.add(new Potions());
 
         // Register settings for each feature
         features.forEach(feature -> {

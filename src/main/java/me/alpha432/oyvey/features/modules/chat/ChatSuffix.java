@@ -57,7 +57,7 @@ public class ChatSuffix extends Module {
                     break;
                 }
                 case PYRO: {
-                    SUFFIX = this.convertToUnicode("» ҉ ᴘʏʀᴏ ᴄʟɪᴇɴᴛ ҉");
+                    SUFFIX = this.convertToUnicode(" » ҉ ᴘʏʀᴏ ᴄʟɪᴇɴᴛ ҉");
                     break;
                 }
                 case RUSHERHACK: {
