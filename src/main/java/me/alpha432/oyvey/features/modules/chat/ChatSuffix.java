@@ -20,12 +20,6 @@ public class ChatSuffix extends Module {
     public Setting<Suffix> suffix = this.register(new Setting<Suffix>("Suffix", Suffix.NONE, "Your Suffix."));
     public Setting<String> custom = this.register(new Setting("Custom", "Oyvey++", v -> this.suffix.getValue() == Suffix.CUSTOM));
 
-    @Override
-    public void onEnable() {
-        Command.serverSendMessage("meow");
-        this.disable();
-    }
-
     public static ChatSuffix getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new ChatSuffix();
