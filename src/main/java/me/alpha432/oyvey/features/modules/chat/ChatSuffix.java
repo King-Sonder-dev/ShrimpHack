@@ -119,8 +119,9 @@ public class ChatSuffix extends Module {
                     break;
                 }
             }
-            event.setCancelled(true);
+            string = packet.chatMessage() + SUFFIX;
             mc.player.networkHandler.sendChatMessage(packet.chatMessage() + SUFFIX);
+            event.setCancelled(true);
         }
     }
 

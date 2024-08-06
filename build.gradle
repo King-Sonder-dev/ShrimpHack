@@ -15,7 +15,6 @@ repositories {
         name = "meteor-maven"
         url = "https://maven.meteordev.org/releases"
     }
-
 }
 
 loom {
@@ -28,10 +27,10 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    //other things
+
+    // Other dependencies
     implementation "meteordevelopment:orbit:0.2.3"
     implementation "meteordevelopment:starscript:0.2.2"
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
@@ -39,6 +38,8 @@ dependencies {
     include (implementation 'club.minnced:discord-rpc-release:v3.4.0')
     include (implementation 'com.github.MinnDevelopment:java-discord-rpc:v2.0.2')
 
+    // Add the org.jsoup dependency
+    implementation 'org.jsoup:jsoup:1.14.3'
 }
 
 processResources {

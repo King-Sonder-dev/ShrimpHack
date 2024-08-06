@@ -60,6 +60,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new RaytraceBypass());
         modules.add(new Autoez());
         modules.add(new HUD());
+        modules.add(new KenCarsonModule());
         modules.add(new CAMessage());
         modules.add(new FCAIALM());
         modules.add(new DiscordRPC());
