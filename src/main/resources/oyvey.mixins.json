@@ -40,12 +40,10 @@
     "chatmodifier.ChatScreenMixin",
     "chatmodifier.InGameHudMixin",
     "chatmodifier.StringHelperMixin",
-    "MixinWorldRenderer"
+    "MixinWorldRenderer",
+    "AccessorPlayerMoveC2SPacket"
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "mixins": [
-    "AccessorPlayerMoveC2SPacket"
-  ]
+  }
 }

@@ -16,6 +16,9 @@ public interface IExplosion {
     @Mutable
     @Accessor("y")
     void setY(double y);
+    @Mutable
+    @Accessor("power")
+    void setPower(float power);
 
     @Mutable
     @Accessor("z")

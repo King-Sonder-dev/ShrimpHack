@@ -30,7 +30,7 @@ public class FCAIALM extends Module {
     Timer APtimer = new Timer();
 
     public FCAIALM() {
-        super("ClientChange", "very cool", Category.COMBAT, true, false, false);
+        super("FutureModuleChnager", "very cool", Category.COMBAT, true, false, false);
         this.setInstance();
     }
 
@@ -62,7 +62,7 @@ public class FCAIALM extends Module {
             }
         }
 // for future net.futureclient.client
-        if (event.getPacket().getClass().getName().contains("dev.boze")) {
+        if (event.getPacket().getClass().getName().contains("net.futureclient.client")) {
             APhasAttacked = true;
             APpacketAttacking = true;
         }

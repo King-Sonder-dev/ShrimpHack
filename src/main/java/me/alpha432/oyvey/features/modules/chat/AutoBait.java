@@ -16,6 +16,7 @@ public class AutoBait extends Module {
     private final List<String> sexscript = new ArrayList<>(BaitUtil.SEX_SCRIPT);
     private final List<String> spike = new ArrayList<>(BaitUtil.SPIKE_AND_KIDS);
     private final List<String> pkBait = new ArrayList<>(BaitUtil.PKBAIT);
+    private final List<String> ego = new ArrayList<>(BaitUtil.EGO);
     private final Timer timer = new Timer();
     private int index;
 
@@ -65,6 +66,8 @@ public class AutoBait extends Module {
                 return spike;
             case PKBAIT:
                 return pkBait;
+            case EGO:
+                return ego;
             default:
                 return new ArrayList<>();
         }
@@ -73,6 +76,7 @@ public class AutoBait extends Module {
     public enum Messagemode {
         SEX_SCRIPT,
         SPIKE_AND_KIDS,
-        PKBAIT
+        PKBAIT,
+        EGO
     }
 }

@@ -80,5 +80,18 @@ public class BaitUtil {
             "LETS GO PK VC LOL",
             "WHO ARE YOU"
     );
+    public static final Set<String> EGO = Sets.newHashSet(
+            "IM THE TOP PVPER",
+            "IM BETTER",
+            "IM THE KING OF HVH",
+            "IM THE #1 PVPER",
+            "IM ACTUALLY SO GOOD",
+            "REASON WHY I OWN THIS SERVER",
+            "IS ANYONE EVEN GOOD HERE",
+            "WHY AM I SO GOOD",
+            "EVERYONE IS SHIT COMPARED TO ME",
+            "MY SKILLS ARE JUST SO GOOD",
+            "WHY AM I THIS GOOD AT THIS GAME"
+    );
 
 }
