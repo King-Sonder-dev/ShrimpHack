@@ -3,7 +3,6 @@ package me.alpha432.oyvey;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
-
 import me.alpha432.oyvey.features.modules.client.RPC.ImageMode;
 import static me.alpha432.oyvey.util.traits.Util.mc;
 
@@ -19,7 +18,7 @@ public class DiscordRP {
         discordRichPresence.startTimestamp = System.currentTimeMillis() / 1000L;
 
         // Line 1: Use Minecraft username
-        discordRichPresence.details = String.valueOf(mc.player.getName().getString());
+        discordRichPresence.details = mc.player.getName().getString();
 
         // Set images based on the mode
         switch (imageMode) {
@@ -36,7 +35,7 @@ public class DiscordRP {
                 break;
         }
 
-        discordRichPresence.largeImageText = "UID: 1";
+        discordRichPresence.largeImageText = "Boyvey :3";
 
         discordRichPresence.partyId = "ae488379-351d-4a4f-ad32-2b9b01c91657";
         discordRichPresence.partySize = 1;
@@ -46,7 +45,7 @@ public class DiscordRP {
         DiscordRPC.INSTANCE.Discord_UpdatePresence(discordRichPresence);
 
         // Start a new thread to update the status periodically
-        Thread presenceThread = new Thread(() -> {
+        presenceThread = new Thread(() -> {
             try {
                 while (!Thread.currentThread().isInterrupted()) {
                     // Update state message periodically
@@ -63,7 +62,7 @@ public class DiscordRP {
                     DiscordRPC.INSTANCE.Discord_UpdatePresence(discordRichPresence);
                     Thread.sleep(delay);  // Use the delay from the setting
 
-                    discordRichPresence.state = String.valueOf(mc.player.getName().getString()) + " is my daddy :3";
+                    discordRichPresence.state = mc.player.getName().getString() + " is my daddy :3";
                     DiscordRPC.INSTANCE.Discord_UpdatePresence(discordRichPresence);
                     Thread.sleep(delay);  // Use the delay from the setting
 

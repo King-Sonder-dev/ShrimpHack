@@ -74,7 +74,7 @@ public class Popcounterplus extends Module {
                     Command.sendSilentMessage(Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + Formatting.AQUA + " has" + " popped their " + Formatting.BLUE + sn0wMessage + Formatting.AQUA + " totem" + sn0wtwoMessage);
                 break;
                 case SNOW:
-                    Command.sendSilentMessage(Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] "+ Formatting.GRAY +  "["  + Formatting.DARK_AQUA + "Popcounter" +  Formatting.GRAY + "] " + Formatting.RESET + playerName + " popped " + popMessage + "!");
+                    Command.sendSilentMessage(Formatting.DARK_GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.DARK_GRAY + "] "+ Formatting.DARK_GRAY +  "["  + Formatting.DARK_AQUA + "Popcounter" +  Formatting.DARK_GRAY + "] " + Formatting.RESET + playerName + " popped " + popMessage + "!");
                 break;
                 case TROLLGOD:
                     Command.sendSilentMessage(Formatting.DARK_PURPLE + "[" + Formatting.LIGHT_PURPLE + "TrollGod.CC" + Formatting.DARK_PURPLE + "] " + Formatting.LIGHT_PURPLE + playerName + " has popped " + Formatting.RED + dotgotMessage + Formatting.LIGHT_PURPLE  + dotgodtwoMessage + " in total!");
@@ -112,7 +112,7 @@ public class Popcounterplus extends Module {
             case SN0W:
                 return Formatting.BLUE + "[" + Formatting.AQUA + "❄" + Formatting.BLUE + "] " + Formatting.RESET + (this.bold.getValue() ? Formatting.BOLD : "") + playerName + Formatting.RESET + " died after popping " + pops + (pops == 1 ? " totem" : " totems") + "!";
             case SNOW:
-                return Formatting.GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.GRAY + "] " + "[" + Formatting.DARK_BLUE + "Popcounter" + "]" + Formatting.RED + playerName + " popped " + Formatting.GREEN + pops + Formatting.RED + " totems!";
+                return Formatting.DARK_GRAY + "[" + Formatting.AQUA + "Snow" + Formatting.DARK_GRAY + "] " + Formatting.GRAY + "[" + Formatting.DARK_AQUA + "Popcounter" +  Formatting.GRAY + "] " + Formatting.RESET + Formatting.RED + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.RED + " totems!";
             case NONE:
             default:
                 return " " + Formatting.WHITE + playerName + " died after popping " + Formatting.GREEN + pops + Formatting.WHITE + " Totems!";

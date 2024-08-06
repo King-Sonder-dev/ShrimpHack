@@ -24,7 +24,4 @@ public class DiscordRPC extends Module {
         discordRP.stop();
         super.onDisable();
     }
-
-    // Enum for image modes
-
 }
