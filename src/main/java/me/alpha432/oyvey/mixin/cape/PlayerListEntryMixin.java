@@ -38,189 +38,29 @@ public abstract class PlayerListEntryMixin {
         SkinTextures oldTextures = cir.getReturnValue();
         Identifier capeTexture;
 
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.FUTURE) {
-            capeTexture = Future;
-            SkinTextures Textures = new SkinTextures(oldTextures.texture(), oldTextures.textureUrl(), capeTexture, capeTexture, oldTextures.model(), oldTextures.secure());
-            cir.setReturnValue(Textures);
-        }
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.RUSHERHACK) {
-            capeTexture = Rusherhack;
-            SkinTextures Textures = new SkinTextures(oldTextures.texture(), oldTextures.textureUrl(), capeTexture, capeTexture, oldTextures.model(), oldTextures.secure());
-            cir.setReturnValue(Textures);
-        }
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.HYPER) {
-            capeTexture = Hyper;
-            SkinTextures Textures = new SkinTextures(oldTextures.texture(), oldTextures.textureUrl(), capeTexture, capeTexture, oldTextures.model(), oldTextures.secure());
-            cir.setReturnValue(Textures);
-        }
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.COBALT) {
-            capeTexture = Cobalt;
-            SkinTextures Textures = new SkinTextures(oldTextures.texture(), oldTextures.textureUrl(), capeTexture, capeTexture, oldTextures.model(), oldTextures.secure());
-            cir.setReturnValue(Textures);
-        }
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.FOUNDER) {
-            capeTexture = FOUNDER;
-            SkinTextures Textures = new SkinTextures(oldTextures.texture(), oldTextures.textureUrl(), capeTexture, capeTexture, oldTextures.model(), oldTextures.secure());
-            cir.setReturnValue(Textures);
-        }
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.HIGHLAND) {
-            capeTexture = HIGHLAND;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
+        capeTexture = switch (Cape.getInstance().cape.getValue()) {
+            case FUTURE -> Future;
+            case RUSHERHACK -> Rusherhack;
+            case HYPER -> Hyper;
+            case COBALT -> Cobalt;
+            case FOUNDER -> FOUNDER;
+            case HIGHLAND -> HIGHLAND;
+            case CAPY -> CAPY;
+            case MINECON2011 -> MINECON2011;
+            case MINECON2012 -> MINECON2012;
+            case MINECON2013 -> MINECON2013;
+            case MINECON2015 -> MINECON2015;
+            case MINECON2016 -> MINECON2016;
+            case MOJANG -> MOJANG;
+            case MOJANG_CLASSIC -> MOJANG_CLASSIC;
+            case MOJANG_STUDIOS -> MOJANG_STUDIOS;
+            case PHOBOS -> PHOBOS;
+            case RUSHERHACKEK -> RUSHERHACKEK;
+            case SNOWMAN -> SNOWMAN;
+            case NONE -> null;
+        };
 
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.CAPY) {
-            capeTexture = CAPY;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MINECON2011) {
-            capeTexture = MINECON2011;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MINECON2012) {
-            capeTexture = MINECON2012;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MINECON2013) {
-            capeTexture = MINECON2013;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MINECON2015) {
-            capeTexture = MINECON2015;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MINECON2016) {
-            capeTexture = MINECON2016;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MOJANG) {
-            capeTexture = MOJANG;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MOJANG_CLASSIC) {
-            capeTexture = MOJANG_CLASSIC;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.MOJANG_STUDIOS) {
-            capeTexture = MOJANG_STUDIOS;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.PHOBOS) {
-            capeTexture = PHOBOS;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.RUSHERHACKEK) {
-            capeTexture = RUSHERHACKEK;
-            SkinTextures Textures = new SkinTextures(
-                    oldTextures.texture(),
-                    oldTextures.textureUrl(),
-                    capeTexture,
-                    capeTexture,
-                    oldTextures.model(),
-                    oldTextures.secure()
-            );
-            cir.setReturnValue(Textures);
-        }
-
-        if (Cape.getInstance().cape.getValue() == Cape.CapeMode.SNOWMAN) {
-            capeTexture = SNOWMAN;
+        if (capeTexture != null) {
             SkinTextures Textures = new SkinTextures(
                     oldTextures.texture(),
                     oldTextures.textureUrl(),
