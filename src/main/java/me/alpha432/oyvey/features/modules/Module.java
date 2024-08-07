@@ -107,6 +107,11 @@ public class Module extends Feature implements Jsonable {
     }
 
     public void toggle() {
+        // Check if the chat is open
+        if (mc.currentScreen instanceof net.minecraft.client.gui.screen.ChatScreen) {
+            return;
+        }
+
         ClientEvent event = new ClientEvent(!this.isEnabled() ? 1 : 0, this);
         EVENT_BUS.post(event);
         if (!event.isCancelled()) {

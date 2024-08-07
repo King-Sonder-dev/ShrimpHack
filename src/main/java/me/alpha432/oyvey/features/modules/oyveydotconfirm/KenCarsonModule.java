@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.misc;
+package me.alpha432.oyvey.features.modules.oyveydotconfirm;
 
 import me.alpha432.oyvey.features.commands.Command;
 import me.alpha432.oyvey.features.modules.Module;
@@ -24,7 +24,7 @@ public class KenCarsonModule extends Module {
     public Setting<Integer> download = this.register(new Setting<>("Download", 10, 0, 100));
 
     public KenCarsonModule() {
-        super("KenCarson", "", Category.MISC, true, false, false);
+        super("KenCarson", "", Category.OYVEYDOTCONFIRM, true, false, false);
     }
 
     @Override

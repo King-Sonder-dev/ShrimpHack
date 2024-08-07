@@ -11,6 +11,7 @@ import me.alpha432.oyvey.features.modules.chat.AutoBait;
 import me.alpha432.oyvey.features.modules.chat.chatmodifier.ChatModifier;
 import me.alpha432.oyvey.features.modules.client.*;
 import me.alpha432.oyvey.features.modules.client.RPC.DiscordRPC;
+import me.alpha432.oyvey.features.modules.combat.AntiWeb;
 import me.alpha432.oyvey.features.modules.combat.Autoarmor.AutoArmor;
 import me.alpha432.oyvey.features.modules.combat.CAMessage;
 import me.alpha432.oyvey.features.modules.combat.Criticals;
@@ -29,6 +30,7 @@ import me.alpha432.oyvey.features.modules.movement.*;
 import me.alpha432.oyvey.features.modules.movement.flight.Flight;
 import me.alpha432.oyvey.features.modules.movement.noslow.NoSlow;
 import me.alpha432.oyvey.features.modules.oyveydotconfirm.HudModuleOld;
+import me.alpha432.oyvey.features.modules.oyveydotconfirm.KenCarsonModule;
 import me.alpha432.oyvey.features.modules.player.*;
 import me.alpha432.oyvey.features.modules.player.fastuse.FastUse;
 import me.alpha432.oyvey.features.modules.player.hotbarreplenish.HotbarReplenish;
@@ -57,6 +59,7 @@ public class ModuleManager implements Jsonable, Util {
 
 
     public void init() {
+        modules.add(new AntiWeb());
         modules.add(new RaytraceBypass());
         modules.add(new Autoez());
         modules.add(new HUD());
