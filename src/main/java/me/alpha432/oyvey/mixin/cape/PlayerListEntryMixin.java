@@ -61,7 +61,7 @@ public abstract class PlayerListEntryMixin {
         };
 
         if (capeTexture != null) {
-            SkinTextures Textures = new SkinTextures(
+            SkinTextures Textures = new SkinTextures (
                     oldTextures.texture(),
                     oldTextures.textureUrl(),
                     capeTexture,
