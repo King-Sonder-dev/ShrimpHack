@@ -89,7 +89,7 @@ public class HUD extends Module {
         int i = (mc.currentScreen instanceof ChatScreen && renderingUp.getValue()) ? 13 : (renderingUp.getValue() ? -2 : 0);
         if (renderingUp.getValue()) {
             if (speed.getValue()) {
-                String str = "Speed " + Formatting.WHITE + MathUtility.round((float) (OyVey.hudManager.currentPlayerSpeed * 72f))  + " km/h";
+                String str = "Speed " + Formatting.WHITE + MathUtility.round((float) (OyVey.hudManager.currentPlayerSpeed * 72f)) + " km/h";
                 i += 10;
                 event.getContext().drawTextWithShadow(mc.textRenderer, Text.of(str), (width - getStringWidth(str) - 2), (height - 2 - i), color);
             }

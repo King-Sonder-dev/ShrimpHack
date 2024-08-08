@@ -6,7 +6,6 @@ import me.alpha432.oyvey.util.Render3DUtil;
 import me.alpha432.oyvey.util.FadeUtils;
 import me.alpha432.oyvey.manager.MineManager;
 import me.alpha432.oyvey.features.modules.Module;
-import me.alpha432.oyvey.features.modules.movement.InstantSpeedPlus;
 import me.alpha432.oyvey.features.settings.Setting;
 import me.alpha432.oyvey.event.impl.Render3DEvent;
 import net.minecraft.client.util.math.MatrixStack;

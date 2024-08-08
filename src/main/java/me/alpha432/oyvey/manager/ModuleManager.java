@@ -85,7 +85,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new FastLatency());
         modules.add(new NoFall());
         modules.add(new OnGroundSpeed());
-        modules.add(new InstantSpeedPlus());
+        modules.add(new InstantSpeed());
         modules.add(new TPSChecker());
         modules.add(new TextRadar());
         modules.add(new NoInterpolation());

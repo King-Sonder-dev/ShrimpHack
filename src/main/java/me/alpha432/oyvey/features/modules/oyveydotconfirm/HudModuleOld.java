@@ -3,7 +3,6 @@ package me.alpha432.oyvey.features.modules.oyveydotconfirm;
 import me.alpha432.oyvey.OyVey;
 import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.features.modules.Module;
-import me.alpha432.oyvey.features.modules.movement.InstantSpeedPlus;
 import me.alpha432.oyvey.features.settings.Setting;
 
 import java.util.Collections;

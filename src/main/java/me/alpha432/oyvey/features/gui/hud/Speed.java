@@ -15,7 +15,7 @@ public class Speed {
         if (speed.getValue()) {
             event.getContext().drawTextWithShadow(
                     mc.textRenderer,
-                    "Speed: " + OyVey.speedManager.getSpeedMpS(),
+                    "Speed: " + OyVey.speedManager.getSpeedKpH(),
                     this.getxs.getPlannedValue(), this.getys.getPlannedValue(), color);
         }
     }
