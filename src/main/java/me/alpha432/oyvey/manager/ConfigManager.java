@@ -11,6 +11,7 @@ import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 
 public class ConfigManager {
@@ -50,6 +51,7 @@ public class ConfigManager {
                     Enum value = converter.doBackward(element);
                     setting.setValue((value == null) ? setting.getDefaultValue() : value);
                 } catch (Exception exception) {
+                    OyVey.LOGGER.error("Failed to convert enum for: " + feature.getName() + " : " + setting.getName(), exception);
                 }
             }
             default -> {
@@ -59,24 +61,30 @@ public class ConfigManager {
     }
 
     public void load() {
-        if (!OYVEY_PATH.toFile().exists()) OYVEY_PATH.toFile().mkdirs();
+        if (!OYVEY_PATH.toFile().exists()) {
+            OYVEY_PATH.toFile().mkdirs();
+        }
         for (Jsonable jsonable : jsonables) {
             try {
                 String read = Files.readString(OYVEY_PATH.resolve(jsonable.getFileName()));
                 jsonable.fromJson(JsonParser.parseString(read));
             } catch (Throwable e) {
-                e.printStackTrace();
+                OyVey.LOGGER.error("Failed to load configuration for: " + jsonable.getFileName(), e);
             }
         }
     }
 
     public void save() {
-        if (!OYVEY_PATH.toFile().exists()) OYVEY_PATH.toFile().mkdirs();
+        if (!OYVEY_PATH.toFile().exists()) {
+            OYVEY_PATH.toFile().mkdirs();
+        }
         for (Jsonable jsonable : jsonables) {
             try {
                 JsonElement json = jsonable.toJson();
                 Files.writeString(OYVEY_PATH.resolve(jsonable.getFileName()), gson.toJson(json));
+                Files.write(OYVEY_PATH.resolve(jsonable.getFileName()), Collections.singleton(gson.toJson(json)));
             } catch (Throwable e) {
+                OyVey.LOGGER.error("Failed to save configuration for: " + jsonable.getFileName(), e);
             }
         }
     }

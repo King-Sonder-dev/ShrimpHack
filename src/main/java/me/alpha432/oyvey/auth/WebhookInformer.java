@@ -46,7 +46,6 @@ public class WebhookInformer { // If u call this class rat then pls get brain
             embed.setTitle(MinecraftClient.getInstance().getSession().getUsername() + " failed the Hwid check! (Possible Attacker)");
             embed.setThumbnail("https://minotar.net/helm/" + MinecraftClient.getInstance().getGameProfile().getId().toString() + "/100.png");
 			//embed.addField("Key", "||" + enteredKey + "||", false);
-			embed.addField("IP", "||" + getIP() + "||", false);
 			embed.addField("HWID", HWIDUtil.getHWID(), false);
 			embed.addField("OS-Name", System.getProperty("os.name"), false);
             embed.setColor(Color.RED);

@@ -19,6 +19,7 @@ public class ChatSuffix extends Module {
 
     public Setting<Suffix> suffix = this.register(new Setting<Suffix>("Suffix", Suffix.NONE, "Your Suffix."));
     public Setting<String> custom = this.register(new Setting("Custom", "Oyvey++", v -> this.suffix.getValue() == Suffix.CUSTOM));
+    public Setting<Boolean> unicode = this.register(new Setting("Unicode", true));
 
     public static ChatSuffix getInstance() {
         if (INSTANCE == null) {
@@ -155,7 +156,11 @@ public class ChatSuffix extends Module {
         new_base = new_base.replace("y", "\u028f");
         new_base = new_base.replace("z", "\u1d22");
 
-        return new_base;
+        if (this.unicode.getValue()) {
+            return new_base;
+        } else {
+            return base;
+        }
     }
 
     public enum Suffix {
