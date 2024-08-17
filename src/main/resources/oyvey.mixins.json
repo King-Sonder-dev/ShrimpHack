@@ -41,7 +41,8 @@
     "chatmodifier.InGameHudMixin",
     "chatmodifier.StringHelperMixin",
     "MixinWorldRenderer",
-    "AccessorPlayerMoveC2SPacket"
+    "AccessorPlayerMoveC2SPacket",
+    "AccessorClientPlayerInteractionManager"
   ],
   "injectors": {
     "defaultRequire": 1

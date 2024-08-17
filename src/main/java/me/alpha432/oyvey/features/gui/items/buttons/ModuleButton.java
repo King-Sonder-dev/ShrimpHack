@@ -58,7 +58,7 @@ public class ModuleButton
         super.drawScreen(context, mouseX, mouseY, partialTicks);
         MinecraftClient client = MinecraftClient.getInstance();
 
-        client.getTextureManager().bindTexture(new Identifier("minecraft", "textures/gear.png")); // Update "modid" to your mod ID
+        client.getTextureManager().bindTexture(new Identifier("minecraft", "textures/future/gear.png"));
 
         if (ClickGui.getInstance().plusColor.getValue()) {
             drawString(!this.subOpen ? "+" : "-", this.x - 1.0f + (float) this.width - 8.0f, this.y + 4.0f, new Color(ClickGui.getInstance().plusRed.getValue(), ClickGui.getInstance().plusGreen.getValue(), ClickGui.getInstance().plusBlue.getValue(), ClickGui.getInstance().plusAlpha.getValue()));//(!this.subOpen ? "+" : "-", this.x - 1.0f + (float) this.width - 8.0f, this.y + 4.0f, -1, false);

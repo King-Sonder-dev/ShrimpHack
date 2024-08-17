@@ -47,11 +47,11 @@ public class OyVey implements ModInitializer, ClientModInitializer {
 
     @Override
     public void onInitialize() {
-        if (!isHWIDAuthorized()) {
+        /* if (!isHWIDAuthorized()) {
             LOGGER.error("Unauthorized HWID! Shutting down.");
             WebhookInformer.sendLogginFail();
             System.exit(1);
-        }
+        } */
 
         eventManager = new EventManager();
         serverManager = new ServerManager();
@@ -74,13 +74,13 @@ public class OyVey implements ModInitializer, ClientModInitializer {
         configManager = new ConfigManager();
         configManager.load();
         colorManager.init();
+
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
                 configManager.save();
                 WebhookInformer.sendExit();
-                // Add any other clean-up tasks here
             } catch (Exception e) {
-                e.printStackTrace(); // Handle any exceptions that occur during shutdown
+                e.printStackTrace();
             }
         }));
     }

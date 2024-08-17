@@ -9,6 +9,7 @@ import me.alpha432.oyvey.features.settings.Setting;
 import me.alpha432.oyvey.util.traits.Jsonable;
 import net.fabricmc.loader.api.FabricLoader;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collections;
@@ -24,27 +25,13 @@ public class ConfigManager {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     public static void setValueFromJson(Feature feature, Setting setting, JsonElement element) {
-        String str;
         switch (setting.getType()) {
-            case "Boolean" -> {
-                setting.setValue(element.getAsBoolean());
-            }
-            case "Double" -> {
-                setting.setValue(element.getAsDouble());
-            }
-            case "Float" -> {
-                setting.setValue(element.getAsFloat());
-            }
-            case "Integer" -> {
-                setting.setValue(element.getAsInt());
-            }
-            case "String" -> {
-                str = element.getAsString();
-                setting.setValue(str.replace("_", " "));
-            }
-            case "Bind" -> {
-                setting.setValue(new Bind(element.getAsInt()));
-            }
+            case "Boolean" -> setting.setValue(element.getAsBoolean());
+            case "Double" -> setting.setValue(element.getAsDouble());
+            case "Float" -> setting.setValue(element.getAsFloat());
+            case "Integer" -> setting.setValue(element.getAsInt());
+            case "String" -> setting.setValue(element.getAsString().replace("_", " "));
+            case "Bind" -> setting.setValue(new Bind(element.getAsInt()));
             case "Enum" -> {
                 try {
                     EnumConverter converter = new EnumConverter(((Enum) setting.getValue()).getClass());
@@ -54,19 +41,27 @@ public class ConfigManager {
                     OyVey.LOGGER.error("Failed to convert enum for: " + feature.getName() + " : " + setting.getName(), exception);
                 }
             }
-            default -> {
-                OyVey.LOGGER.error("Unknown Setting type for: " + feature.getName() + " : " + setting.getName());
-            }
+            default -> OyVey.LOGGER.error("Unknown Setting type for: " + feature.getName() + " : " + setting.getName());
         }
     }
 
     public void load() {
-        if (!OYVEY_PATH.toFile().exists()) {
-            OYVEY_PATH.toFile().mkdirs();
+        if (!Files.exists(OYVEY_PATH)) {
+            try {
+                Files.createDirectories(OYVEY_PATH);
+            } catch (IOException e) {
+                OyVey.LOGGER.error("Failed to create config directory", e);
+                return;
+            }
         }
         for (Jsonable jsonable : jsonables) {
             try {
-                String read = Files.readString(OYVEY_PATH.resolve(jsonable.getFileName()));
+                Path filePath = OYVEY_PATH.resolve(jsonable.getFileName());
+                if (!Files.exists(filePath)) {
+                    OyVey.LOGGER.warn("Config file not found: " + jsonable.getFileName());
+                    continue;
+                }
+                String read = Files.readString(filePath);
                 jsonable.fromJson(JsonParser.parseString(read));
             } catch (Throwable e) {
                 OyVey.LOGGER.error("Failed to load configuration for: " + jsonable.getFileName(), e);
@@ -75,14 +70,19 @@ public class ConfigManager {
     }
 
     public void save() {
-        if (!OYVEY_PATH.toFile().exists()) {
-            OYVEY_PATH.toFile().mkdirs();
+        if (!Files.exists(OYVEY_PATH)) {
+            try {
+                Files.createDirectories(OYVEY_PATH);
+            } catch (IOException e) {
+                OyVey.LOGGER.error("Failed to create config directory", e);
+                return;
+            }
         }
         for (Jsonable jsonable : jsonables) {
             try {
                 JsonElement json = jsonable.toJson();
-                Files.writeString(OYVEY_PATH.resolve(jsonable.getFileName()), gson.toJson(json));
-                Files.write(OYVEY_PATH.resolve(jsonable.getFileName()), Collections.singleton(gson.toJson(json)));
+                Path filePath = OYVEY_PATH.resolve(jsonable.getFileName());
+                Files.writeString(filePath, gson.toJson(json));
             } catch (Throwable e) {
                 OyVey.LOGGER.error("Failed to save configuration for: " + jsonable.getFileName(), e);
             }
