@@ -25,11 +25,13 @@ public class FullBright extends Module {
 
     @Override
     public void onEnable() {
+        if (mc.player == null) return;
         mc.player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1000000, 254, true, false, false));
     }
 
     @Override
     public void onDisable() {
+        if (mc.player == null) return;
         mc.player.removeStatusEffect(StatusEffects.NIGHT_VISION);
     }
 }

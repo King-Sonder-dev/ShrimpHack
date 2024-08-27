@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
 
 public class OyVey implements ModInitializer, ClientModInitializer {
     public static final String NAME = "Oyvey++";
@@ -76,12 +77,8 @@ public class OyVey implements ModInitializer, ClientModInitializer {
         colorManager.init();
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            try {
                 configManager.save();
                 WebhookInformer.sendExit();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }));
     }
     public static OyVey INSTANCE;

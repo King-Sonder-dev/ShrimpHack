@@ -192,9 +192,10 @@ public class Module extends Feature implements Jsonable {
     @Override public void fromJson(JsonElement element) {
         JsonObject object = element.getAsJsonObject();
         String enabled = object.get("Enabled").getAsString();
-        if (Boolean.parseBoolean(enabled)) toggle();
+        if (Boolean.parseBoolean(enabled)) this.toggle();
         for (Setting<?> setting : getSettings()) {
             try {
+                OyVey.LOGGER.info("configging " + this.getName() + ", " + setting.getName());
                 ConfigManager.setValueFromJson(this, setting, object.get(setting.getName()));
             } catch (Throwable throwable) {
             }
