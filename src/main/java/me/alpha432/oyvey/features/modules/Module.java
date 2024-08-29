@@ -8,6 +8,7 @@ import me.alpha432.oyvey.event.impl.Render2DEvent;
 import me.alpha432.oyvey.event.impl.Render3DEvent;
 import me.alpha432.oyvey.features.Feature;
 import me.alpha432.oyvey.features.commands.Command;
+import me.alpha432.oyvey.features.gui.OyVeyGui;
 import me.alpha432.oyvey.features.modules.combat.autototem.AutoTotem;
 import me.alpha432.oyvey.features.settings.Bind;
 import me.alpha432.oyvey.features.settings.Setting;
@@ -109,6 +110,9 @@ public class Module extends Feature implements Jsonable {
     public void toggle() {
         // Check if the chat is open
         if (mc.currentScreen instanceof net.minecraft.client.gui.screen.ChatScreen) {
+            return;
+        }
+        if (mc.currentScreen instanceof OyVeyGui) {
             return;
         }
 

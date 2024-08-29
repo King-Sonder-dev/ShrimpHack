@@ -28,7 +28,7 @@ public abstract class MixinSplashOverlay {
     @Final @Shadow private ResourceReload reload;
     @Final @Shadow private Consumer<Optional<Throwable>> exceptionHandler;
     private static final Identifier OYVEY_LOGO = new Identifier("");
-    private static final Identifier OYVEY_LOGO_BACKGROUND = new Identifier("minecraft/textures/cracked-screen.png");
+    private static final Identifier OYVEY_LOGO_BACKGROUND = new Identifier("");
 
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     public void render(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {

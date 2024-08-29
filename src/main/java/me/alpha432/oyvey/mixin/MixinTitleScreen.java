@@ -1,9 +1,9 @@
 package me.alpha432.oyvey.mixin;
 
 import me.alpha432.oyvey.OyVey;
+import me.alpha432.oyvey.features.modules.client.Options;
 import me.alpha432.oyvey.util.ClientInfoInterface;
 import me.alpha432.oyvey.util.ColorUtil;
-import me.alpha432.oyvey.util.TextUtil;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -23,6 +23,9 @@ public class MixinTitleScreen extends Screen implements ClientInfoInterface {
 
     @Inject(method = "render", at = @At("TAIL"))
     public void render(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo cl) {
-        context.drawTextWithShadow(textRenderer,  Formatting.AQUA + clientName + " " + version + " By 1nject :3", 0, 1, ColorUtil.getRGBA());
+        Options optionsModule = OyVey.moduleManager.getModuleByClass(Options.class);
+        if (optionsModule != null && optionsModule.mainmenu.getValue()) {
+            context.drawTextWithShadow(textRenderer, Formatting.AQUA + clientName + " " + version + " By 1nject :3", 0, 1, ColorUtil.getRGBA());
+        }
     }
 }

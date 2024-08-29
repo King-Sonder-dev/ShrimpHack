@@ -23,6 +23,7 @@ import me.alpha432.oyvey.features.modules.combat.tntaura.TNTAura;
 import me.alpha432.oyvey.features.modules.exploit.HitboxDesyncModule;
 import me.alpha432.oyvey.features.modules.exploit.PingSpoof;
 import me.alpha432.oyvey.features.modules.exploit.RaytraceBypass;
+import me.alpha432.oyvey.features.modules.exploit.iPaperDupe;
 import me.alpha432.oyvey.features.modules.misc.*;
 import me.alpha432.oyvey.features.modules.misc.Fakeplayer.FakePlayer;
 import me.alpha432.oyvey.features.modules.misc.autoauth.AutoAuth;
@@ -61,6 +62,7 @@ public class ModuleManager implements Jsonable, Util {
     public void init() {
         modules.add(new AntiWeb());
         modules.add(new RaytraceBypass());
+        modules.add(new iPaperDupe());
         modules.add(new Autoez());
         modules.add(new HUD());
         modules.add(new KenCarsonModule());

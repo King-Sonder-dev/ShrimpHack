@@ -26,7 +26,7 @@ public class EventManager extends Feature {
 
     @Subscribe
     public void onUpdate(UpdateEvent event) {
-        mc.getWindow().setTitle("OyVey " + mc.getCurrentFps());
+        mc.getWindow().setTitle("OyVey | " + mc.getCurrentFps());
         if (!fullNullCheck()) {
 //            OyVey.inventoryManager.update();
             OyVey.moduleManager.onUpdate();

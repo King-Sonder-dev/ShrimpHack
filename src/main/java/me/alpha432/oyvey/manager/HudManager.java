@@ -32,7 +32,7 @@ public class HudManager {
     public void onTick(EventTick e) {
         currentPlayerSpeed = (float) Math.hypot(mc.player.getX() - mc.player.prevX, mc.player.getZ() - mc.player.prevZ);
     }
-    
+
     public float getTPS() {
         return round2(tps);
     }
@@ -82,5 +82,10 @@ public class HudManager {
         PlayerListEntry playerListEntry = mc.getNetworkHandler().getPlayerListEntry(mc.player.getUuid());
         if (playerListEntry == null) return 0;
         return playerListEntry.getLatency();
+    }
+
+    public int getfps() {
+        mc.getCurrentFps();
+        return 0;
     }
 }
