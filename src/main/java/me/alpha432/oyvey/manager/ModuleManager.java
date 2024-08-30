@@ -11,11 +11,8 @@ import me.alpha432.oyvey.features.modules.chat.AutoBait;
 import me.alpha432.oyvey.features.modules.chat.chatmodifier.ChatModifier;
 import me.alpha432.oyvey.features.modules.client.*;
 import me.alpha432.oyvey.features.modules.client.RPC.DiscordRPC;
-import me.alpha432.oyvey.features.modules.combat.AntiWeb;
+import me.alpha432.oyvey.features.modules.combat.*;
 import me.alpha432.oyvey.features.modules.combat.Autoarmor.AutoArmor;
-import me.alpha432.oyvey.features.modules.combat.CAMessage;
-import me.alpha432.oyvey.features.modules.combat.Criticals;
-import me.alpha432.oyvey.features.modules.combat.CrystalPredict;
 import me.alpha432.oyvey.features.modules.combat.autocrystal.AutoCrystal;
 import me.alpha432.oyvey.features.modules.combat.autototem.AutoTotem;
 import me.alpha432.oyvey.features.modules.combat.burrow.Burrow;
@@ -62,6 +59,8 @@ public class ModuleManager implements Jsonable, Util {
     public void init() {
         modules.add(new AntiWeb());
         modules.add(new RaytraceBypass());
+        modules.add(new Surround());
+        modules.add(new CrystalAura());
         modules.add(new iPaperDupe());
         modules.add(new AntiAim());
         modules.add(new Options());

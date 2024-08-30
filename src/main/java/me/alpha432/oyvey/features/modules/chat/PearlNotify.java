@@ -27,11 +27,6 @@ public class PearlNotify extends Module {
     public PearlNotify() {
         super("PearlNotify", "Notify pearl throws.", Category.CHAT, true, false, false);
         this.list = new HashMap<>();
-        init();
-    }
-
-    private void init() {
-        ClientTickEvents.END_CLIENT_TICK.register(client -> onTick());
     }
 
     @Override
@@ -40,15 +35,18 @@ public class PearlNotify extends Module {
     }
 
     @Override
-    public void onTick() {
-        MinecraftClient mc = MinecraftClient.getInstance();
-        if (mc.world == null || mc.player == null) {
+    public void onDisable() {
+        this.flag = false;
+    }
+
+    public void onTick(MinecraftClient client) {
+        if (client.world == null || client.player == null) {
             return;
         }
         this.enderPearl = null;
 
         // Search for an Ender Pearl entity
-        for (Entity e : mc.world.getEntities()) {
+        for (Entity e : client.world.getEntities()) {
             if (e.getType() == EntityType.ENDER_PEARL) {
                 this.enderPearl = e;
                 break;
@@ -62,7 +60,7 @@ public class PearlNotify extends Module {
 
         // Find the closest player to the Ender Pearl
         PlayerEntity closestPlayer = null;
-        for (PlayerEntity entity : mc.world.getPlayers()) {
+        for (PlayerEntity entity : client.world.getPlayers()) {
             if (closestPlayer == null) {
                 closestPlayer = entity;
             } else if (closestPlayer.squaredDistanceTo(this.enderPearl) > entity.squaredDistanceTo(this.enderPearl)) {
@@ -71,7 +69,7 @@ public class PearlNotify extends Module {
         }
 
         // Do not notify if the player is the one who threw the pearl
-        if (closestPlayer == mc.player) {
+        if (closestPlayer == client.player) {
             this.flag = false;
         }
 
@@ -85,7 +83,7 @@ public class PearlNotify extends Module {
             }
 
             String message = getFormattedMessage(closestPlayer.getName().getString(), facing);
-            mc.inGameHud.getChatHud().addMessage(Text.of(message));
+            client.inGameHud.getChatHud().addMessage(Text.of(message));
             this.flag = false;
         }
     }
