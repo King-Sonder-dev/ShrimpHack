@@ -57,6 +57,7 @@ public class ModuleManager implements Jsonable, Util {
 
 
     public void init() {
+        modules.add(new StrengthDetect());
         modules.add(new AntiWeb());
         modules.add(new RaytraceBypass());
         modules.add(new Surround());

@@ -16,7 +16,7 @@ import java.util.List;
 public class CommandManager
         extends Feature implements Jsonable {
     private final List<Command> commands = new ArrayList<>();
-    private String clientMessage = "<ӨỷVễỷ>";
+    private String clientMessage = "<Oyvey>";
     private String prefix = "'";
 
     public CommandManager() {
