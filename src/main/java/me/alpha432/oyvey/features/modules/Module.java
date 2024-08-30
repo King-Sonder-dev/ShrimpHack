@@ -112,9 +112,7 @@ public class Module extends Feature implements Jsonable {
         if (mc.currentScreen instanceof net.minecraft.client.gui.screen.ChatScreen) {
             return;
         }
-        if (mc.currentScreen instanceof OyVeyGui) {
-            return;
-        }
+
 
         ClientEvent event = new ClientEvent(!this.isEnabled() ? 1 : 0, this);
         EVENT_BUS.post(event);

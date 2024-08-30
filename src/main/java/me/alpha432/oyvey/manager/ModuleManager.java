@@ -63,6 +63,8 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new AntiWeb());
         modules.add(new RaytraceBypass());
         modules.add(new iPaperDupe());
+        modules.add(new AntiAim());
+        modules.add(new Options());
         modules.add(new Autoez());
         modules.add(new HUD());
         modules.add(new KenCarsonModule());
