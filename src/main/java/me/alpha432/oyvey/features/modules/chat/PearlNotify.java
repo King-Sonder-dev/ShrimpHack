@@ -34,15 +34,15 @@ public class PearlNotify extends Module {
         this.flag = true;
     }
 
-    @Override
-    public void onDisable() {
-        this.flag = false;
-    }
 
     public void onTick(MinecraftClient client) {
+        if (!this.isEnabled()) {
+            return;
+        }
         if (client.world == null || client.player == null) {
             return;
         }
+
         this.enderPearl = null;
 
         // Search for an Ender Pearl entity

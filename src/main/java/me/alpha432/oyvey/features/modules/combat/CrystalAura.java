@@ -1,8 +1,8 @@
 package me.alpha432.oyvey.features.modules.combat;
 
 import com.google.common.collect.Streams;
+import com.google.common.eventbus.Subscribe;
 import me.alpha432.oyvey.OyVey;
-import me.alpha432.oyvey.event.impl.Render3DEvent;
 import me.alpha432.oyvey.event.impl.Render3DEventJr;
 import me.alpha432.oyvey.features.modules.Module;
 import me.alpha432.oyvey.util.DamageUtil;
@@ -25,8 +25,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 
 import java.awt.*;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CrystalAura extends Module {
@@ -48,6 +48,7 @@ public class CrystalAura extends Module {
         super("CrystalAura", "", Category.COMBAT, true, false, false);
     }
 
+    @Subscribe
     public void onRender3D(Render3DEventJr event) {
         if (render == null || mc.world == null) {
             return;
