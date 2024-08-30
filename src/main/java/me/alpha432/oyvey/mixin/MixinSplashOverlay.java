@@ -30,12 +30,13 @@ public abstract class MixinSplashOverlay {
     private static final Identifier OYVEY_LOGO = new Identifier("");
     private static final Identifier OYVEY_LOGO_BACKGROUND = new Identifier("");
 
+    /*
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     public void render(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         ci.cancel();
         renderCustom(context, mouseX, mouseY, delta);
     }
-
+/*
     public void renderCustom(DrawContext context, int mouseX, int mouseY, float delta) {
         int i = mc.getWindow().getScaledWidth();
         int j = mc.getWindow().getScaledHeight();
@@ -96,4 +97,6 @@ public abstract class MixinSplashOverlay {
             }
         }
     }
+
+ */
 }
