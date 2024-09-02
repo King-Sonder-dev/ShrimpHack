@@ -36,9 +36,9 @@ public class TextRadar extends Module {
             int distanceColor = getDistanceColor(player.distanceTo(MinecraftClient.getInstance().player));
 
             String playerName = player.getName().getString();
-            String playerHealth = player.getHealth() > 0 ? String.format("%.1f", player.getHealth()) : "DEAD";
+            String playerHealth = player.getHealth() > 0 ? String.format("%.0f", player.getHealth()) : "DEAD";
             int playerHealthColor = player.getHealth() > 0 ? healthColor : deadColor;
-            String playerDistance = String.format("%.1f", player.distanceTo(MinecraftClient.getInstance().player));
+            String playerDistance = String.format("%.0f", player.distanceTo(MinecraftClient.getInstance().player));
 
             // Apply brackets if the setting is enabled
             if (brackets.getValue()) {

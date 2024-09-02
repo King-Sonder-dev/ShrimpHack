@@ -18,6 +18,7 @@ public class HudModule extends Module {
         // Initialize feature classes
         Watermark watermark = new Watermark();
         features.add(watermark);
+        features.add(new TickRateHUD());
         features.add(new Speed());
         features.add(new greeter(watermark));
         features.add(new coords());
