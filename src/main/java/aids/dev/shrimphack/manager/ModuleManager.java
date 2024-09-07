@@ -70,7 +70,6 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new ClickGui());
         modules.add(new Stairs());
         modules.add(new HoleESP());
-        modules.add(new BurrowNotifier());
         modules.add(new BreakESP());
         modules.add(new PvpInfoModule());
         modules.add(new GhastSpawnNotifier());

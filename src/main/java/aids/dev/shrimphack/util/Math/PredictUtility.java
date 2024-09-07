@@ -8,7 +8,7 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.UUID;
 
-import static me.alpha432.oyvey.features.modules.Module.mc;
+import static aids.dev.shrimphack.util.traits.Util.mc;
 
 public class PredictUtility {
     public static PlayerEntity predictPlayer(PlayerEntity entity, int ticks) {
