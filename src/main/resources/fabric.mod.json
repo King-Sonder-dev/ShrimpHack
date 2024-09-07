@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "oyvey",
+  "id": "shrimphack",
   "version": "${version}",
-  "name": "oyvey",
+  "name": "ShrimpHack",
   "description": "best client",
   "authors": [
     "1nject"
@@ -10,17 +10,17 @@
   "license": "MIT",
   "environment": "client",
   "icon": "assets/icon.png",
-  "accessWidener": "oyvey.accesswidener",
+  "accessWidener": "shrimphack.accesswidener",
   "entrypoints": {
     "client": [
-      "me.alpha432.oyvey.OyVey"
+      "aids.dev.shrimphack.Shrimphack"
     ],
     "main": [
-      "me.alpha432.oyvey.OyVey"
+      "aids.dev.shrimphack.Shrimphack"
     ]
   },
   "mixins": [
-    "oyvey.mixins.json"
+    "shrimphack.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
