@@ -18,7 +18,7 @@ repositories {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/oyvey.accesswidener")
+    accessWidenerPath = file("src/main/resources/shrimphack.accesswidener")
 }
 
 dependencies {
