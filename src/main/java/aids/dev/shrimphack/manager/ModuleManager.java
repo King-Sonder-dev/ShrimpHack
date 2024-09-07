@@ -65,6 +65,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new CAMessage());
         modules.add(new FCAIALM());
         modules.add(new DiscordRPC());
+        modules.add(new TickRateHUD());
         modules.add(new HudModule());
         modules.add(new CrystalPredict());
         modules.add(new ClickGui());
