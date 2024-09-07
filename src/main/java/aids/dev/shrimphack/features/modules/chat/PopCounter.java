@@ -1,12 +1,12 @@
 package aids.dev.shrimphack.features.modules.chat;
 
+import aids.dev.shrimphack.event.impl.TotemPopEvent;
 import aids.dev.shrimphack.features.commands.Command;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Setting;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
-import me.alpha432.oyvey.event.impl.Combineddeathevent.TotemPopEvent;
 import meteordevelopment.orbit.EventHandler;
 
 import java.util.Map;

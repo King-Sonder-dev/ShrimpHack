@@ -6,7 +6,8 @@ import net.minecraft.network.packet.Packet;
 import java.util.HashSet;
 import java.util.Set;
 
-import static me.alpha432.oyvey.util.traits.Util.mc;
+import static aids.dev.shrimphack.util.traits.Util.mc;
+
 
 public abstract class PacketEvent extends Event {
 

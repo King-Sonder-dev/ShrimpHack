@@ -1,5 +1,6 @@
 package aids.dev.shrimphack.util.Renders;
 
+import aids.dev.shrimphack.util.Text.FontRenderers;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import aids.dev.shrimphack.util.traits.Util;

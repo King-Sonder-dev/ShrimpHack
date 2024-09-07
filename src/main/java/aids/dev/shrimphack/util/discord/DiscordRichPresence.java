@@ -2,9 +2,10 @@ package aids.dev.shrimphack.util.discord;
 
 import java.time.OffsetDateTime;
 import java.util.Collections;
-import me.alpha432.oyvey.util.discord.helpers.RPCButton;
 import java.util.Arrays;
 import java.util.List;
+
+import aids.dev.shrimphack.util.discord.helpers.RPCButton;
 import com.sun.jna.Structure;
 
 public class DiscordRichPresence extends Structure {

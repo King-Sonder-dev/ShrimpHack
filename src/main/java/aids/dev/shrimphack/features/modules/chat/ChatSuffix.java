@@ -1,9 +1,9 @@
 package aids.dev.shrimphack.features.modules.chat;
 
+import aids.dev.shrimphack.event.impl.PacketEvent;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Setting;
 import com.google.common.eventbus.Subscribe;
-import me.alpha432.oyvey.event.impl.PacketEvent;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 
 import java.util.Objects;

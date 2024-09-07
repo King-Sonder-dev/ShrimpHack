@@ -1,12 +1,13 @@
 package aids.dev.shrimphack.features.commands.impl;
 
+import aids.dev.shrimphack.Shrimphack;
+import aids.dev.shrimphack.event.impl.KeyEvent;
 import aids.dev.shrimphack.features.commands.Command;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Bind;
+import aids.dev.shrimphack.util.Misc.KeyboardUtil;
 import com.google.common.eventbus.Subscribe;
-import me.alpha432.oyvey.OyVey;
-import me.alpha432.oyvey.event.impl.KeyEvent;
-import me.alpha432.oyvey.util.KeyboardUtil;
+
 import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
 
@@ -27,7 +28,7 @@ public class BindCommand
             return;
         }
         String moduleName = commands[0];
-        Module module = OyVey.moduleManager.getModuleByName(moduleName);
+        Module module = Shrimphack.moduleManager.getModuleByName(moduleName);
         if (module == null) {
             sendMessage("Unknown module '" + module + "'!");
             return;

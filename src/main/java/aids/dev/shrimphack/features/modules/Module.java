@@ -1,7 +1,6 @@
 package aids.dev.shrimphack.features.modules;
 
 import aids.dev.shrimphack.features.Feature;
-import aids.dev.shrimphack.features.modules.combat.autototem.AutoTotem;
 import aids.dev.shrimphack.features.settings.Bind;
 import aids.dev.shrimphack.features.settings.Setting;
 import com.google.gson.JsonElement;
@@ -240,9 +239,5 @@ public class Module extends Feature implements Jsonable {
     public static void clickSlot(int id, SlotActionType type) {
         if (id == -1 || mc.interactionManager == null || mc.player == null) return;
         mc.interactionManager.clickSlot(mc.player.currentScreenHandler.syncId, id, 0, type, mc.player);
-    }
-    public void debug(String message) {
-        if (fullNullCheck() || !AutoTotem.getInstance().debug.getValue()) return;
-        mc.player.sendMessage(Text.of(message), false);
     }
 }

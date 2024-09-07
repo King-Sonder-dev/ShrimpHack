@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-import static me.alpha432.oyvey.features.modules.Module.mc;
+import static aids.dev.shrimphack.features.modules.Module.mc;
 
 public final class InteractionUtility {
     private static final List<Block> SHIFT_BLOCKS = Arrays.asList(

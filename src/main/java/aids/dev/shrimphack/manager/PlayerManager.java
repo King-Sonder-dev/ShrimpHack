@@ -1,8 +1,8 @@
 package aids.dev.shrimphack.manager;
 
+import aids.dev.shrimphack.util.models.Timer;
 import com.google.common.eventbus.Subscribe;
 import aids.dev.shrimphack.event.impl.PacketEvent;
-import aids.dev.shrimphack.features.modules.combat.tntaura.utils.Timer;
 import net.minecraft.network.packet.c2s.play.ClickSlotC2SPacket;
 import net.minecraft.network.packet.c2s.play.CloseHandledScreenC2SPacket;
 import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;

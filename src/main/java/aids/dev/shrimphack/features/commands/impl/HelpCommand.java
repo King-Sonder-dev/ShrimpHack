@@ -1,7 +1,7 @@
 package aids.dev.shrimphack.features.commands.impl;
 
+import aids.dev.shrimphack.Shrimphack;
 import aids.dev.shrimphack.features.commands.Command;
-import me.alpha432.oyvey.OyVey;
 import net.minecraft.util.Formatting;
 
 public class HelpCommand
@@ -13,9 +13,9 @@ public class HelpCommand
     @Override
     public void execute(String[] commands) {
         HelpCommand.sendMessage("Commands: ");
-        for (Command command : OyVey.commandManager.getCommands()) {
+        for (Command command : Shrimphack.commandManager.getCommands()) {
             StringBuilder builder = new StringBuilder(Formatting.GRAY.toString());
-            builder.append(OyVey.commandManager.getPrefix());
+            builder.append(Shrimphack.commandManager.getPrefix());
             builder.append(command.getName());
             builder.append(" ");
             for (String cmd : command.getCommands()) {

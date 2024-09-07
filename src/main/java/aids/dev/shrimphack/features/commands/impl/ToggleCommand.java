@@ -1,8 +1,8 @@
 package aids.dev.shrimphack.features.commands.impl;
 
+import aids.dev.shrimphack.Shrimphack;
 import aids.dev.shrimphack.features.commands.Command;
 import aids.dev.shrimphack.features.modules.Module;
-import me.alpha432.oyvey.OyVey;
 
 public class ToggleCommand extends Command {
     public ToggleCommand() {
@@ -14,7 +14,7 @@ public class ToggleCommand extends Command {
             notFound();
             return;
         }
-        Module mod = OyVey.moduleManager.getModuleByName(var1[0]);
+        Module mod = Shrimphack.moduleManager.getModuleByName(var1[0]);
         if (mod == null) {
             notFound();
             return;

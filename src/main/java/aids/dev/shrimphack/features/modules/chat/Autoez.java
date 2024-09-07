@@ -1,5 +1,7 @@
 package aids.dev.shrimphack.features.modules.chat;
 
+import aids.dev.shrimphack.Shrimphack;
+import aids.dev.shrimphack.event.impl.PacketEvent;
 import aids.dev.shrimphack.features.commands.Command;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Setting;
@@ -14,8 +16,7 @@ import java.util.*;
 
 import com.google.common.eventbus.Subscribe;
 
-import me.alpha432.oyvey.OyVey;
-import me.alpha432.oyvey.event.impl.PacketEvent;
+
 
 public class Autoez extends Module {
     private final Object2IntMap<UUID> totemPopMap = new Object2IntOpenHashMap<>();
@@ -48,8 +49,8 @@ public class Autoez extends Module {
         if (!(entity instanceof PlayerEntity)) return;
 
         if ((entity.equals(mc.player) && totemsIgnoreOwn.getValue())
-            || (OyVey.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreOthers.getValue())
-            || (!OyVey.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreFriends.getValue())
+            || (Shrimphack.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreOthers.getValue())
+            || (!Shrimphack.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreFriends.getValue())
         ) return;
 
         synchronized (totemPopMap) {
@@ -57,7 +58,7 @@ public class Autoez extends Module {
             totemPopMap.put(entity.getUuid(), ++pops);
             Command.sendMessage(Formatting.GRAY + " popped " + entity.getName().getString() + " " + Formatting.GREEN + ( ( pops) > 1 ? pops + " " + Formatting.GRAY +"totems" : Formatting.GREEN + "1" + Formatting.GRAY + " totem"));//+ pops + strg);
             if (popevent.getValue()){
-            if (!ignoreFriends.getValue() || (ignoreFriends.getValue() && !OyVey.friendManager.isFriend((PlayerEntity)entity))) {
+            if (!ignoreFriends.getValue() || (ignoreFriends.getValue() && !Shrimphack.friendManager.isFriend((PlayerEntity)entity))) {
                 if (popmsg.getValue()){
                    this.sendPlayerMsg(entity.getName().getString() +" "+ (String)this.msgpop.getValue());
                 }

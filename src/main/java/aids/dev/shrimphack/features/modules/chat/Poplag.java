@@ -1,5 +1,7 @@
 package aids.dev.shrimphack.features.modules.chat;
 
+import aids.dev.shrimphack.Shrimphack;
+import aids.dev.shrimphack.event.impl.PacketEvent;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Setting;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -13,8 +15,6 @@ import java.util.*;
 
 import com.google.common.eventbus.Subscribe;
 
-import me.alpha432.oyvey.OyVey;
-import me.alpha432.oyvey.event.impl.PacketEvent;
 
 public class Poplag extends Module {
     private final Object2IntMap<UUID> totemPopMap = new Object2IntOpenHashMap<>();
@@ -46,15 +46,15 @@ public class Poplag extends Module {
         if (!(entity instanceof PlayerEntity)) return;
 
         if ((entity.equals(mc.player) && totemsIgnoreOwn.getValue())
-            || (OyVey.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreOthers.getValue())
-            || (!OyVey.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreFriends.getValue())
+            || (Shrimphack.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreOthers.getValue())
+            || (!Shrimphack.friendManager.isFriend(((PlayerEntity) entity)) && totemsIgnoreFriends.getValue())
         ) return;
 
         synchronized (totemPopMap) {
             int pops = totemPopMap.getOrDefault(entity.getUuid(), 0);
             totemPopMap.put(entity.getUuid(), ++pops);
             if (popevent.getValue()){
-            if (!ignoreFriends.getValue() || (ignoreFriends.getValue() && !OyVey.friendManager.isFriend((PlayerEntity)entity))) {
+            if (!ignoreFriends.getValue() || (ignoreFriends.getValue() && !Shrimphack.friendManager.isFriend((PlayerEntity)entity))) {
                 if (poplag.getValue()){
                    this.sendPlayerMsg("/msg "+ entity.getName().getString() +" "+ lagText);
                 }

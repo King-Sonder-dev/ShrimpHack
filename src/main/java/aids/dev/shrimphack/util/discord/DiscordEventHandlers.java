@@ -2,12 +2,8 @@ package aids.dev.shrimphack.util.discord;
 
 import java.util.Arrays;
 import java.util.List;
-import me.alpha432.oyvey.util.discord.callbacks.JoinGameCallback;
-import me.alpha432.oyvey.util.discord.callbacks.ErroredCallback;
-import me.alpha432.oyvey.util.discord.callbacks.ReadyCallback;
-import me.alpha432.oyvey.util.discord.callbacks.SpectateGameCallback;
-import me.alpha432.oyvey.util.discord.callbacks.JoinRequestCallback;
-import me.alpha432.oyvey.util.discord.callbacks.DisconnectedCallback;
+
+import aids.dev.shrimphack.util.discord.callbacks.*;
 import com.sun.jna.Structure;
 
 public class DiscordEventHandlers extends Structure {

@@ -1,14 +1,15 @@
 package aids.dev.shrimphack.features.modules.chat.chatmodifier;
 
+import aids.dev.shrimphack.event.impl.PacketEvent;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.modules.chat.chatmodifier.utils.Timer;
 import aids.dev.shrimphack.features.settings.Setting;
+import aids.dev.shrimphack.mixin.chatmodifier.IGameMessageS2CPacket;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import me.alpha432.oyvey.event.impl.PacketEvent;
-import me.alpha432.oyvey.mixin.chatmodifier.IGameMessageS2CPacket;
+
 
 import java.util.Objects;
 

@@ -1,8 +1,8 @@
 package aids.dev.shrimphack.features.modules.chat;
 
+import aids.dev.shrimphack.Shrimphack;
 import aids.dev.shrimphack.features.commands.Command;
 import aids.dev.shrimphack.features.modules.Module;
-import me.alpha432.oyvey.OyVey;
 import net.minecraft.client.MinecraftClient;
 
 import java.util.stream.Stream;
@@ -20,7 +20,7 @@ public class AutoReply extends Module {
 
     private boolean isFriend(String name) {
         // Implement your friend checking logic here
-        return OyVey.friendManager.isFriend(name);
+        return Shrimphack.friendManager.isFriend(name);
     }
 
     private void sendReply(String name, String message) {

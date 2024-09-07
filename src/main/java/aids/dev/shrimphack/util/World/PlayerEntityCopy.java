@@ -5,7 +5,7 @@ import net.minecraft.client.network.OtherClientPlayerEntity;
 import java.util.Objects;
 import java.util.UUID;
 
-import static me.alpha432.oyvey.features.modules.Module.mc;
+import static aids.dev.shrimphack.features.modules.Module.mc;
 
 public class PlayerEntityCopy extends OtherClientPlayerEntity {
     public PlayerEntityCopy() {

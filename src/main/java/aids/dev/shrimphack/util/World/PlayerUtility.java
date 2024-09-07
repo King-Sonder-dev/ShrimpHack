@@ -1,6 +1,7 @@
 package aids.dev.shrimphack.util.World;
 
-import me.alpha432.oyvey.mixin.noslow.IClientWorldMixin;
+
+import aids.dev.shrimphack.mixin.noslow.IClientWorldMixin;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.PendingUpdateManager;
 import net.minecraft.client.world.ClientWorld;
@@ -9,7 +10,7 @@ import net.minecraft.util.math.Vec2f;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.NotNull;
 
-import static me.alpha432.oyvey.features.modules.Module.mc;
+import static aids.dev.shrimphack.features.modules.Module.mc;
 
 public final class PlayerUtility {
     public static boolean isEating() {

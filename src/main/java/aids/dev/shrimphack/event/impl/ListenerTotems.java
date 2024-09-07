@@ -8,7 +8,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
 
-import static me.alpha432.oyvey.util.traits.Util.mc;
+import static aids.dev.shrimphack.util.traits.Util.mc;
+
 
 public class ListenerTotems {
 

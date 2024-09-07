@@ -1,9 +1,9 @@
-package me.alpha432.oyvey.features.modules.combat.autototem.utils;
+package aids.dev.shrimphack.util.World;
 
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-import static me.alpha432.oyvey.features.modules.Module.mc;
+import static aids.dev.shrimphack.features.modules.Module.mc;
 
 public record SearchInvResult(int slot, boolean found, ItemStack stack) {
     private static final SearchInvResult NOT_FOUND_RESULT = new SearchInvResult(-1, false, null);

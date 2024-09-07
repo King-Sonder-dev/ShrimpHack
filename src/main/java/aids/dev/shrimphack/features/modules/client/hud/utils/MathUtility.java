@@ -12,7 +12,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static me.alpha432.oyvey.features.modules.client.hud.utils.Util.mc;
+import static aids.dev.shrimphack.util.traits.Util.mc;
+
 
 public final class MathUtility {
     public static double random(double min, double max) {

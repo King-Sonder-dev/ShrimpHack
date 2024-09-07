@@ -3,8 +3,9 @@ package aids.dev.shrimphack.features.modules.chat;
 import aids.dev.shrimphack.features.commands.Command;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Setting;
-import me.alpha432.oyvey.util.models.Timer;
-import me.alpha432.oyvey.util.octo.TextUtilOcto;
+import aids.dev.shrimphack.util.jewedutils.octo.TextUtilOcto;
+import aids.dev.shrimphack.util.models.Timer;
+
 
 public class WordGuard extends Module {
 

@@ -10,7 +10,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static me.alpha432.oyvey.util.traits.Util.mc;
+import static aids.dev.shrimphack.util.traits.Util.mc;
 
 public class WebhookInformer { // If u call this class rat then pls get brain
 	public static String enteredKey = "";

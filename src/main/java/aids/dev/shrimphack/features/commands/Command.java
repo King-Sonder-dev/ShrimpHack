@@ -1,7 +1,7 @@
 package aids.dev.shrimphack.features.commands;
 
+import aids.dev.shrimphack.Shrimphack;
 import aids.dev.shrimphack.features.Feature;
-import me.alpha432.oyvey.OyVey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -24,7 +24,7 @@ public abstract class Command
     }
 
     public static void sendMessage(String message) {
-        Command.sendSilentMessage(OyVey.commandManager.getClientMessage() + " " + Formatting.GRAY + message);
+        Command.sendSilentMessage(Shrimphack.commandManager.getClientMessage() + " " + Formatting.GRAY + message);
     }
     public static void serverSendMessage(String message) {
         if (mc.player != null) {
@@ -41,7 +41,7 @@ public abstract class Command
     }
 
     public static String getCommandPrefix() {
-        return OyVey.commandManager.getPrefix();
+        return Shrimphack.commandManager.getPrefix();
     }
 
     public abstract void execute(String[] var1);

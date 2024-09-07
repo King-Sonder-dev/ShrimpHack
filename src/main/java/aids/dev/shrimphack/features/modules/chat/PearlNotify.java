@@ -1,8 +1,8 @@
 package aids.dev.shrimphack.features.modules.chat;
 
+import aids.dev.shrimphack.Shrimphack;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Setting;
-import me.alpha432.oyvey.OyVey;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -73,7 +73,7 @@ public class PearlNotify extends Module {
         }
 
         // Send a notification if a valid player is found and they are not a friend
-        if (closestPlayer != null && this.flag && !OyVey.friendManager.isFriend(closestPlayer.getName().getString())) {
+        if (closestPlayer != null && this.flag && !Shrimphack.friendManager.isFriend(closestPlayer.getName().getString())) {
             String facing = this.enderPearl.getHorizontalFacing().asString();
             if (facing.equals("west")) {
                 facing = "east";

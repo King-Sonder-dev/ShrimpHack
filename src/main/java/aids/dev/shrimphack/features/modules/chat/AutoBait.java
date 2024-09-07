@@ -3,8 +3,9 @@ package aids.dev.shrimphack.features.modules.chat;
 import aids.dev.shrimphack.features.commands.Command;
 import aids.dev.shrimphack.features.modules.Module;
 import aids.dev.shrimphack.features.settings.Setting;
-import me.alpha432.oyvey.util.BaitUtil;
-import me.alpha432.oyvey.util.models.Timer;
+import aids.dev.shrimphack.util.Text.BaitUtil;
+import aids.dev.shrimphack.util.models.Timer;
+
 
 import java.util.List;
 import java.util.ArrayList;

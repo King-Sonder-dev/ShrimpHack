@@ -1,4 +1,4 @@
-package me.alpha432.oyvey.features.modules.combat.autocrystal.utils.math;
+package aids.dev.shrimphack.util.Math;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.effect.StatusEffectInstance;

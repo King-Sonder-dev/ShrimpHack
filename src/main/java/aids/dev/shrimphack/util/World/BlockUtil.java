@@ -26,7 +26,7 @@ import net.minecraft.util.math.*;
 
 import java.util.*;
 
-import static aids.dev.shrimphack.features.modules.combat.burrow.utils.player.PlayerUtility.getWorldActionId;
+import static aids.dev.shrimphack.util.World.PlayerUtility.getWorldActionId;
 import static aids.dev.shrimphack.util.traits.Util.mc;
 
 public class BlockUtil {
