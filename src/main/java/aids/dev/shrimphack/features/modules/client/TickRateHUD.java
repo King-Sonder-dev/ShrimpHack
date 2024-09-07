@@ -7,7 +7,6 @@ import aids.dev.shrimphack.features.settings.Setting;
 import java.util.Random;
 
 public class TickRateHUD extends Module {
-    private final Setting<Boolean> tickRate = new Setting<>("TickRate", false);
     private final Setting<Integer> yCoords = new Setting<>("Ycoords", 2, 0, 485);
     private final Setting<Integer> xCoords = new Setting<>("Xcoords", 2, 0, 710);
     public TickRateHUD() {
@@ -18,7 +17,6 @@ public class TickRateHUD extends Module {
     private double lastChange = 0.0;
 
     public void render(int color, Render2DEvent event) {
-        if (tickRate.getValue()) {
             double[] tickRates = getTickRates();
             String tickRateString = formatTickRates(tickRates);
 
