@@ -6,6 +6,6 @@ A client made using oyvey ported
 <img src="https://i.imgur.com/bvE4lcf.png" width="90%" />
 
 # Reason for Releasing this
-No point since im not gonna continue this goofware and not worth my time
+No point since im not gonna continue this goofware and this isnt worth my time
 
 </div>
