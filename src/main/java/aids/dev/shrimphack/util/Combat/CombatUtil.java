@@ -1,11 +1,14 @@
 package aids.dev.shrimphack.util.Combat;
 
+import com.google.common.collect.Streams;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.List;
 import java.util.Objects;
 
 import static aids.dev.shrimphack.util.World.BlockUtil.getState;
@@ -25,4 +28,5 @@ public class CombatUtil {
         Block block = Objects.requireNonNull(mc.world).getBlockState(blockPos).getBlock();
         return block == Blocks.OBSIDIAN || block == Blocks.BEDROCK || block == Blocks.REINFORCED_DEEPSLATE || block == Blocks.NETHERITE_BLOCK || block == Blocks.COBWEB;
     }
+
 }

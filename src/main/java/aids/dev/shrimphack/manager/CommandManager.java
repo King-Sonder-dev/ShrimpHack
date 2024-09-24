@@ -26,6 +26,7 @@ public class CommandManager
         commands.add(new ModuleCommand());
         commands.add(new PrefixCommand());
 
+
         commands.add(new HelpCommand());
     }
 

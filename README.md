@@ -1,14 +1,11 @@
 <div align="center">
 
-# oyvey-ported
-Kosher client base ported to Minecraft 1.20.4 by [@cattyngmd](https://github.com/cattyngmd)
+# ShrimHack/Oyvey++
+A client made using oyvey ported
 
-<img src="https://i.imgur.com/Lu6rDJB.png" width="90%" />
+<img src="https://imgur.com/a/8aOoTmc" width="90%" />
 
-# Why
-![](https://i.imgur.com/VYjIphG.png)
-
-# What
-Add stuff to it like you would add stuff to your 1.12.2 OyVey paste
+# Reason for Releasing this
+No point since im not gonna continue this goofware and not worth my time
 
 </div>
